@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  /* Mistral palette — based on observed Le Chat / Vibe / AI Studio screenshots */
+  --color-mistral-orange: #FA500F;
+  --color-mistral-orange-soft: #FF7A47;
+  --color-mistral-orange-amber: #FF9B47;
+  --color-mistral-orange-yellow: #FFD23F;
+  --color-mistral-orange-deep: #E63E00;
+  --color-mistral-cream: #FAF7F2;
+  --color-mistral-cream-warm: #F5EFE3;
+
+  /* Surfaces */
+  --color-surface: #FFFFFF;
+  --color-surface-subtle: #FAFAF9;
+  --color-surface-sunken: #F4F2EF;
+
+  /* Text */
+  --color-ink: #1A1614;
+  --color-ink-muted: #5C544E;
+  --color-ink-soft: #8B827B;
+  --color-ink-faint: #B8B0A8;
+
+  /* Lines */
+  --color-line: #EDE9E3;
+  --color-line-soft: #F4F0EA;
+
+  /* States */
+  --color-success: #16A34A;
+  --color-warning: #EAB308;
+  --color-danger: #DC2626;
+
+  /* Typography */
+  --font-display: "Söhne", "Inter", system-ui, -apple-system, sans-serif;
+  --font-body: "Söhne", "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "Söhne Mono", "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  /* Editorial scale (benji.org style) */
+  --text-display: 4.5rem;
+  --text-h1: 3rem;
+  --text-h2: 2rem;
+  --text-h3: 1.5rem;
+  --text-lede: 1.375rem;
+  --text-body: 1.0625rem;
+  --text-small: 0.9375rem;
+  --text-meta: 0.8125rem;
+
+  /* Tracking */
+  --tracking-tight: -0.02em;
+  --tracking-display: -0.035em;
+
+  /* Rhythm */
+  --leading-tight: 1.1;
+  --leading-snug: 1.3;
+  --leading-relaxed: 1.6;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* Editorial section frame */
+.editorial {
+  max-width: 720px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.wide {
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.full-bleed {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-mistral-orange);
+  color: white;
+}
+
+/* Mono pill */
+.mono-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
