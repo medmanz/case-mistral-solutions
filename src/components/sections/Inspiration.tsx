@@ -10,49 +10,49 @@ const REFS: Reference[] = [
     name: "Workable Agent",
     category: "AI recruiting · 2026",
     what: "Embedded agent inside an ATS.",
-    pov: "Best execution I've seen of an agent that lives inside the existing surface rather than next to it. Every score has a reason, every action proposed not committed.",
+    pov: "Best execution I've seen of an agent that lives inside the existing surface. Every score has a reason. Every action stays a proposal until you commit.",
   },
   {
     name: "Linear AI triage",
     category: "Issue tracking · 2026",
     what: "Background classification on incoming issues.",
-    pov: "Linear's restraint with AI is the lesson. The agent does one job, surfaces it as a thin overlay on existing primitives, and gets out of the way.",
+    pov: "Linear keeps the AI to one job and surfaces it as a thin overlay on existing primitives. Restraint is the lesson.",
   },
   {
     name: "Notion AI Agents",
     category: "Workspace · 2026",
     what: "Persistent agents working overnight.",
-    pov: "The framing that stuck: agents are not chat partners, they are background labor with a check-in. The morning summary is the surface, not the conversation.",
+    pov: "Agents work while you're asleep. The morning summary is the surface. The chat is optional.",
   },
   {
     name: "v0 by Vercel",
     category: "UI prototyping · 2025",
     what: "Natural language to UI matching a design system.",
-    pov: "The proof that AI output can inherit a system instead of inventing one. v0 made beautiful-by-default a real design choice, not a slogan.",
+    pov: "AI output inherits a design system instead of inventing one. v0 turns beautiful-by-default into something you can deploy.",
   },
   {
     name: "Raycast AI",
     category: "Productivity · 2025",
     what: "Command palette as AI entry point.",
-    pov: "Best example of an AI surface that is invocable from anywhere without owning the screen. The slash-command pattern in Vibe should feel this fluid.",
+    pov: "Best example of an AI surface invocable from anywhere without owning the screen. The slash-command pattern in Vibe should feel this fluid.",
   },
   {
     name: "Granola",
     category: "Meeting notes · 2025",
     what: "Background capture, structured output at end.",
-    pov: "Same insight as Notion Agents in a tighter form: the agent works while you're busy, the artifact arrives when you're ready. No constant attention required.",
+    pov: "Same insight as Notion Agents in a tighter form. The agent captures while you focus. The artifact arrives when you're ready. You never babysit it.",
   },
   {
     name: "Perplexity Computer",
     category: "Agent runtime · Feb 2026",
     what: "Long-horizon workflows across tools.",
-    pov: "The closest public reference for what Vibe Work Mode wants to be. The architecture is right; the design problem is making the runtime legible to a non-engineer.",
+    pov: "The closest public reference for Vibe Work Mode. The architecture is sound. The design problem sits in making the runtime legible to a non-engineer.",
   },
   {
     name: "Welcome to the Jungle ATS",
     category: "Recruiting · 2026",
     what: "Conversational job-spec creation, 3 minutes instead of 40.",
-    pov: "Quoted earlier for the reason. Their public stance — rebuild rather than layer — validates the composition angle from the recruiting side.",
+    pov: "Quoted earlier for the reason. Their public stance, rebuild rather than layer, validates the composition angle from the recruiting side.",
   },
 ];
 
@@ -60,17 +60,17 @@ export function Inspiration() {
   return (
     <section className="py-32 border-t border-line">
       <div className="editorial">
-        <p className="mono-tag mb-8">§3 — Inspiration</p>
+        <p className="mono-tag mb-8">§3 · Inspiration</p>
         <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
-          What I look for in AI products in 2026.
+          I look for three things in AI products today.
         </h2>
         <p className="mt-6 text-lede leading-snug text-ink-muted max-w-[44ch]">
-          Three things. Agents that show their work. Products that compose
-          primitives instead of stacking features. Trust as a design layer, not
-          a footer.
+          Agents that show their work. Products that compose primitives instead
+          of stacking features. Trust treated as a design layer.
         </p>
         <p className="mt-4 text-small text-ink-soft">
-          Eight references — ChatGPT, Claude, Gemini, Perplexity excluded.
+          Eight references. ChatGPT, Claude, Gemini, and Perplexity stay
+          excluded.
         </p>
 
         <ul className="mt-16 divide-y divide-line">

@@ -59,13 +59,13 @@ export function SystemView() {
     <section className="py-32 border-t border-line bg-mistral-cream">
       <div className="wide">
         <div className="editorial !max-w-[720px] !px-0">
-          <p className="mono-tag mb-8">§5 — One system, not 100 products</p>
+          <p className="mono-tag mb-8">§5 · One kit, many apps</p>
           <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
-            A custom app is a composition, not a product.
+            A custom app composes primitives.
           </h2>
           <p className="mt-6 text-lede leading-snug text-ink-muted max-w-[44ch]">
-            Five Skills. Four Connectors. One Custom Mode. One Project. Swap the
-            business layer — you get the next app.
+            Five Skills. Four Connectors. One Custom Mode. One Project. Swap
+            the business layer and you have the next app.
           </p>
         </div>
 
@@ -178,12 +178,11 @@ export function SystemView() {
         {/* Caption */}
         <div className="editorial !max-w-[720px] !px-0 mt-20">
           <p className="text-body leading-relaxed text-ink-muted">
-            The &ldquo;scale to 100 apps&rdquo; question becomes{" "}
-            <span className="text-ink font-medium">how good is the kit</span>.
-            The &ldquo;help the Solutions team&rdquo; question becomes the same
-            thing.{" "}
+            Scaling to 100 apps becomes a question about{" "}
+            <span className="text-ink font-medium">kit quality</span>. So does
+            helping the Solutions team produce fast.{" "}
             <span className="text-ink font-medium">
-              Same answer, both questions.
+              The same answer covers both.
             </span>
           </p>
         </div>

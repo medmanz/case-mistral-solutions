@@ -6,7 +6,7 @@ type Quote = {
 
 const QUOTES: Quote[] = [
   {
-    body: "In 2 minutes you can apply to 200 offers. The point is not to propose noise. It is to propose things that are relevant.",
+    body: "In 2 minutes you can apply to 200 offers. The point is to propose things that are relevant, not noise.",
     source: "Jérémy Cleda",
     context: "CEO, Welcome to the Jungle · on the ATS rebuild",
   },
@@ -16,7 +16,7 @@ const QUOTES: Quote[] = [
     context: "Reported on Blind, anonymized · 2026",
   },
   {
-    body: "A high-value recruiter in 2027 is a relationship operator, a quality-of-hire owner, and a pipeline strategist — not a sourcer or scheduler.",
+    body: "A high-value recruiter in 2027 owns relationships, owns quality of hire, and steers the pipeline. Sourcing and scheduling sit elsewhere.",
     source: "Pin",
     context: "AI sourcing platform · 2026 outlook",
   },
@@ -26,13 +26,13 @@ export function Problem() {
   return (
     <section className="py-32 border-t border-line">
       <div className="editorial">
-        <p className="mono-tag mb-8">§4 — The gap</p>
+        <p className="mono-tag mb-8">§4 · The gap</p>
         <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
-          Recruiting in 2026 is not short on AI. It is short on trust.
+          Recruiting in 2026 has plenty of AI. It lacks trust.
         </h2>
         <p className="mt-6 text-lede leading-snug text-ink-muted max-w-[44ch]">
-          Recruiters are drowning because the AI they get acts too early, with
-          too little context, and breaks trust faster than it saves time.
+          The AI recruiters get acts too early, with too little context, and
+          breaks trust faster than it saves time.
         </p>
 
         <ul className="mt-16 space-y-12">
@@ -55,10 +55,7 @@ export function Problem() {
         </ul>
 
         <p className="mt-16 text-body leading-relaxed text-ink-muted">
-          <span className="text-ink font-medium">The question is not</span>{" "}
-          how do we add AI to recruiting.{" "}
-          <span className="text-ink font-medium">It is</span> how do we make AI
-          a teammate that earns the right to act.
+          The right question for design is how AI earns the right to act.
         </p>
       </div>
     </section>

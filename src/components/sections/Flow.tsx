@@ -15,7 +15,7 @@ const STEPS: Step[] = [
     surface: "work",
     title: "Entry from the sidebar",
     caption:
-      "Recruiting is a Custom Mode in Vibe Work Mode. The Solutions team installed it once; every recruiter sees it as a native part of their workspace.",
+      "Recruiting is a Custom Mode in Vibe Work Mode. The Solutions team installed it once. Every recruiter sees it as a native part of their workspace.",
     signOff: false,
     body: (
       <div className="text-[11px] text-ink-soft space-y-1.5 font-mono">
@@ -32,7 +32,7 @@ const STEPS: Step[] = [
     surface: "work",
     title: "Conversational brief",
     caption:
-      "The agent asks just enough to scope: role, seniority, must-haves, anti-signals. Three minutes of dialogue replaces a 40-minute intake form.",
+      "The agent asks just enough to scope: role, seniority, must-haves, anti-signals. Three minutes of dialogue replace a 40-minute intake form.",
     signOff: false,
     body: (
       <div className="space-y-2 text-[11.5px]">
@@ -53,7 +53,7 @@ const STEPS: Step[] = [
     surface: "work",
     title: "Sourcing in background",
     caption:
-      "A Task starts. The agent runs across LinkedIn, GitHub, the ATS. It can take minutes or hours — the recruiter can close the tab and come back.",
+      "A Task starts. The agent runs across LinkedIn, GitHub, the ATS. It can take minutes or hours, so the recruiter closes the tab and comes back later.",
     signOff: false,
     body: (
       <div className="space-y-2 text-[11.5px] font-mono">
@@ -80,7 +80,7 @@ const STEPS: Step[] = [
     surface: "work",
     title: "Shortlist arrives (see §6)",
     caption:
-      "The agent hands back: 12 candidates scored, every reason transparent, top 5 pre-flagged. Sign-off lives on the action, not on the analysis.",
+      "The agent hands back 12 candidates scored, every reason transparent, top 5 pre-flagged. Sign-off lives on the action.",
     signOff: false,
     body: (
       <div className="space-y-1.5 text-[11.5px]">
@@ -110,7 +110,7 @@ const STEPS: Step[] = [
     body: (
       <div className="space-y-2 text-[11.5px]">
         <div className="px-3 py-2 rounded-lg bg-surface-sunken border border-line text-ink-muted text-[11px] leading-snug">
-          Hi Sophie — saw your recent post on idempotency patterns at Stripe.
+          Hi Sophie, I saw your recent post on idempotency patterns at Stripe.
           We&rsquo;re hiring for an exact-fit role on payments…
         </div>
         <div className="flex items-center gap-2 pt-1">
@@ -129,7 +129,7 @@ const STEPS: Step[] = [
     surface: "work",
     title: "Pipeline in motion",
     caption:
-      "Once a candidate replies, the Project state advances. Scheduled relances, calendar suggestions, status changes — the agent proposes, the human commits.",
+      "Once a candidate replies, the Project state advances. Scheduled relances, calendar suggestions, status changes. The agent proposes. You commit.",
     signOff: false,
     body: (
       <div className="space-y-1.5 text-[11px]">
@@ -157,12 +157,12 @@ const STEPS: Step[] = [
     surface: "chat",
     title: "Chat Mode entry · slash-command",
     caption:
-      "A hiring manager doesn&rsquo;t open Work Mode. They type a slash-command in Chat Mode and get an answer — with a deep link back into the Project.",
+      "A hiring manager doesn&rsquo;t open Work Mode. They type a slash-command in Chat Mode and get an answer with a deep link back into the Project.",
     signOff: false,
     body: (
       <div className="space-y-2 text-[11.5px]">
         <div className="px-3 py-2 rounded-lg bg-surface-sunken text-ink font-mono text-[11px]">
-          /recruiting status — Senior Backend Engineer
+          /recruiting status, Senior Backend Engineer
         </div>
         <div className="px-3 py-2 rounded-lg bg-mistral-cream-warm text-ink-muted leading-snug">
           5 contacted, 3 replied. Sophie scheduled for Tue 14:00. Marc on
@@ -178,13 +178,13 @@ export function Flow() {
   return (
     <section className="py-32 border-t border-line">
       <div className="editorial">
-        <p className="mono-tag mb-8">§7 — The full flow · low fidelity</p>
+        <p className="mono-tag mb-8">§7 · The full flow · low fidelity</p>
         <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
-          The shortlist is one moment. Here is the rest.
+          The shortlist is one moment. This is the rest.
         </h2>
         <p className="mt-6 text-lede leading-snug text-ink-muted max-w-[44ch]">
           Sign-off appears wherever the agent is about to touch the outside
-          world. Internal actions run on autopilot. By risk, not by policy.
+          world. Internal actions run on autopilot. Risk draws the line.
         </p>
       </div>
 

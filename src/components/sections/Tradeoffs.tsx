@@ -14,39 +14,39 @@ const SPECTRA: Spectrum[] = [
     question: "How does a custom app relate to Vibe?",
     leftLabel: "Pure native composition",
     leftDescription:
-      "Custom app is invisible — just a bag of Skills and Connectors that live in Vibe's existing surfaces.",
+      "Custom app is invisible. A bag of Skills and Connectors that live in Vibe's existing surfaces.",
     rightLabel: "Separate product",
     rightDescription:
-      "Each custom app gets its own UI, branding, design system — Vibe becomes an app store.",
+      "Each custom app gets its own UI, branding, design system. Vibe becomes an app store.",
     chose: "Composition with a thin business layer",
     rationale:
-      "Pure composition gives Solutions no place to put métier-specific affordances. A separate product makes 100 apps impossible to maintain. The middle is a Custom Mode that wraps shared primitives in a thin, opinionated surface.",
+      "Pure composition leaves Solutions no place to put métier-specific affordances. A separate product makes 100 apps impossible to maintain. I land on a Custom Mode that wraps shared primitives in a thin, opinionated surface.",
     positionPct: 35,
   },
   {
     question: "Where does the Recruiting Tool live?",
     leftLabel: "Chat Mode only",
     leftDescription:
-      "Everything happens in conversation. Lightweight, but no long-horizon state and no canvas-style pipeline view.",
+      "Everything happens in conversation. Lightweight, with no long-horizon state and no canvas-style pipeline view.",
     rightLabel: "Work Mode only",
     rightDescription:
-      "No conversational entry at all. Powerful for the operator but invisible to colleagues who could use a quick slash-command query.",
+      "No conversational entry. Powerful for the operator. Invisible to colleagues who could use a quick slash-command query.",
     chose: "Work Mode primary, Chat Mode slash-entry",
     rationale:
-      "Recruiting is long-horizon work — Projects, Scheduled tasks, persistent pipeline. Work Mode is the home. But the agent's Skills should be invocable from Chat Mode too, for the manager who just wants to ask 'where are we on Sara?'",
+      "Recruiting is long-horizon work: Projects, Scheduled tasks, persistent pipeline. Work Mode is the home. The agent's Skills also stay invocable from Chat Mode, for the manager who wants to ask 'where are we on Sara?'",
     positionPct: 70,
   },
   {
     question: "How much autonomy does the agent get?",
     leftLabel: "Co-pilot only",
     leftDescription:
-      "Every action requires explicit human approval. Maximum safety, but the value erodes against existing tools.",
+      "Every action requires explicit human approval. Maximum safety, and the value erodes against existing tools.",
     rightLabel: "Full autopilot",
     rightDescription:
-      "Agent acts on the outside world without ask. Maximum leverage, but one bad outreach poisons the brand.",
+      "Agent acts on the outside world without ask. Maximum leverage, and one bad outreach poisons the brand.",
     chose: "Contextual sign-off by risk",
     rationale:
-      "Internal actions (sourcing, scoring, qualification) run on autopilot. External, irreversible actions (sending a message, rejecting a candidate, making an offer) require a human commit. The line is drawn by side-effect, not by policy.",
+      "Internal actions like sourcing, scoring, and qualification run on autopilot. External, irreversible actions like sending a message, rejecting a candidate, or making an offer require a human commit. Side-effect draws the line.",
     positionPct: 50,
   },
 ];
@@ -55,13 +55,13 @@ export function Tradeoffs() {
   return (
     <section className="py-32 border-t border-line">
       <div className="editorial">
-        <p className="mono-tag mb-8">§8 — Tradeoffs</p>
+        <p className="mono-tag mb-8">§8 · Tradeoffs</p>
         <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
           For every key call, I painted the extremes first.
         </h2>
         <p className="mt-6 text-lede leading-snug text-ink-muted max-w-[44ch]">
-          Three questions, three spectrums. Each landing is one position
-          defended. What I'm abandoning lives on the edges.
+          Three questions, three spectrums. I defend one position per question.
+          The edges show what I abandoned.
         </p>
       </div>
 

@@ -103,14 +103,13 @@ export function Scaling() {
     <section className="py-32 border-t border-line bg-mistral-cream">
       <div className="wide">
         <div className="editorial !max-w-[720px] !px-0">
-          <p className="mono-tag mb-8">§9 — Proof of the system</p>
+          <p className="mono-tag mb-8">§9 · Proof of the system</p>
           <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
             Three apps. One kit. Same screen.
           </h2>
           <p className="mt-6 text-lede leading-snug text-ink-muted max-w-[44ch]">
-            Swap the business layer and the shortlist screen becomes a
-            triage screen. Same structure, same trust contract, different
-            métier.
+            Swap the business layer and the shortlist screen reads as a triage
+            screen. Same structure, same trust contract, different métier.
           </p>
         </div>
 
@@ -202,10 +201,9 @@ export function Scaling() {
 
         <div className="editorial !max-w-[720px] !px-0 mt-12">
           <p className="text-body leading-relaxed text-ink-muted">
-            The investment is in{" "}
-            <span className="text-ink font-medium">the kit</span>, not in each
-            app. Solutions builds the kit once, deploys it a hundred times.
-            That is the answer to the scaling question.
+            Solutions invests in{" "}
+            <span className="text-ink font-medium">the kit</span> once, then
+            deploys it a hundred times. That&rsquo;s how the system scales.
           </p>
         </div>
       </div>

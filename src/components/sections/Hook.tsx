@@ -21,7 +21,7 @@ export function Hook() {
           animate={animate}
           transition={transition(0)}
         >
-          §1 — Thesis
+          §1 · Thesis
         </motion.p>
         <motion.h1
           className="text-display leading-tight tracking-display font-medium text-ink"
@@ -39,9 +39,8 @@ export function Hook() {
           animate={animate}
           transition={transition(0.25)}
         >
-          A custom AI app in Vibe isn&rsquo;t a separate product. It&rsquo;s a
-          composition of Vibe&rsquo;s primitives with a thin business layer on
-          top.
+          A custom AI app in Vibe is a composition of Vibe&rsquo;s primitives
+          with a thin business layer on top.
         </motion.p>
         <motion.p
           className="mt-14 text-small text-ink-soft"

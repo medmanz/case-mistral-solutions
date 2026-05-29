@@ -13,7 +13,7 @@ const PHASES: Phase[] = [
   {
     week: "Week 1",
     title: "Lock the kit",
-    body: "Freeze the primitive contracts with eng and science. Skills signatures, Connector auth model, Custom Mode chrome. Nothing else moves until this is firm.",
+    body: "Freeze the primitive contracts with eng and science. Skills signatures, Connector auth model, Custom Mode chrome. Other work waits.",
   },
   {
     week: "Week 2",
@@ -28,26 +28,26 @@ const PHASES: Phase[] = [
   {
     week: "Week 4",
     title: "Deploy with one design partner",
-    body: "One enterprise pilot, scoped tight. Real recruiters, real outreach, real candidates. Goal is not coverage — it is the first true signal on the sign-off contract.",
+    body: "One enterprise pilot, scoped tight. Real recruiters, real outreach, real candidates. The goal is the first true signal on the sign-off contract.",
   },
 ];
 
 const QUESTIONS: Question[] = [
   {
     team: "Product",
-    body: "Which five métiers do we target after Recruiting? The kit only earns its keep if the second and third apps reuse 80%+ of it. We need to know now.",
+    body: "Pick the next five métiers after Recruiting. The kit only earns its keep if the second and third apps reuse 80%+ of it. We need to know now.",
   },
   {
     team: "Engineering",
-    body: "Where does the Custom Mode layer live in the Vibe codebase? Is it a thin client on top of Workflows, or does it need its own state model? This shapes how Solutions teams ship.",
+    body: "Decide where the Custom Mode layer lives in the Vibe codebase. Thin client on top of Workflows, or its own state model? This shapes how Solutions teams ship.",
   },
   {
     team: "Science",
-    body: "Do we evaluate at the Skill level or the Workflow level — and what does a failure-mode dataset look like for sign-off-required actions? The eval contract is design-shaped.",
+    body: "Evaluate at the Skill level or the Workflow level? And the failure-mode dataset for sign-off actions, what does it look like? The eval contract is design-shaped.",
   },
   {
     team: "Design",
-    body: "How do we keep the kit opinionated as the team grows? Who has the right to add a primitive, who has the right to fork chrome? Governance before regret.",
+    body: "Keep the kit opinionated as the team grows. Decide who can add a primitive and who can fork chrome. Governance before regret.",
   },
 ];
 
@@ -55,7 +55,7 @@ export function Feasibility() {
   return (
     <section className="py-32 border-t border-line bg-surface-subtle">
       <div className="editorial">
-        <p className="mono-tag mb-8">§10 — Feasibility</p>
+        <p className="mono-tag mb-8">§10 · Feasibility</p>
         <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
           If I had to ship this in four weeks.
         </h2>
