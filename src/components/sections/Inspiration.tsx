@@ -60,7 +60,7 @@ export function Inspiration() {
   return (
     <section className="py-32 border-t border-line">
       <div className="editorial">
-        <p className="mono-tag mb-8">§3 · Inspiration</p>
+        <p className="mono-tag mb-8">§2 · Inspiration</p>
         <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
           I look for three things in AI products today.
         </h2>

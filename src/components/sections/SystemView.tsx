@@ -59,7 +59,7 @@ export function SystemView() {
     <section className="py-32 border-t border-line bg-mistral-cream">
       <div className="wide">
         <div className="editorial !max-w-[720px] !px-0">
-          <p className="mono-tag mb-8">§5 · One kit, many apps</p>
+          <p className="mono-tag mb-8">§4 · One kit, many apps</p>
           <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
             A custom app composes primitives.
           </h2>

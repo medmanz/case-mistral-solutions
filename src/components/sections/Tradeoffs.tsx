@@ -55,7 +55,7 @@ export function Tradeoffs() {
   return (
     <section className="py-32 border-t border-line">
       <div className="editorial">
-        <p className="mono-tag mb-8">§8 · Tradeoffs</p>
+        <p className="mono-tag mb-8">§7 · Tradeoffs</p>
         <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
           For every key call, I painted the extremes first.
         </h2>

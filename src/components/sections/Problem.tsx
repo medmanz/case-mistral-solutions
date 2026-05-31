@@ -26,7 +26,7 @@ export function Problem() {
   return (
     <section className="py-32 border-t border-line">
       <div className="editorial">
-        <p className="mono-tag mb-8">§4 · The gap</p>
+        <p className="mono-tag mb-8">§5 · The gap behind the system</p>
         <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
           Recruiting in 2026 has plenty of AI. It lacks trust.
         </h2>

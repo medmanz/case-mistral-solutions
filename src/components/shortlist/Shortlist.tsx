@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { motion, useReducedMotion } from "motion/react";
 import { candidates } from "@/lib/candidates";
 import { Sidebar } from "./Sidebar";
 import { HeroBlock } from "./HeroBlock";
@@ -12,7 +11,6 @@ import { ChevronLeft, Share2, Settings2, MoreHorizontal } from "lucide-react";
 export function Shortlist() {
   const [filter, setFilter] = useState<Filter>("all");
   const [selected, setSelected] = useState<Set<string>>(new Set());
-  const reduce = useReducedMotion();
 
   const filtered = useMemo(() => {
     if (filter === "all") return candidates;
@@ -27,8 +25,6 @@ export function Shortlist() {
       return next;
     });
   };
-
-  const cardInitial = reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 };
 
   return (
     <div className="rounded-2xl overflow-hidden border border-line bg-surface shadow-[0_1px_3px_rgba(26,22,20,0.04),0_24px_60px_-30px_rgba(26,22,20,0.25)]">
@@ -68,41 +64,21 @@ export function Shortlist() {
 
           {/* Grid */}
           <div className="flex-1 overflow-y-auto px-8 py-6 bg-surface-subtle">
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={{
-                hidden: {},
-                visible: {
-                  transition: { staggerChildren: 0.04, delayChildren: 0.05 },
-                },
-              }}
-            >
-              {filtered.map((c) => (
-                <motion.div
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+              {filtered.map((c, i) => (
+                <div
                   key={c.id}
-                  variants={{
-                    hidden: cardInitial,
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: {
-                        duration: 0.55,
-                        ease: [0.22, 1, 0.36, 1],
-                      },
-                    },
-                  }}
+                  className="fade-up"
+                  style={{ animationDelay: `${i * 40}ms` }}
                 >
                   <CandidateCard
                     candidate={c}
                     selected={selected.has(c.id)}
                     onToggle={() => toggle(c.id)}
                   />
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
 
           {/* Sticky multi-select footer */}

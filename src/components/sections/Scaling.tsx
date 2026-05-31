@@ -103,7 +103,7 @@ export function Scaling() {
     <section className="py-32 border-t border-line bg-mistral-cream">
       <div className="wide">
         <div className="editorial !max-w-[720px] !px-0">
-          <p className="mono-tag mb-8">§9 · Proof of the system</p>
+          <p className="mono-tag mb-8">§8 · Proof of the system</p>
           <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
             Three apps. One kit. Same screen.
           </h2>

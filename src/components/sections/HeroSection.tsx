@@ -5,7 +5,7 @@ export function HeroSection() {
     <section className="py-32 border-t border-line bg-surface-subtle">
       <div className="wide">
         <div className="editorial !max-w-[720px] !px-0 mb-14">
-          <p className="mono-tag mb-8">§6 · The hero · live</p>
+          <p className="mono-tag mb-8">§3 · The hero · live</p>
           <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
             The Recruiting Tool in action.
           </h2>

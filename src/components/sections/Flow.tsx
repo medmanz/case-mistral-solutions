@@ -78,7 +78,7 @@ const STEPS: Step[] = [
   {
     index: "04",
     surface: "work",
-    title: "Shortlist arrives (see §6)",
+    title: "Shortlist arrives (see §3)",
     caption:
       "The agent hands back 12 candidates scored, every reason transparent, top 5 pre-flagged. Sign-off lives on the action.",
     signOff: false,
@@ -178,7 +178,7 @@ export function Flow() {
   return (
     <section className="py-32 border-t border-line">
       <div className="editorial">
-        <p className="mono-tag mb-8">§7 · The full flow · low fidelity</p>
+        <p className="mono-tag mb-8">§6 · The full flow · low fidelity</p>
         <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
           The shortlist is one moment. This is the rest.
         </h2>
