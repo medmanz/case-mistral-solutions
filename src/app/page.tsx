@@ -1,3 +1,4 @@
+import { Sidebar } from "@/components/layout/Sidebar";
 import { Hook } from "@/components/sections/Hook";
 import { Note } from "@/components/sections/Note";
 import { Inspiration } from "@/components/sections/Inspiration";
@@ -13,19 +14,22 @@ import { Outro } from "@/components/sections/Outro";
 
 export default function Page() {
   return (
-    <main className="bg-[var(--color-surface)] text-[var(--color-ink)]">
-      <Hook />
-      <Note />
-      <Inspiration />
-      <HeroSection />
-      <SystemView />
-      <Problem />
-      <Flow />
-      <Tradeoffs />
-      <Scaling />
-      <SolutionsKit />
-      <Feasibility />
-      <Outro />
-    </main>
+    <div className="bg-surface text-ink min-h-screen">
+      <Sidebar />
+      <main className="ml-[260px]">
+        <Hook />
+        <Note />
+        <Inspiration />
+        <HeroSection />
+        <SystemView />
+        <Problem />
+        <Flow />
+        <Tradeoffs />
+        <Scaling />
+        <SolutionsKit />
+        <Feasibility />
+        <Outro />
+      </main>
+    </div>
   );
 }

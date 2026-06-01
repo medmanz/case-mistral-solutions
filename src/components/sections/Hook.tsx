@@ -1,18 +1,17 @@
 export function Hook() {
   return (
-    <section className="min-h-screen flex items-center">
-      <div className="editorial">
-        <p className="mono-tag mb-8 fade-up fade-up-0">§1 · Thesis</p>
-        <h1 className="text-display leading-tight tracking-display font-medium text-ink fade-up fade-up-1">
-          Composing custom AI apps
-          <br />
-          inside Vibe.
-        </h1>
-        <p className="mt-10 text-lede leading-snug text-ink-muted max-w-[34ch] fade-up fade-up-2">
+    <section id="thesis" className="px-16 pt-24 pb-20">
+      <div className="max-w-[760px]">
+        <h2 className="text-[34px] leading-[1.2] tracking-tight font-semibold text-ink fade-up fade-up-0">
+          Composing custom AI apps inside Vibe.
+        </h2>
+        <p className="mt-6 text-[17px] leading-relaxed text-ink-muted max-w-[64ch] fade-up fade-up-1">
           A custom AI app in Vibe is a composition of Vibe&rsquo;s primitives
-          with a thin business layer on top.
+          with a thin business layer on top. The Recruiting Tool you&rsquo;ll
+          see isn&rsquo;t the deliverable. It&rsquo;s the proof the system
+          works.
         </p>
-        <p className="mt-14 text-small text-ink-soft fade-up fade-up-3">
+        <p className="mt-8 text-[14px] text-ink-soft fade-up fade-up-2">
           Solutions Designer take-home · Médéric Manière · June 2026
         </p>
       </div>

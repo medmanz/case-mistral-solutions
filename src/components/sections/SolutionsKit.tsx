@@ -87,22 +87,21 @@ const SIDEBAR_MANAGE = [
 
 export function SolutionsKit() {
   return (
-    <section className="py-32 border-t border-line">
-      <div className="wide">
-        <div className="editorial !max-w-[720px] !px-0">
-          <p className="mono-tag mb-8">§9 · How Solutions ships</p>
-          <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
-            Solutions composes the kit in AI Studio.
-          </h2>
-          <p className="mt-6 text-lede leading-snug text-ink-muted max-w-[44ch]">
-            The Recruiting Tool the user sees in Vibe is the front. The back is
-            a Workflow in AI Studio, built once by Solutions, deployed to every
-            client.
-          </p>
-        </div>
+    <section id="kit" className="px-16 py-20 border-t border-line">
+      <div className="max-w-[760px]">
+        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink">
+          Solutions kit
+        </h2>
+        <p className="mt-4 text-[16px] leading-relaxed text-ink-muted max-w-[64ch]">
+          Solutions composes the kit in AI Studio. The Recruiting Tool users
+          see in Vibe is the front. The back is a Workflow in AI Studio, built
+          once by Solutions, deployed to every client.
+        </p>
+      </div>
 
+      <div className="mt-10 max-w-[1080px]">
         {/* AI Studio mockup */}
-        <div className="mt-14 rounded-2xl border border-line bg-surface overflow-hidden shadow-[0_1px_3px_rgba(26,22,20,0.04),0_24px_60px_-30px_rgba(26,22,20,0.22)]">
+        <div className="rounded-2xl border border-line bg-surface overflow-hidden shadow-[0_1px_3px_rgba(26,22,20,0.04),0_24px_60px_-30px_rgba(26,22,20,0.22)]">
           <div className="flex h-[680px]">
             {/* Sidebar */}
             <aside className="w-[228px] shrink-0 border-r border-line bg-surface-subtle flex flex-col">
@@ -237,17 +236,17 @@ export function SolutionsKit() {
           </div>
         </div>
 
-        {/* Caption */}
-        <div className="editorial !max-w-[720px] !px-0 mt-14">
-          <p className="text-body leading-relaxed text-ink-muted">
-            One Workflow in Studio. Many fronts in Vibe. Solutions builds the
-            kit once, then deploys it to{" "}
-            <span className="text-ink font-medium">
-              La Fromagerie this month and CMA-CGM next month
-            </span>{" "}
-            without rebuilding the agent.
-          </p>
-        </div>
+      </div>
+
+      <div className="max-w-[760px] mt-10">
+        <p className="text-[15px] leading-relaxed text-ink-muted">
+          One Workflow in Studio. Many fronts in Vibe. Solutions builds the
+          kit once, then deploys it to{" "}
+          <span className="text-ink font-medium">
+            La Fromagerie this month and CMA-CGM next month
+          </span>{" "}
+          without rebuilding the agent.
+        </p>
       </div>
     </section>
   );

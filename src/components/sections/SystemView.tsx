@@ -56,21 +56,20 @@ export function SystemView() {
   const current = METIERS.find((m) => m.id === active)!;
 
   return (
-    <section className="py-32 border-t border-line bg-mistral-cream">
-      <div className="wide">
-        <div className="editorial !max-w-[720px] !px-0">
-          <p className="mono-tag mb-8">§4 · One kit, many apps</p>
-          <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
-            A custom app composes primitives.
-          </h2>
-          <p className="mt-6 text-lede leading-snug text-ink-muted max-w-[44ch]">
-            Five Skills. Four Connectors. One Custom Mode. One Project. Swap
-            the business layer and you have the next app.
-          </p>
-        </div>
+    <section id="system" className="px-16 py-20 border-t border-line">
+      <div className="max-w-[760px]">
+        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink">
+          System view
+        </h2>
+        <p className="mt-4 text-[16px] leading-relaxed text-ink-muted max-w-[64ch]">
+          A custom app composes primitives. Five Skills. Four Connectors. One
+          Custom Mode. One Project. Swap the business layer and you have the
+          next app.
+        </p>
+      </div>
 
-        {/* The diagram */}
-        <div className="mt-20 grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-10 lg:gap-14 items-center">
+      <div className="mt-10 max-w-[1080px]">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-10 lg:gap-14 items-center">
           {/* Left: Vibe primitives stack */}
           <div className="bg-surface rounded-2xl border border-line p-7 shadow-[0_1px_3px_rgba(26,22,20,0.04)]">
             <div className="flex items-center justify-between mb-5">
@@ -175,17 +174,17 @@ export function SystemView() {
           </div>
         </div>
 
-        {/* Caption */}
-        <div className="editorial !max-w-[720px] !px-0 mt-20">
-          <p className="text-body leading-relaxed text-ink-muted">
-            Scaling to 100 apps becomes a question about{" "}
-            <span className="text-ink font-medium">kit quality</span>. So does
-            helping the Solutions team produce fast.{" "}
-            <span className="text-ink font-medium">
-              The same answer covers both.
-            </span>
-          </p>
-        </div>
+      </div>
+
+      <div className="max-w-[760px] mt-10">
+        <p className="text-[15px] leading-relaxed text-ink-muted">
+          Scaling to 100 apps becomes a question about{" "}
+          <span className="text-ink font-medium">kit quality</span>. So does
+          helping the Solutions team produce fast.{" "}
+          <span className="text-ink font-medium">
+            The same answer covers both.
+          </span>
+        </p>
       </div>
     </section>
   );

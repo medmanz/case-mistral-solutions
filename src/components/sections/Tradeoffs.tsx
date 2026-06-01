@@ -53,19 +53,19 @@ const SPECTRA: Spectrum[] = [
 
 export function Tradeoffs() {
   return (
-    <section className="py-32 border-t border-line">
-      <div className="editorial">
-        <p className="mono-tag mb-8">§7 · Tradeoffs</p>
-        <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
-          For every key call, I painted the extremes first.
+    <section id="tradeoffs" className="px-16 py-20 border-t border-line">
+      <div className="max-w-[760px]">
+        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink">
+          Tradeoffs
         </h2>
-        <p className="mt-6 text-lede leading-snug text-ink-muted max-w-[44ch]">
-          Three questions, three spectrums. I defend one position per question.
-          The edges show what I abandoned.
+        <p className="mt-4 text-[16px] leading-relaxed text-ink-muted max-w-[64ch]">
+          For every key call, I painted the extremes first. Three questions,
+          three spectrums. I defend one position per question. The edges show
+          what I abandoned.
         </p>
       </div>
 
-      <div className="wide mt-20 space-y-24">
+      <div className="mt-10 max-w-[1080px] space-y-16">
         {SPECTRA.map((s, i) => (
           <SpectrumBlock key={i} spectrum={s} index={i + 1} />
         ))}

@@ -53,19 +53,19 @@ const QUESTIONS: Question[] = [
 
 export function Feasibility() {
   return (
-    <section className="py-32 border-t border-line bg-surface-subtle">
-      <div className="editorial">
-        <p className="mono-tag mb-8">§10 · Feasibility</p>
-        <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
-          If I had to ship this in four weeks.
+    <section id="feasibility" className="px-16 py-20 border-t border-line">
+      <div className="max-w-[760px]">
+        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink">
+          Feasibility
         </h2>
-        <p className="mt-6 text-lede leading-snug text-ink-muted max-w-[44ch]">
-          A phasing plan and the questions I would settle on day one with
-          product, engineering, science, and design.
+        <p className="mt-4 text-[16px] leading-relaxed text-ink-muted max-w-[64ch]">
+          If I had to ship this in four weeks. A phasing plan and the
+          questions I would settle on day one with product, engineering,
+          science, and design.
         </p>
       </div>
 
-      <div className="wide mt-16">
+      <div className="mt-10 max-w-[1080px]">
         {/* 4-week phasing */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {PHASES.map((p, i) => (
@@ -90,15 +90,15 @@ export function Feasibility() {
         </div>
 
         {/* Questions for day one */}
-        <div className="mt-16">
-          <p className="mono-tag mb-6">Day-one questions</p>
+        <div className="mt-10">
+          <p className="mono-tag mb-5">Day-one questions</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {QUESTIONS.map((q) => (
               <div key={q.team} className="border-l-2 border-mistral-orange pl-5">
-                <h4 className="text-[14px] font-medium uppercase tracking-wider text-ink mb-2">
+                <h4 className="text-[13px] font-medium uppercase tracking-wider text-ink mb-2">
                   {q.team}
                 </h4>
-                <p className="text-body leading-relaxed text-ink-muted">
+                <p className="text-[14.5px] leading-relaxed text-ink-muted">
                   {q.body}
                 </p>
               </div>

@@ -24,27 +24,27 @@ const QUOTES: Quote[] = [
 
 export function Problem() {
   return (
-    <section className="py-32 border-t border-line">
-      <div className="editorial">
-        <p className="mono-tag mb-8">§5 · The gap behind the system</p>
-        <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
-          Recruiting in 2026 has plenty of AI. It lacks trust.
+    <section id="gap" className="px-16 py-20 border-t border-line">
+      <div className="max-w-[760px]">
+        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink">
+          The gap behind the system
         </h2>
-        <p className="mt-6 text-lede leading-snug text-ink-muted max-w-[44ch]">
-          The AI recruiters get acts too early, with too little context, and
-          breaks trust faster than it saves time.
+        <p className="mt-4 text-[16px] leading-relaxed text-ink-muted max-w-[64ch]">
+          Recruiting in 2026 has plenty of AI. It lacks trust. The AI
+          recruiters get acts too early, with too little context, and breaks
+          trust faster than it saves time.
         </p>
 
-        <ul className="mt-16 space-y-12">
+        <ul className="mt-10 space-y-8">
           {QUOTES.map((q, i) => (
             <li
               key={i}
-              className="border-l-2 border-line pl-6 hover:border-mistral-orange transition-colors"
+              className="border-l-2 border-line pl-5 hover:border-mistral-orange transition-colors"
             >
-              <p className="text-h3 leading-snug tracking-tight font-normal text-ink italic">
+              <p className="text-[17px] leading-snug font-normal text-ink italic">
                 &ldquo;{q.body}&rdquo;
               </p>
-              <p className="mt-4 text-small text-ink-muted">
+              <p className="mt-3 text-[13px] text-ink-muted">
                 <span className="text-ink font-medium not-italic">
                   {q.source}
                 </span>
@@ -54,7 +54,7 @@ export function Problem() {
           ))}
         </ul>
 
-        <p className="mt-16 text-body leading-relaxed text-ink-muted">
+        <p className="mt-10 text-[15px] leading-relaxed text-ink-muted">
           The right question for design is how AI earns the right to act.
         </p>
       </div>

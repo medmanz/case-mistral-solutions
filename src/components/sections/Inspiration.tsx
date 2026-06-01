@@ -52,44 +52,44 @@ const REFS: Reference[] = [
     name: "Welcome to the Jungle ATS",
     category: "Recruiting · 2026",
     what: "Conversational job-spec creation, 3 minutes instead of 40.",
-    pov: "Quoted earlier for the reason. Their public stance, rebuild rather than layer, validates the composition angle from the recruiting side.",
+    pov: "Quoted later for the reason. Their public stance, rebuild rather than layer, validates the composition angle from the recruiting side.",
   },
 ];
 
 export function Inspiration() {
   return (
-    <section className="py-32 border-t border-line">
-      <div className="editorial">
-        <p className="mono-tag mb-8">§2 · Inspiration</p>
-        <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
-          I look for three things in AI products today.
+    <section id="inspiration" className="px-16 py-20 border-t border-line">
+      <div className="max-w-[760px]">
+        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink">
+          Inspiration
         </h2>
-        <p className="mt-6 text-lede leading-snug text-ink-muted max-w-[44ch]">
-          Agents that show their work. Products that compose primitives instead
-          of stacking features. Trust treated as a design layer.
+        <p className="mt-4 text-[16px] leading-relaxed text-ink-muted max-w-[64ch]">
+          I look for three things in AI products in 2026. Agents that show
+          their work. Products that compose primitives instead of stacking
+          features. Trust treated as a design layer.
         </p>
-        <p className="mt-4 text-small text-ink-soft">
+        <p className="mt-3 text-[13px] text-ink-soft">
           Eight references. ChatGPT, Claude, Gemini, and Perplexity stay
           excluded.
         </p>
 
-        <ul className="mt-16 divide-y divide-line">
+        <ul className="mt-10 divide-y divide-line">
           {REFS.map((r, i) => (
-            <li key={r.name} className="py-8 group">
-              <div className="flex items-baseline gap-4">
-                <span className="mono-tag tabular-nums">
+            <li key={r.name} className="py-6">
+              <div className="flex items-baseline gap-3">
+                <span className="text-[12px] font-mono text-ink-faint tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-h3 leading-snug tracking-tight font-medium text-ink">
+                  <h3 className="text-[17px] leading-snug tracking-tight font-medium text-ink">
                     {r.name}
                   </h3>
-                  <p className="mt-1 text-small text-ink-soft">
+                  <p className="mt-0.5 text-[13px] text-ink-soft">
                     {r.category} · {r.what}
                   </p>
                 </div>
               </div>
-              <p className="mt-4 text-body leading-relaxed text-ink-muted pl-[3.25rem]">
+              <p className="mt-3 text-[14.5px] leading-relaxed text-ink-muted pl-7">
                 {r.pov}
               </p>
             </li>

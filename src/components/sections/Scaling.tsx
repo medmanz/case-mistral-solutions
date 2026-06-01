@@ -100,21 +100,21 @@ export function Scaling() {
   const current = APPS.find((a) => a.id === active)!;
 
   return (
-    <section className="py-32 border-t border-line bg-mistral-cream">
-      <div className="wide">
-        <div className="editorial !max-w-[720px] !px-0">
-          <p className="mono-tag mb-8">§8 · Proof of the system</p>
-          <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
-            Three apps. One kit. Same screen.
-          </h2>
-          <p className="mt-6 text-lede leading-snug text-ink-muted max-w-[44ch]">
-            Swap the business layer and the shortlist screen reads as a triage
-            screen. Same structure, same trust contract, different métier.
-          </p>
-        </div>
+    <section id="scaling" className="px-16 py-20 border-t border-line">
+      <div className="max-w-[760px]">
+        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink">
+          Scaling
+        </h2>
+        <p className="mt-4 text-[16px] leading-relaxed text-ink-muted max-w-[64ch]">
+          Three apps. One kit. Same screen. Swap the business layer and the
+          shortlist screen reads as a triage screen. Same structure, same
+          trust contract, different métier.
+        </p>
+      </div>
 
+      <div className="mt-10 max-w-[1080px]">
         {/* Tabs */}
-        <div className="mt-16 flex items-center gap-2">
+        <div className="flex items-center gap-2">
           {APPS.map((a) => (
             <button
               key={a.id}
@@ -199,13 +199,14 @@ export function Scaling() {
           </div>
         </div>
 
-        <div className="editorial !max-w-[720px] !px-0 mt-12">
-          <p className="text-body leading-relaxed text-ink-muted">
-            Solutions invests in{" "}
-            <span className="text-ink font-medium">the kit</span> once, then
-            deploys it a hundred times. That&rsquo;s how the system scales.
-          </p>
-        </div>
+      </div>
+
+      <div className="max-w-[760px] mt-10">
+        <p className="text-[15px] leading-relaxed text-ink-muted">
+          Solutions invests in{" "}
+          <span className="text-ink font-medium">the kit</span> once, then
+          deploys it a hundred times. That&rsquo;s how the system scales.
+        </p>
       </div>
     </section>
   );

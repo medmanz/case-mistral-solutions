@@ -176,20 +176,20 @@ const STEPS: Step[] = [
 
 export function Flow() {
   return (
-    <section className="py-32 border-t border-line">
-      <div className="editorial">
-        <p className="mono-tag mb-8">§6 · The full flow · low fidelity</p>
-        <h2 className="text-h2 leading-tight tracking-tight font-medium text-ink">
-          The shortlist is one moment. This is the rest.
+    <section id="flow" className="px-16 py-20 border-t border-line">
+      <div className="max-w-[760px]">
+        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink">
+          Full flow
         </h2>
-        <p className="mt-6 text-lede leading-snug text-ink-muted max-w-[44ch]">
-          Sign-off appears wherever the agent is about to touch the outside
-          world. Internal actions run on autopilot. Risk draws the line.
+        <p className="mt-4 text-[16px] leading-relaxed text-ink-muted max-w-[64ch]">
+          The shortlist is one moment. Sign-off appears wherever the agent is
+          about to touch the outside world. Internal actions run on autopilot.
+          Risk draws the line.
         </p>
       </div>
 
-      <div className="wide mt-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-14">
+      <div className="mt-10 max-w-[1080px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
           {STEPS.map((step) => (
             <FlowStep key={step.index} step={step} />
           ))}
