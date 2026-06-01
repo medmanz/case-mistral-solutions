@@ -6,9 +6,9 @@ type Quote = {
 
 const QUOTES: Quote[] = [
   {
-    body: "In 2 minutes you can apply to 200 offers. The point is to propose things that are relevant, not noise.",
-    source: "Jérémy Cleda",
-    context: "CEO, Welcome to the Jungle · on the ATS rebuild",
+    body: "Sourcing AIs base their match on the job ad alone. The job ad is just the essence of the kick-off. They should be learning from the kick-off conversation to actually understand what fits.",
+    source: "Diane",
+    context: "Talent Acquisition · Qonto · interview, Nov 2026",
   },
   {
     body: "AI Recruiter: Unfortunately, the position has been filled. Me: Actually, no it hasn't. AI Recruiter: I apologize for the mistake. Congratulations, we would like to offer you a role!",
@@ -16,9 +16,9 @@ const QUOTES: Quote[] = [
     context: "Reported on Blind, anonymized · 2026",
   },
   {
-    body: "A high-value recruiter in 2027 owns relationships, owns quality of hire, and steers the pipeline. Sourcing and scheduling sit elsewhere.",
-    source: "Pin",
-    context: "AI sourcing platform · 2026 outlook",
+    body: "I put the same two profiles at the bottom of the list. The bot scored them medium-low. At the top, it scored them medium-high. The bot has order bias too.",
+    source: "Diane",
+    context: "Talent Acquisition · Qonto · interview, Nov 2026",
   },
 ];
 
