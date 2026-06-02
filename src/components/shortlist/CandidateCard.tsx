@@ -2,7 +2,7 @@
 
 import type { Candidate } from "@/lib/candidates";
 import { cn } from "@/lib/utils";
-import { ArrowUpRight, Pencil, Check } from "lucide-react";
+import { ArrowUpRight, Pencil, Check, AlertCircle } from "lucide-react";
 import { ScoreDots, FIT_LABEL, FIT_COLOR } from "./ScoreDots";
 
 export function CandidateCard({
@@ -89,15 +89,25 @@ export function CandidateCard({
         ))}
       </ul>
 
-      {/* Signals */}
-      {candidate.signals && candidate.signals.length > 0 && (
+      {/* Signals + risks */}
+      {((candidate.signals && candidate.signals.length > 0) ||
+        (candidate.risks && candidate.risks.length > 0)) && (
         <div className="mt-3 flex flex-wrap gap-1.5">
-          {candidate.signals.map((s) => (
+          {candidate.signals?.map((s) => (
             <span
               key={s}
               className="inline-flex items-center px-1.5 py-0.5 rounded text-[10.5px] font-medium bg-surface-sunken text-ink-muted"
             >
               {s}
+            </span>
+          ))}
+          {candidate.risks?.map((r) => (
+            <span
+              key={r}
+              className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10.5px] font-medium bg-[#FBF1DC] text-[#8A6A04] border border-[#F1D98A]"
+            >
+              <AlertCircle className="size-3" strokeWidth={2.25} />
+              {r}
             </span>
           ))}
         </div>

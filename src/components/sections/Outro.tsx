@@ -1,11 +1,11 @@
 export function Outro() {
   return (
-    <section className="px-16 py-24 border-t border-line">
-      <div className="max-w-[760px]">
-        <p className="text-[14.5px] leading-relaxed text-ink-muted">
+    <section className="py-24">
+      <div className="max-w-[760px] mx-auto">
+        <p className="text-ink-muted">
           <span className="text-ink font-medium">End.</span> Composition over
           construction. Trust as a design layer. One kit deploys to many
-          métiers. Thanks for going through this.
+          métiers. Thanks for reading.
         </p>
         <div className="mt-10 flex items-center gap-4 text-[13px] text-ink-soft">
           <span>Médéric Manière</span>

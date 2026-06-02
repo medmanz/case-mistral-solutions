@@ -28,11 +28,11 @@ export function Shortlist() {
 
   return (
     <div className="rounded-2xl overflow-hidden border border-line bg-surface shadow-[0_1px_3px_rgba(26,22,20,0.04),0_24px_60px_-30px_rgba(26,22,20,0.25)]">
-      <div className="flex h-[720px]">
+      <div className="flex h-[560px]">
         <Sidebar />
         <div className="flex-1 flex flex-col bg-surface min-w-0">
           {/* Top bar */}
-          <div className="px-8 py-3.5 border-b border-line flex items-center justify-between">
+          <div className="px-5 py-3 border-b border-line flex items-center justify-between">
             <div className="flex items-center gap-2 text-[12.5px]">
               <button className="inline-flex items-center gap-1 text-ink-soft hover:text-ink transition-colors">
                 <ChevronLeft className="size-3.5" />
@@ -40,7 +40,7 @@ export function Shortlist() {
               </button>
               <span className="text-ink-faint">/</span>
               <span className="text-ink font-medium">
-                Senior Backend Engineer search
+                Senior Supply Chain Manager search
               </span>
             </div>
             <div className="flex items-center gap-1 text-ink-soft">
@@ -57,14 +57,14 @@ export function Shortlist() {
           </div>
 
           {/* Hero block */}
-          <HeroBlock />
+          <HeroBlock compact />
 
           {/* Filter bar */}
-          <FilterBar active={filter} onChange={setFilter} />
+          <FilterBar active={filter} onChange={setFilter} compact />
 
           {/* Grid */}
-          <div className="flex-1 overflow-y-auto px-8 py-6 bg-surface-subtle">
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          <div className="flex-1 overflow-y-auto px-5 py-4 bg-surface-subtle">
+            <div className="grid grid-cols-2 gap-3">
               {filtered.map((c, i) => (
                 <div
                   key={c.id}
@@ -83,7 +83,7 @@ export function Shortlist() {
 
           {/* Sticky multi-select footer */}
           {selected.size > 0 && (
-            <div className="px-8 py-3 border-t border-line bg-surface flex items-center justify-between">
+            <div className="px-5 py-3 border-t border-line bg-surface flex items-center justify-between">
               <span className="text-[12.5px] text-ink-muted">
                 <span className="font-medium text-ink">{selected.size}</span>{" "}
                 candidate{selected.size > 1 ? "s" : ""} selected

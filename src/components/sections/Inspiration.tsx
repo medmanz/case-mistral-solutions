@@ -16,60 +16,36 @@ const REFS: Reference[] = [
     name: "Linear AI triage",
     category: "Issue tracking · 2026",
     what: "Background classification on incoming issues.",
-    pov: "Linear keeps the AI to one job and surfaces it as a thin overlay on existing primitives. Restraint is the lesson.",
-  },
-  {
-    name: "Notion AI Agents",
-    category: "Workspace · 2026",
-    what: "Persistent agents working overnight.",
-    pov: "Agents work while you're asleep. The morning summary is the surface. The chat is optional.",
-  },
-  {
-    name: "v0 by Vercel",
-    category: "UI prototyping · 2025",
-    what: "Natural language to UI matching a design system.",
-    pov: "AI output inherits a design system instead of inventing one. v0 turns beautiful-by-default into something you can deploy.",
-  },
-  {
-    name: "Raycast AI",
-    category: "Productivity · 2025",
-    what: "Command palette as AI entry point.",
-    pov: "Best example of an AI surface invocable from anywhere without owning the screen. The slash-command pattern in Vibe should feel this fluid.",
+    pov: "Linear keeps the AI to one job and surfaces it as a thin overlay on existing primitives. Restraint is the lesson for a Skills system.",
   },
   {
     name: "Granola",
     category: "Meeting notes · 2025",
-    what: "Background capture, structured output at end.",
-    pov: "Same insight as Notion Agents in a tighter form. The agent captures while you focus. The artifact arrives when you're ready. You never babysit it.",
+    what: "Background capture, structured output at the end.",
+    pov: "The agent captures while you focus. The artifact arrives when you're ready. You never babysit it. The Custom Mode should feel this invisible.",
   },
   {
     name: "Perplexity Computer",
     category: "Agent runtime · Feb 2026",
     what: "Long-horizon workflows across tools.",
-    pov: "The closest public reference for Vibe Work Mode. The architecture is sound. The design problem sits in making the runtime legible to a non-engineer.",
-  },
-  {
-    name: "Welcome to the Jungle ATS",
-    category: "Recruiting · 2026",
-    what: "Conversational job-spec creation, 3 minutes instead of 40.",
-    pov: "Quoted later for the reason. Their public stance, rebuild rather than layer, validates the composition angle from the recruiting side.",
+    pov: "The closest public reference for Vibe Work Mode. Trust gets earned by surfacing every step, with a sign-off at the boundaries where actions leave the system.",
   },
 ];
 
 export function Inspiration() {
   return (
-    <section id="inspiration" className="px-16 py-20 border-t border-line">
-      <div className="max-w-[760px]">
-        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink">
+    <section id="inspiration" className="py-20">
+      <div className="max-w-[760px] mx-auto">
+        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink text-balance">
           Inspiration
         </h2>
-        <p className="mt-4 text-[16px] leading-relaxed text-ink-muted max-w-[64ch]">
+        <p className="mt-4 text-ink-muted text-pretty">
           I look for three things in AI products in 2026. Agents that show
           their work. Products that compose primitives instead of stacking
           features. Trust treated as a design layer.
         </p>
         <p className="mt-3 text-[13px] text-ink-soft">
-          Eight references. ChatGPT, Claude, Gemini, and Perplexity stay
+          Four references. ChatGPT, Claude, Gemini, and Perplexity stay
           excluded.
         </p>
 
@@ -89,7 +65,7 @@ export function Inspiration() {
                   </p>
                 </div>
               </div>
-              <p className="mt-3 text-[14.5px] leading-relaxed text-ink-muted pl-7">
+              <p className="mt-3 text-ink-muted pl-7">
                 {r.pov}
               </p>
             </li>

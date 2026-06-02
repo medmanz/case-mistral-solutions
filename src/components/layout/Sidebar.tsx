@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
+import { Signature } from "./Signature";
 
 type Item = {
   id: string;
@@ -9,20 +9,20 @@ type Item = {
 };
 
 const ITEMS: Item[] = [
-  { id: "thesis", label: "Thesis" },
+  { id: "hero", label: "Intro" },
+  { id: "brief", label: "Reading the brief" },
+  { id: "research", label: "User research" },
   { id: "inspiration", label: "Inspiration" },
-  { id: "hero", label: "The hero" },
-  { id: "system", label: "System view" },
-  { id: "gap", label: "The gap" },
-  { id: "flow", label: "Full flow" },
-  { id: "tradeoffs", label: "Tradeoffs" },
-  { id: "scaling", label: "Scaling" },
-  { id: "kit", label: "Solutions kit" },
+  { id: "flow", label: "Flow in 4 acts" },
+  { id: "primitives", label: "Five primitives" },
+  { id: "kit", label: "Same kit" },
+  { id: "enablement", label: "How Solutions ships" },
+  { id: "choices", label: "Trade-offs" },
   { id: "feasibility", label: "Feasibility" },
 ];
 
 export function Sidebar() {
-  const [active, setActive] = useState<string>("thesis");
+  const [active, setActive] = useState<string>("hero");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -56,50 +56,71 @@ export function Sidebar() {
   };
 
   return (
-    <aside className="fixed top-0 left-0 h-screen w-[260px] px-10 py-12 flex flex-col bg-surface">
-      <a
-        href="#thesis"
-        onClick={(e) => handleClick(e, "thesis")}
-        className="inline-block mb-16 text-[20px] font-semibold tracking-tight text-ink hover:opacity-70 transition-opacity"
-        aria-label="Top"
-      >
-        composing
-      </a>
+    <aside className="sticky top-0 h-screen w-[260px] shrink-0 py-12 pl-8 flex flex-col bg-surface">
+      <Signature
+        onNavigate={() => {
+          const el = document.getElementById("hero");
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }}
+      />
 
-      <nav className="flex-1">
-        <ul className="space-y-2.5">
-          {ITEMS.map((item) => (
-            <li key={item.id}>
-              <a
-                href={`#${item.id}`}
-                onClick={(e) => handleClick(e, item.id)}
-                className={cn(
-                  "text-[14.5px] transition-colors block",
-                  active === item.id
-                    ? "text-ink font-medium"
-                    : "text-ink-soft hover:text-ink"
-                )}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <div style={{ width: "max-content" }}>
+        <nav>
+          <ul className="flex flex-col gap-2 items-start">
+            {ITEMS.map((item) => {
+              const isActive = active === item.id;
+              return (
+                <li key={item.id}>
+                  <a
+                    href={`#${item.id}`}
+                    onClick={(e) => handleClick(e, item.id)}
+                    style={{
+                      fontSize: "13px",
+                      lineHeight: "18px",
+                      letterSpacing: "-0.18px",
+                      color: isActive ? "#242529" : "#9CA3AF",
+                      fontWeight: 550,
+                      fontVariationSettings: `"wght" 550`,
+                    }}
+                    className="block transition-colors hover:!text-[#242529]"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
 
-      <div className="text-[13px] text-ink-soft space-y-1 leading-relaxed">
-        <p>v0.1 · June 2026</p>
-        <p>
-          Made by{" "}
-          <a
-            href="https://medericmaniere.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-ink hover:opacity-70 transition-opacity underline-offset-4 decoration-line hover:decoration-ink"
+        <div
+          style={{
+            marginTop: "24px",
+            paddingTop: "16px",
+            borderTop: "1px solid #ECECEC",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "12px",
+              lineHeight: "16px",
+              letterSpacing: "-0.12px",
+              color: "#9CA3AF",
+              fontWeight: 450,
+              fontVariationSettings: `"wght" 450`,
+            }}
           >
-            Médéric
-          </a>
-        </p>
+            Made by{" "}
+            <a
+              href="https://medericmaniere.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-70 transition-opacity underline-offset-4"
+              style={{ color: "#242529", textDecoration: "underline" }}
+            >
+              Médéric
+            </a>
+          </p>
+        </div>
       </div>
     </aside>
   );

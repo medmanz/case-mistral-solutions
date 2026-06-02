@@ -17,12 +17,19 @@ const FILTERS: { value: Filter; label: string; count: number }[] = [
 export function FilterBar({
   active,
   onChange,
+  compact = false,
 }: {
   active: Filter;
   onChange: (f: Filter) => void;
+  compact?: boolean;
 }) {
   return (
-    <div className="px-8 py-3 flex items-center justify-between border-b border-line bg-surface-subtle">
+    <div
+      className={cn(
+        "flex items-center justify-between border-b border-line bg-surface-subtle",
+        compact ? "px-5 py-3" : "px-8 py-3.5"
+      )}
+    >
       <div className="flex items-center gap-1.5">
         {FILTERS.map((f) => (
           <button

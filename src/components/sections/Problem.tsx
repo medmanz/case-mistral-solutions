@@ -24,14 +24,14 @@ const QUOTES: Quote[] = [
 
 export function Problem() {
   return (
-    <section id="gap" className="px-16 py-20 border-t border-line">
-      <div className="max-w-[760px]">
-        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink">
+    <section id="gap" className="py-20">
+      <div className="max-w-[760px] mx-auto">
+        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink text-balance">
           The gap behind the system
         </h2>
-        <p className="mt-4 text-[16px] leading-relaxed text-ink-muted max-w-[64ch]">
+        <p className="mt-4 text-ink-muted text-pretty">
           Recruiting in 2026 has plenty of AI. It lacks trust. The AI
-          recruiters get acts too early, with too little context, and breaks
+          recruiters get acts too early, on too little context. It breaks
           trust faster than it saves time.
         </p>
 
@@ -41,7 +41,7 @@ export function Problem() {
               key={i}
               className="border-l-2 border-line pl-5 hover:border-mistral-orange transition-colors"
             >
-              <p className="text-[17px] leading-snug font-normal text-ink italic">
+              <p className="text-ink italic">
                 &ldquo;{q.body}&rdquo;
               </p>
               <p className="mt-3 text-[13px] text-ink-muted">
@@ -54,7 +54,7 @@ export function Problem() {
           ))}
         </ul>
 
-        <p className="mt-10 text-[15px] leading-relaxed text-ink-muted">
+        <p className="mt-10 text-ink-muted">
           The right question for design is how AI earns the right to act.
         </p>
       </div>

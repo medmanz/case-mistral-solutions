@@ -56,19 +56,21 @@ export function SystemView() {
   const current = METIERS.find((m) => m.id === active)!;
 
   return (
-    <section id="system" className="px-16 py-20 border-t border-line">
-      <div className="max-w-[760px]">
-        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink">
+    <section id="system" className="py-20">
+      <div className="max-w-[760px] mx-auto">
+        <p className="mono-tag mb-3">Part one of four · Composition</p>
+        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink text-balance">
           System view
         </h2>
-        <p className="mt-4 text-[16px] leading-relaxed text-ink-muted max-w-[64ch]">
-          A custom app composes primitives. Five Skills. Four Connectors. One
-          Custom Mode. One Project. Swap the business layer and you have the
-          next app.
+        <p className="mt-4 text-ink-muted text-pretty">
+          The next three sections move from particular to systemic: composition,
+          replication, factory. Start with composition. A custom app composes
+          primitives. Five Skills, four Connectors, one Custom Mode, one
+          Project. Swap the business layer and you have the next app.
         </p>
       </div>
 
-      <div className="mt-10 max-w-[1080px]">
+      <div className="mt-10 max-w-[760px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-10 lg:gap-14 items-center">
           {/* Left: Vibe primitives stack */}
           <div className="bg-surface rounded-2xl border border-line p-7 shadow-[0_1px_3px_rgba(26,22,20,0.04)]">
@@ -163,7 +165,7 @@ export function SystemView() {
                 </li>
               ))}
             </ul>
-            <div className="mt-6 pt-5 border-t border-line">
+            <div className="mt-6 pt-5">
               <p className="text-[11.5px] text-ink-soft leading-snug">
                 Same primitives. Same trust contract.{" "}
                 <span className="text-ink font-medium">
@@ -176,8 +178,8 @@ export function SystemView() {
 
       </div>
 
-      <div className="max-w-[760px] mt-10">
-        <p className="text-[15px] leading-relaxed text-ink-muted">
+      <div className="max-w-[760px] mx-auto mt-10">
+        <p className="text-ink-muted">
           Scaling to 100 apps becomes a question about{" "}
           <span className="text-ink font-medium">kit quality</span>. So does
           helping the Solutions team produce fast.{" "}

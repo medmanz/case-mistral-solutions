@@ -53,19 +53,19 @@ const SPECTRA: Spectrum[] = [
 
 export function Tradeoffs() {
   return (
-    <section id="tradeoffs" className="px-16 py-20 border-t border-line">
-      <div className="max-w-[760px]">
-        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink">
+    <section id="tradeoffs" className="py-20">
+      <div className="max-w-[760px] mx-auto">
+        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink text-balance">
           Tradeoffs
         </h2>
-        <p className="mt-4 text-[16px] leading-relaxed text-ink-muted max-w-[64ch]">
+        <p className="mt-4 text-ink-muted text-pretty">
           For every key call, I painted the extremes first. Three questions,
           three spectrums. I defend one position per question. The edges show
           what I abandoned.
         </p>
       </div>
 
-      <div className="mt-10 max-w-[1080px] space-y-16">
+      <div className="mt-10 max-w-[760px] mx-auto space-y-16">
         {SPECTRA.map((s, i) => (
           <SpectrumBlock key={i} spectrum={s} index={i + 1} />
         ))}
@@ -82,8 +82,8 @@ function SpectrumBlock({
   index: number;
 }) {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-10 lg:gap-16">
-      <div>
+    <div>
+      <div className="mb-8">
         <p className="mono-tag tabular-nums mb-3">
           {String(index).padStart(2, "0")}
         </p>

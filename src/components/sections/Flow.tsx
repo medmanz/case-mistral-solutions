@@ -162,7 +162,7 @@ const STEPS: Step[] = [
     body: (
       <div className="space-y-2 text-[11.5px]">
         <div className="px-3 py-2 rounded-lg bg-surface-sunken text-ink font-mono text-[11px]">
-          /recruiting status, Senior Backend Engineer
+          /recruiting status, Senior Supply Chain Manager
         </div>
         <div className="px-3 py-2 rounded-lg bg-mistral-cream-warm text-ink-muted leading-snug">
           5 contacted, 3 replied. Sophie scheduled for Tue 14:00. Marc on
@@ -176,26 +176,62 @@ const STEPS: Step[] = [
 
 export function Flow() {
   return (
-    <section id="flow" className="px-16 py-20 border-t border-line">
-      <div className="max-w-[760px]">
-        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink">
+    <section id="flow" className="py-20">
+      <div className="max-w-[760px] mx-auto">
+        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink text-balance">
           Full flow
         </h2>
-        <p className="mt-4 text-[16px] leading-relaxed text-ink-muted max-w-[64ch]">
+        <p className="mt-4 text-ink-muted text-pretty">
           The shortlist is one moment. Sign-off appears wherever the agent is
           about to touch the outside world. Internal actions run on autopilot.
           Risk draws the line.
         </p>
       </div>
 
-      <div className="mt-10 max-w-[1080px]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
-          {STEPS.map((step) => (
-            <FlowStep key={step.index} step={step} />
-          ))}
-        </div>
+      <div className="mt-12 max-w-[760px] mx-auto space-y-14">
+        <Phase
+          label="Before the agent"
+          subtitle="Setup is invisible. The recruiter never configures."
+          steps={STEPS.slice(0, 2)}
+        />
+        <Phase
+          label="During the agent"
+          subtitle="Long-horizon work runs in background. Internal actions on autopilot."
+          steps={STEPS.slice(2, 4)}
+        />
+        <Phase
+          label="After the agent"
+          subtitle="Every action that touches the outside world waits for a human commit."
+          steps={STEPS.slice(4, 7)}
+        />
       </div>
     </section>
+  );
+}
+
+function Phase({
+  label,
+  subtitle,
+  steps,
+}: {
+  label: string;
+  subtitle: string;
+  steps: Step[];
+}) {
+  return (
+    <div>
+      <div className="mb-6">
+        <p className="mono-tag">{label}</p>
+        <p className="mt-2 text-[14px] text-ink-muted leading-snug">
+          {subtitle}
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+        {steps.map((step) => (
+          <FlowStep key={step.index} step={step} />
+        ))}
+      </div>
+    </div>
   );
 }
 

@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Loranthus";
+  src: url("/fonts/Loranthus.woff2") format("woff2"),
+       url("/fonts/Loranthus.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* Mistral palette — based on observed Le Chat / Vibe / AI Studio screenshots */
   --color-mistral-orange: #FA500F;
@@ -17,7 +26,7 @@
 
   /* Text */
   --color-ink: #1A1614;
-  --color-ink-muted: #5C544E;
+  --color-ink-muted: #525252;
   --color-ink-soft: #8B827B;
   --color-ink-faint: #B8B0A8;
 
@@ -31,9 +40,9 @@
   --color-danger: #DC2626;
 
   /* Typography */
-  --font-display: "Söhne", "Inter", system-ui, -apple-system, sans-serif;
-  --font-body: "Söhne", "Inter", system-ui, -apple-system, sans-serif;
-  --font-mono: "Söhne Mono", "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+  --font-display: var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
+  --font-body: var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
 
   /* Editorial scale (benji.org style) */
   --text-display: 4.5rem;
@@ -74,10 +83,11 @@ html {
 
 body {
   background: var(--color-surface);
-  color: var(--color-ink);
+  color: #525252;
   font-family: var(--font-body);
-  font-size: var(--text-body);
-  line-height: var(--leading-relaxed);
+  font-size: 15px;
+  line-height: 23px;
+  letter-spacing: -0.1px;
   font-feature-settings: "ss01", "cv11";
 }
 
@@ -146,6 +156,68 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .fade-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+
+/* Panel slide-in from right */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.panel-slide-in {
+  animation: slideInRight 200ms ease-out;
+}
+
+.overlay-fade-in {
+  animation: overlayFadeIn 160ms ease-out;
+}
+
+/* Slash menu entrance */
+@keyframes slashMenuEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.slash-menu-enter {
+  animation: slashMenuEnter 150ms ease-out;
+}
+
+/* Stagger for draft cards entering the panel */
+.draft-stagger {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: fadeUp 240ms ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel-slide-in,
+  .overlay-fade-in,
+  .draft-stagger {
     animation: none;
     opacity: 1;
     transform: none;

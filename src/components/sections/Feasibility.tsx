@@ -53,19 +53,19 @@ const QUESTIONS: Question[] = [
 
 export function Feasibility() {
   return (
-    <section id="feasibility" className="px-16 py-20 border-t border-line">
-      <div className="max-w-[760px]">
-        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink">
+    <section id="feasibility" className="py-20">
+      <div className="max-w-[760px] mx-auto">
+        <h2 className="text-[26px] leading-tight tracking-tight font-semibold text-ink text-balance">
           Feasibility
         </h2>
-        <p className="mt-4 text-[16px] leading-relaxed text-ink-muted max-w-[64ch]">
-          If I had to ship this in four weeks. A phasing plan and the
-          questions I would settle on day one with product, engineering,
-          science, and design.
+        <p className="mt-4 text-ink-muted text-pretty">
+          If I had to ship this in four weeks: a phasing plan, and the
+          questions I settle on day one across product, engineering, science,
+          and design.
         </p>
       </div>
 
-      <div className="mt-10 max-w-[1080px]">
+      <div className="mt-10 max-w-[760px] mx-auto">
         {/* 4-week phasing */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {PHASES.map((p, i) => (
@@ -98,7 +98,7 @@ export function Feasibility() {
                 <h4 className="text-[13px] font-medium uppercase tracking-wider text-ink mb-2">
                   {q.team}
                 </h4>
-                <p className="text-[14.5px] leading-relaxed text-ink-muted">
+                <p className="text-ink-muted">
                   {q.body}
                 </p>
               </div>
