@@ -304,16 +304,18 @@ function ChatItem({
 
 function UserBlock({ subtitle }: { subtitle: string }) {
   return (
-    <div className="w-full px-4 py-5">
-      <button className="w-full flex items-center h-12 rounded-[10px] pr-1.5 pl-2 gap-4 py-2 hover:bg-[#27272A0A] transition-colors">
+    <div className="w-full px-4 py-2">
+      <button className="w-full flex items-center h-12 rounded-[10px] pl-2 pr-1.5 py-2 gap-3 hover:bg-[#27272A0A] transition-colors">
         <span className="size-8 grid place-items-center rounded-md bg-[#E7E5E4] text-[12px] font-semibold text-[#57534D] shrink-0">
           MM
         </span>
-        <span className="flex flex-col min-w-0 grow text-left leading-tight">
-          <span className="text-[14px] font-medium text-[#57534D] line-clamp-1">
+        <span className="flex flex-col min-w-0 grow text-left">
+          <span className="text-[14px] leading-[18px] font-medium text-[#57534D] truncate">
             Mederic Maniere
           </span>
-          <span className="text-[12px] text-[#79716B] truncate">{subtitle}</span>
+          <span className="text-[12px] leading-[16px] text-[#79716B] truncate">
+            {subtitle}
+          </span>
         </span>
         <ChevronsUpDown className="size-4 text-[#57534D] shrink-0" />
       </button>

@@ -37,25 +37,26 @@ function statusFor(_id: string): Status {
   return "pending";
 }
 
-// Editorial Unsplash portraits, candid feel rather than corporate stock.
-const UNSPLASH_PHOTOS: Record<string, string> = {
-  "anne-lefevre": "1438761681033-6461ffad8d80",
-  "marc-tessier": "1463453091185-61582044d556",
-  "yuki-nakamura": "1500648767791-00dcc994a43e",
-  "camille-roux": "1494790108377-be9c29b29330",
-  "sofia-esposito": "1544005313-94ddf0286df2",
-  "tanguy-lefort": "1517841905240-472988babdf9",
-  "karim-belkacem": "1546961342-1c2a4cd9efbb",
-  "lea-fournier": "1573496359142-b8d87734a5a2",
-  "mei-lin-chen": "1531123897727-8f129e1688ce",
-  "rajesh-krishnan": "1507003211169-0a1dd7228f2d",
-  "hiroshi-tanaka": "1599566150163-29194dcaad36",
-  "sarah-obrien": "1488426862026-3ee34a7d66df",
+// Less recognizable than the classic Unsplash portraits. randomuser.me gives
+// real-looking faces that don't carry the "stock-photo of the year" feel.
+// Hand-curated per candidate so the look stays stable across deployments.
+const PORTRAITS: Record<string, string> = {
+  "anne-lefevre": "https://randomuser.me/api/portraits/women/65.jpg",
+  "marc-tessier": "https://randomuser.me/api/portraits/men/41.jpg",
+  "yuki-nakamura": "https://randomuser.me/api/portraits/men/83.jpg",
+  "camille-roux": "https://randomuser.me/api/portraits/women/44.jpg",
+  "sofia-esposito": "https://randomuser.me/api/portraits/women/29.jpg",
+  "tanguy-lefort": "https://randomuser.me/api/portraits/men/15.jpg",
+  "karim-belkacem": "https://randomuser.me/api/portraits/men/73.jpg",
+  "lea-fournier": "https://randomuser.me/api/portraits/women/12.jpg",
+  "mei-lin-chen": "https://randomuser.me/api/portraits/women/79.jpg",
+  "rajesh-krishnan": "https://randomuser.me/api/portraits/men/29.jpg",
+  "hiroshi-tanaka": "https://randomuser.me/api/portraits/men/51.jpg",
+  "sarah-obrien": "https://randomuser.me/api/portraits/women/8.jpg",
 };
 
 function photoUrl(id: string): string {
-  const photoId = UNSPLASH_PHOTOS[id] ?? UNSPLASH_PHOTOS["anne-lefevre"];
-  return `https://images.unsplash.com/photo-${photoId}?w=120&h=120&fit=crop&crop=faces&auto=format&q=80`;
+  return PORTRAITS[id] ?? PORTRAITS["anne-lefevre"];
 }
 
 const RAW_CANDIDATES: Omit<Candidate, "photo" | "status">[] = [
