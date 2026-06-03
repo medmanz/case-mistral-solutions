@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useLayoutEffect, useMemo, useRef } from "react";
+import { Suspense, useState, useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   DndContext,
@@ -157,6 +157,14 @@ const DEFAULT_WEIGHTS: Record<string, number> = {
 };
 
 export default function BriefPage() {
+  return (
+    <Suspense fallback={null}>
+      <BriefPageInner />
+    </Suspense>
+  );
+}
+
+function BriefPageInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isReplay = searchParams.get("state") === "complete";

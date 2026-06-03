@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { Suspense, useState, useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import {
@@ -25,6 +25,14 @@ import {
 import { cn } from "@/lib/utils";
 
 export default function ShortlistHiFi() {
+  return (
+    <Suspense fallback={null}>
+      <ShortlistInner />
+    </Suspense>
+  );
+}
+
+function ShortlistInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const view = searchParams.get("view") === "kanban" ? "kanban" : "table";
