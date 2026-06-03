@@ -123,10 +123,7 @@ export function ReasoningChain({
                         />
                       </span>
                     ) : state === "active" ? (
-                      <span className="relative size-3 grid place-items-center">
-                        <span className="absolute inset-0 rounded-full bg-[#27272A]/15 animate-ping" />
-                        <span className="size-2.5 rounded-full bg-[#57534D]" />
-                      </span>
+                      <span className="size-2.5 rounded-full bg-[#57534D]" />
                     ) : (
                       <span className="size-2 rounded-full border border-[#27272A26] bg-[#FAFAF9]" />
                     )}

@@ -1,6 +1,14 @@
 "use client";
 
-import { Suspense, useState, useEffect, useLayoutEffect, useMemo, useRef } from "react";
+import {
+  Suspense,
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useTransition,
+} from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   DndContext,
@@ -233,6 +241,18 @@ function BriefPageInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isReplay = searchParams.get("state") === "complete";
+  const [, startTransition] = useTransition();
+
+  // Prefetch the shortlist route on mount — by the time Open Task or the
+  // header Briefcase is clicked, the JS chunks are already warm.
+  useEffect(() => {
+    router.prefetch("/sandbox/shortlist");
+  }, [router]);
+
+  const goShortlist = () =>
+    startTransition(() => {
+      router.push("/sandbox/shortlist");
+    });
   const [order, setOrder] = useState<string[]>(
     ARCHETYPES.map((a) => a.id)
   );
@@ -287,18 +307,35 @@ function BriefPageInner() {
   const stickToBottomRef = useRef(true);
   const STICK_THRESHOLD = 80;
 
+  // Distance from the viewport's bottom edge to the actual last message's
+  // bottom — ignoring the bottom spacer that pads the scroll area for the
+  // scroll-to-top trick.
+  const computeContentDist = (el: HTMLDivElement): number => {
+    const lastIdx = visibleCount - 1;
+    const last = el.querySelector(
+      `[data-msg-index="${lastIdx}"]`
+    ) as HTMLElement | null;
+    if (!last) return el.scrollHeight - el.scrollTop - el.clientHeight;
+    const containerTop = el.getBoundingClientRect().top;
+    const lastBottomInDoc =
+      last.getBoundingClientRect().bottom - containerTop + el.scrollTop;
+    const viewportBottom = el.scrollTop + el.clientHeight;
+    return lastBottomInDoc - viewportBottom;
+  };
+
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
     const onScroll = () => {
-      const dist = el.scrollHeight - el.scrollTop - el.clientHeight;
+      const dist = computeContentDist(el);
       stickToBottomRef.current = dist <= STICK_THRESHOLD;
       setShowScrollDown(dist > STICK_THRESHOLD);
     };
     onScroll();
     el.addEventListener("scroll", onScroll);
     return () => el.removeEventListener("scroll", onScroll);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visibleCount]);
 
   // ChatGPT/Claude pattern: scroll happens ONLY when the user sends a
   // message. The user's message lands at the top of the viewport, freeing
@@ -324,13 +361,14 @@ function BriefPageInner() {
         el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
       }
       const t = setTimeout(() => {
-        const dist = el.scrollHeight - el.scrollTop - el.clientHeight;
+        const dist = computeContentDist(el);
         setShowScrollDown(dist > STICK_THRESHOLD);
       }, 450);
       return () => clearTimeout(t);
     }
-    const dist = el.scrollHeight - el.scrollTop - el.clientHeight;
+    const dist = computeContentDist(el);
     setShowScrollDown(dist > STICK_THRESHOLD);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visibleCount, thinking]);
 
   // When arriving in replay mode (from Open chat), jump to the bottom
@@ -345,7 +383,19 @@ function BriefPageInner() {
   const scrollToBottom = () => {
     const el = scrollRef.current;
     if (!el) return;
-    el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+    // Scroll to the last real message's bottom, not into the spacer.
+    const last = el.querySelector(
+      `[data-msg-index="${visibleCount - 1}"]`
+    ) as HTMLElement | null;
+    if (last) {
+      const containerTop = el.getBoundingClientRect().top;
+      const lastBottomInDoc =
+        last.getBoundingClientRect().bottom - containerTop + el.scrollTop;
+      const target = Math.max(0, lastBottomInDoc - el.clientHeight + 24);
+      el.scrollTo({ top: target, behavior: "smooth" });
+    } else {
+      el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+    }
   };
 
   const sendNext = () => {
@@ -392,7 +442,7 @@ function BriefPageInner() {
               <>
                 <span className="h-5 w-px bg-[#ECECEC] mx-2" aria-hidden />
                 <button
-                  onClick={() => router.push("/sandbox/shortlist")}
+                  onClick={goShortlist}
                   className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-[#27272A0F] text-[14px] text-[#14110F] font-medium hover:bg-[#27272A14] active:scale-[0.97] transition-[colors,transform] duration-150"
                 >
                   <Briefcase className="size-4 text-[#14110F]" strokeWidth={2} />
@@ -453,7 +503,7 @@ function BriefPageInner() {
                       {m.result && reasoningDone && (
                         <div className="mt-4">
                           <button
-                            onClick={() => router.push("/sandbox/shortlist")}
+                            onClick={goShortlist}
                             className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-[#FA500F] text-white text-[14px] font-medium shadow-[inset_0_-1.5px_0_rgba(0,0,0,0.08)] hover:bg-[#FC783B] active:scale-[0.97] transition-[colors,transform] duration-150"
                           >
                             <Briefcase className="size-4 text-white" strokeWidth={2} />
@@ -715,6 +765,7 @@ function AgentMessage({
   reasoningSlot?: React.ReactNode;
   bodyVisible?: boolean;
 }) {
+  const [bodyDone, setBodyDone] = useState(!!instant);
   return (
     <div className="group relative flex w-full gap-3">
       <div className="shrink-0">
@@ -724,8 +775,14 @@ function AgentMessage({
         {reasoningSlot}
         {bodyVisible && (
           <div className={reasoningSlot ? "mt-3" : undefined}>
-            <StreamingBody text={body} instant={instant} />
-            {children}
+            <StreamingBody
+              text={body}
+              instant={instant}
+              onDone={() => setBodyDone(true)}
+            />
+            {/* Children (archetype cards, action buttons) only appear after
+                the body has finished streaming — keeps the order natural. */}
+            {bodyDone && <div className="fade-up">{children}</div>}
           </div>
         )}
       </div>
@@ -738,9 +795,11 @@ function AgentMessage({
 function StreamingBody({
   text,
   instant,
+  onDone,
 }: {
   text: string;
   instant?: boolean;
+  onDone?: () => void;
 }) {
   const words = useMemo(() => text.split(/(\s+)/), [text]);
   const [shown, setShown] = useState(instant ? words.length : 0);
@@ -748,6 +807,7 @@ function StreamingBody({
   useEffect(() => {
     if (instant) {
       setShown(words.length);
+      onDone?.();
       return;
     }
     setShown(0);
@@ -755,9 +815,13 @@ function StreamingBody({
     const interval = setInterval(() => {
       i += 1;
       setShown(i);
-      if (i >= words.length) clearInterval(interval);
+      if (i >= words.length) {
+        clearInterval(interval);
+        onDone?.();
+      }
     }, 10);
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [words, instant]);
 
   return (

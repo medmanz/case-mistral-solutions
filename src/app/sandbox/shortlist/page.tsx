@@ -26,7 +26,9 @@ import { cn } from "@/lib/utils";
 
 export default function ShortlistHiFi() {
   return (
-    <Suspense fallback={null}>
+    <Suspense
+      fallback={<div className="h-[100dvh] bg-[#FAFAF9]" aria-hidden />}
+    >
       <ShortlistInner />
     </Suspense>
   );
