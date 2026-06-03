@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   Plus,
@@ -161,6 +161,7 @@ function AccessPageInner() {
   const [attachments, setAttachments] = useState<Attachment[]>([]);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const slashAnchorRef = useRef<HTMLDivElement>(null);
+  const [, startTransition] = useTransition();
 
   // Pre-select Recruiting agent when arriving from the Agents page
   useEffect(() => {
@@ -170,7 +171,16 @@ function AccessPageInner() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [presetAgent]);
 
-  const goBrief = () => router.push("/sandbox/brief");
+  // Prefetch the next route as soon as an agent is selected — the Send
+  // click is highly likely. Removes the cold-load latency on navigation.
+  useEffect(() => {
+    if (selectedAgent) router.prefetch("/sandbox/brief");
+  }, [selectedAgent, router]);
+
+  const goBrief = () =>
+    startTransition(() => {
+      router.push("/sandbox/brief");
+    });
   const slashOpen = value.startsWith("/");
   const query = slashOpen ? value.slice(1) : "";
 

@@ -158,7 +158,11 @@ const DEFAULT_WEIGHTS: Record<string, number> = {
 
 export default function BriefPage() {
   return (
-    <Suspense fallback={null}>
+    <Suspense
+      fallback={
+        <div className="h-[100dvh] bg-[#FAFAF9]" aria-hidden />
+      }
+    >
       <BriefPageInner />
     </Suspense>
   );
