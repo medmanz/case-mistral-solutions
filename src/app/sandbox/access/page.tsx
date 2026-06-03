@@ -221,7 +221,7 @@ function AccessPageInner() {
           <div className="w-full max-w-[760px]">
             <div className="mb-5">
               <div className="mb-5 fade-up fade-up-0">
-                <VibeLogo size={34} />
+                <VibeLogo size={42} className="vibe-wave" palette="psg" />
               </div>
               <h1 className="text-[32px] leading-[1.1] tracking-tight font-semibold text-ink text-balance fade-up fade-up-1">
                 Welcome, Mederic

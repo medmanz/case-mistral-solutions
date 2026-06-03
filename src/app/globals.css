@@ -224,6 +224,22 @@ body {
   animation: modalCenterEnter 220ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
+/* Vibe logo wave — one-shot greeting on mount. Pendulum decay. */
+@keyframes vibeWave {
+  0%   { transform: rotate(0deg); }
+  18%  { transform: rotate(-14deg); }
+  42%  { transform: rotate(10deg); }
+  62%  { transform: rotate(-6deg); }
+  80%  { transform: rotate(3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.vibe-wave {
+  transform-origin: center bottom;
+  animation: vibeWave 900ms cubic-bezier(0.23, 1, 0.32, 1) 2s both;
+  animation-iteration-count: 1;
+}
+
 /* Stagger for draft cards entering the panel */
 .draft-stagger {
   opacity: 0;
@@ -235,7 +251,8 @@ body {
   .panel-slide-in,
   .overlay-fade-in,
   .draft-stagger,
-  .modal-center-enter {
+  .modal-center-enter,
+  .vibe-wave {
     animation: none;
     opacity: 1;
     transform: none;
