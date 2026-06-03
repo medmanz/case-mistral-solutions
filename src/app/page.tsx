@@ -345,7 +345,7 @@ function FlowInFourActs() {
       <div className="mt-8">
         <FlowPlaceholder
           filename="flow-step1-access.png"
-          videoSrc="/sandbox/videos/flow-step1-access.mp4?v=2"
+          videoSrc="/sandbox/videos/flow-step1-access.mp4?v=3"
           note="Fresh chat, slash menu open, Recruiting highlighted."
         />
       </div>
