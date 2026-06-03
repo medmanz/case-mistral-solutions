@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { Suspense, useEffect, useRef, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   Plus,
   Code2,
@@ -145,12 +145,30 @@ function SendPixelArrow() {
 }
 
 export default function AccessPage() {
+  return (
+    <Suspense fallback={null}>
+      <AccessPageInner />
+    </Suspense>
+  );
+}
+
+function AccessPageInner() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const presetAgent = searchParams.get("agent");
   const [value, setValue] = useState("");
   const [selectedAgent, setSelectedAgent] = useState<string | null>(null);
   const [attachments, setAttachments] = useState<Attachment[]>([]);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const slashAnchorRef = useRef<HTMLDivElement>(null);
+
+  // Pre-select Recruiting agent when arriving from the Agents page
+  useEffect(() => {
+    if (presetAgent === "recruiting" && !selectedAgent) {
+      setSelectedAgent("Recruiting");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [presetAgent]);
 
   const goBrief = () => router.push("/sandbox/brief");
   const slashOpen = value.startsWith("/");

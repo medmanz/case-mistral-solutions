@@ -33,16 +33,9 @@ export type Candidate = {
   atsHistory?: AtsHistory;
 };
 
-const STATUS_OVERRIDES: Record<string, Status> = {
-  // Two contacted, one replied, one in interview, rest shortlisted
-  "anne-lefevre": "contacted",
-  "marc-tessier": "contacted",
-  "mei-lin-chen": "replied",
-  "rajesh-krishnan": "interview",
-};
-
-function statusFor(id: string): Status {
-  return STATUS_OVERRIDES[id] ?? "pending";
+function statusFor(_id: string): Status {
+  // Initial state — Hélène just discovered the shortlist, no one contacted yet
+  return "pending";
 }
 
 // Less recognizable than the classic Unsplash portraits. randomuser.me gives

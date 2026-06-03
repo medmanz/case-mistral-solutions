@@ -24,10 +24,30 @@ const AGENTS: AgentCard[] = [
     name: "Recruiting",
     subtitle:
       "Source senior hires from your ATS first. Score, draft outreach, sign-off.",
-    by: "By Mistral Solutions",
-    href: "/sandbox/shortlist",
+    by: "By Mistral",
+    href: "/sandbox/access?agent=recruiting",
     bg: "linear-gradient(135deg, #FF7A2C 0%, #FA500F 50%, #E14010 100%)",
-    icon: "/sandbox/icons/recruiting.png",
+    icon: "/sandbox/icons/recruiting.png?v=2",
+    customMode: true,
+  },
+  {
+    id: "alert-monitoring",
+    name: "Alert Monitoring",
+    subtitle:
+      "Triage SCADA alerts on the APAC fleet. Pre-draft corrective actions for engineer commit.",
+    by: "By Mistral",
+    bg: "linear-gradient(135deg, #34D399 0%, #059669 100%)",
+    icon: "/sandbox/icons/alert-monitoring.png",
+    customMode: true,
+  },
+  {
+    id: "trade-lane",
+    name: "Trade Lane Optimizer",
+    subtitle:
+      "Compare routes, fuel, and schedules. Pre-draft re-routing proposals.",
+    by: "By Mistral",
+    bg: "linear-gradient(135deg, #60A5FA 0%, #2563EB 100%)",
+    icon: "/sandbox/icons/trade-lane.png?v=2",
     customMode: true,
   },
   {
@@ -60,6 +80,11 @@ const AGENTS: AgentCard[] = [
 
 export default function AgentsPage() {
   const [tab, setTab] = useState<Tab>("all");
+
+  const sharedAgents = AGENTS.filter((a) => a.customMode === true);
+  const browseAgents = AGENTS.filter((a) => a.customMode !== true);
+  const showShared = tab === "all" || tab === "shared";
+  const showBrowse = tab === "all";
 
   return (
     <div className="h-[calc(100dvh-49px)] bg-[#FAFAF9] flex antialiased">
@@ -100,15 +125,54 @@ export default function AgentsPage() {
           </div>
         </div>
 
-        {/* Single Agents grid */}
-        <div className="px-10 pb-12">
-          <div className="grid grid-cols-4 gap-5 max-w-[1280px]">
-            {AGENTS.map((a) => (
-              <AgentTile key={a.id} agent={a} />
-            ))}
-          </div>
+        {/* Sections */}
+        <div className="px-10 pb-12 flex flex-col gap-10">
+          {showShared && (
+            <Section title="Made for CMA CGM">
+              <Grid agents={sharedAgents} />
+            </Section>
+          )}
+
+          {showBrowse && (
+            <Section title="Browse Agents">
+              <Grid agents={browseAgents} />
+            </Section>
+          )}
         </div>
       </div>
+    </div>
+  );
+}
+
+function Section({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex flex-col gap-5">
+      <h2
+        className="text-[18px] font-semibold text-[#14110F] leading-[1.3]"
+        style={{ letterSpacing: "-0.015em" }}
+      >
+        {title}
+      </h2>
+      {children}
+    </div>
+  );
+}
+
+function Grid({ agents }: { agents: AgentCard[] }) {
+  return (
+    <div
+      className="grid gap-5"
+      style={{ gridTemplateColumns: "repeat(3, 304px)" }}
+    >
+      {agents.map((a) => (
+        <AgentTile key={a.id} agent={a} />
+      ))}
     </div>
   );
 }
@@ -150,7 +214,7 @@ function AgentTile({ agent }: { agent: AgentCard }) {
     >
       <div
         className="w-full flex items-center justify-center relative"
-        style={{ background: agent.bg, aspectRatio: "1.4 / 1" }}
+        style={{ background: agent.bg, height: "165px" }}
       >
         {agent.customMode && (
           <span className="absolute top-3 right-3 inline-flex items-center gap-1 h-5 px-2 rounded-md bg-white/22 backdrop-blur-sm text-[11px] font-medium text-white leading-none">
@@ -168,14 +232,16 @@ function AgentTile({ agent }: { agent: AgentCard }) {
           aria-hidden
         />
       </div>
-      <div className="flex flex-col p-5 gap-2">
+      <div className="flex flex-col flex-1 p-5 gap-2">
         <h3 className="text-[16px] font-semibold text-[#14110F] leading-[1.3]">
           {agent.name}
         </h3>
         <p className="text-[13.5px] text-[#525252] leading-[1.5]">
           {agent.subtitle}
         </p>
-        <span className="text-[13px] text-[#79716B] mt-1.5">{agent.by}</span>
+        <span className="text-[13px] text-[#79716B] mt-auto pt-2">
+          {agent.by}
+        </span>
       </div>
     </Comp>
   );
