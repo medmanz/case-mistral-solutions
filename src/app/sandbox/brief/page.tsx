@@ -205,25 +205,54 @@ function BriefPageInner() {
   const [composerValue, setComposerValue] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showScrollDown, setShowScrollDown] = useState(false);
+  // Stick-to-bottom: tracks whether the user is at/near the bottom.
+  // While true, new content auto-scrolls. While false (user scrolled up),
+  // new content does NOT yank them down — show the floating pill instead.
+  const stickToBottomRef = useRef(true);
+  const STICK_THRESHOLD = 80;
 
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
     const onScroll = () => {
       const dist = el.scrollHeight - el.scrollTop - el.clientHeight;
-      setShowScrollDown(dist > 40);
+      stickToBottomRef.current = dist <= STICK_THRESHOLD;
+      setShowScrollDown(dist > STICK_THRESHOLD);
     };
     onScroll();
     el.addEventListener("scroll", onScroll);
     return () => el.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Re-evaluate on content changes (new message reveals)
+  // On new content: scroll so the TOP of the latest message is visible
+  // (Claude/ChatGPT pattern). If the message is taller than the viewport,
+  // the user sees its start and the floating down-arrow appears for the rest.
+  // Only when the user was previously anchored at the bottom — otherwise
+  // we respect their manual scroll position.
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
+    if (stickToBottomRef.current) {
+      const last = el.querySelector(
+        `[data-msg-index="${visibleCount - 1}"]`
+      ) as HTMLElement | null;
+      if (last) {
+        const containerTop = el.getBoundingClientRect().top;
+        const itemTop = last.getBoundingClientRect().top;
+        const offset = itemTop - containerTop + el.scrollTop - 24; // 24px breathing room
+        el.scrollTo({ top: offset, behavior: "smooth" });
+      } else {
+        el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+      }
+      // Re-check arrow state after the scroll settles.
+      const t = setTimeout(() => {
+        const dist = el.scrollHeight - el.scrollTop - el.clientHeight;
+        setShowScrollDown(dist > STICK_THRESHOLD);
+      }, 450);
+      return () => clearTimeout(t);
+    }
     const dist = el.scrollHeight - el.scrollTop - el.clientHeight;
-    setShowScrollDown(dist > 40);
+    setShowScrollDown(dist > STICK_THRESHOLD);
   }, [visibleCount, thinking]);
 
   // When arriving in replay mode (from Open chat), jump to the bottom
@@ -244,6 +273,8 @@ function BriefPageInner() {
   const sendNext = () => {
     if (visibleCount >= CONVERSATION.length) return;
     if (CONVERSATION[visibleCount].from !== "user") return;
+    // Force stick-to-bottom on send: the user explicitly engaged.
+    stickToBottomRef.current = true;
     setVisibleCount((c) => c + 1);
     setComposerValue("");
   };
@@ -298,7 +329,11 @@ function BriefPageInner() {
         <div ref={scrollRef} className="flex-1 overflow-y-auto bg-[#FAFAF9]">
           <div className="max-w-[768px] mx-auto px-6 py-10 flex flex-col gap-12">
             {CONVERSATION.slice(0, visibleCount).map((m, i) => (
-              <div key={i} className={isReplay ? "" : "fade-up"}>
+              <div
+                key={i}
+                data-msg-index={i}
+                className={isReplay ? "" : "fade-up"}
+              >
                 {m.from === "agent" ? (
                   <>
                     <AgentMessage body={m.body} final={m.final} instant={isReplay}>
@@ -477,7 +512,7 @@ function MatrixLoader() {
   const offColor = "#F1EDE8";
 
   useEffect(() => {
-    const fps = 24;
+    const fps = 12;
     const frameMs = 1000 / fps;
     let lastAdvance = performance.now();
     let raf: number;
@@ -740,20 +775,20 @@ function FileChip({ attachment }: { attachment: Attachment }) {
     ) : (
       <FileText
         className={cn(
-          "size-3.5",
+          "size-4",
           attachment.kind === "pdf" ? "text-[#DC2626]" : "text-[#2563EB]"
         )}
         strokeWidth={1.75}
       />
     );
   return (
-    <span className="inline-flex items-center gap-2 px-2.5 py-1.5 rounded-md bg-surface border border-line shadow-sm max-w-full">
+    <span className="inline-flex items-center gap-2 px-2.5 py-1.5 rounded-md bg-surface border border-line max-w-full">
       <span className="shrink-0">{icon}</span>
-      <span className="flex flex-col min-w-0 leading-tight">
-        <span className="text-[12px] font-medium text-ink truncate">
+      <span className="flex flex-col min-w-0 gap-0.5">
+        <span className="text-[13px] leading-tight font-medium text-ink truncate">
           {attachment.name}
         </span>
-        <span className="text-[10.5px] text-ink-soft truncate">
+        <span className="text-[12px] leading-tight text-ink-soft truncate">
           {attachment.meta}
         </span>
       </span>
@@ -847,27 +882,24 @@ function SortableArchetype({
       ref={setNodeRef}
       style={style}
       className={cn(
-        "flex items-center gap-3 px-3.5 py-3 rounded-[10px] border bg-white touch-none",
+        "flex items-center gap-3 px-3.5 py-3 rounded-[10px] border bg-white touch-none select-none",
         "transition-[box-shadow,transform] duration-200 ease-out",
         isDragging
-          ? "border-[#27272A26] shadow-[0_12px_28px_-8px_rgba(15,23,42,0.18),0_2px_4px_rgba(15,23,42,0.06)] scale-[1.01] cursor-grabbing"
-          : "border-[#27272A14] shadow-[0_1px_2px_rgba(15,23,42,0.04)]"
+          ? "border-[#27272A26] shadow-[0_12px_28px_-8px_rgba(15,23,42,0.18),0_2px_4px_rgba(15,23,42,0.06)] cursor-grabbing"
+          : "border-[#27272A14] shadow-[0_1px_2px_rgba(15,23,42,0.04)] cursor-grab hover:border-[#27272A26]"
       )}
+      {...attributes}
+      {...listeners}
     >
-      <button
-        type="button"
-        aria-label="Drag to reorder"
+      <span
+        aria-hidden="true"
         className={cn(
           "grid place-items-center size-5 -ml-1 transition-colors",
-          isDragging
-            ? "text-[#57534D] cursor-grabbing"
-            : "text-[#A6A09B] hover:text-[#57534D] cursor-grab"
+          isDragging ? "text-[#57534D]" : "text-[#A6A09B]"
         )}
-        {...attributes}
-        {...listeners}
       >
         <GripVertical className="size-4" strokeWidth={2} />
-      </button>
+      </span>
       <span className="inline-flex items-center justify-center size-[22px] rounded-full bg-white border border-[#27272A19] text-[#57534D] text-[11px] font-semibold tabular-nums leading-none shrink-0">
         {rank}
       </span>
