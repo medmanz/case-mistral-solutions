@@ -365,7 +365,8 @@ function FlowInFourActs() {
       <div className="mt-8">
         <FlowPlaceholder
           filename="flow-step2-brief.png"
-          note="Brief flow recording — files dropped, archetypes proposed, Create as Task clicked."
+          videoSrc="/sandbox/videos/flow-step2-brief.mp4?v=2"
+          note="Brief flow — files dropped, archetypes proposed, Create as Task clicked."
         />
       </div>
 
