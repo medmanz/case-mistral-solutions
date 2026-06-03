@@ -1,0 +1,204 @@
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import { Sidebar } from "@/components/shortlist/Sidebar";
+import { cn } from "@/lib/utils";
+
+type Tab = "all" | "mine" | "shared";
+
+type AgentCard = {
+  id: string;
+  name: string;
+  subtitle: string;
+  by: string;
+  section: "mine" | "browse";
+  href?: string;
+  bg: string;
+  icon: string;
+};
+
+const AGENTS: AgentCard[] = [
+  {
+    id: "recruiting",
+    name: "Recruiting",
+    subtitle:
+      "Source senior hires from your ATS first. Score, draft outreach, sign-off.",
+    by: "By Mistral Solutions",
+    section: "mine",
+    href: "/sandbox/shortlist",
+    bg: "linear-gradient(135deg, #FF7A2C 0%, #FA500F 50%, #E14010 100%)",
+    icon: "/sandbox/icons/recruiting.png",
+  },
+  {
+    id: "data-analyst",
+    name: "Data Analyst",
+    subtitle: "Convert any CSV file into an analysis.",
+    by: "By Mistral",
+    section: "browse",
+    bg: "linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%)",
+    icon: "/sandbox/icons/data-analyst.png",
+  },
+  {
+    id: "personal-tutor",
+    name: "Personal Tutor",
+    subtitle:
+      "Experience personalized learning. Begin by asking for any subject.",
+    by: "By Mistral",
+    section: "browse",
+    bg: "linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%)",
+    icon: "/sandbox/icons/personal-tutor.png",
+  },
+  {
+    id: "global-summarizer",
+    name: "Global Summarizer",
+    subtitle:
+      "Summarize documents of any type into clear, concise summaries.",
+    by: "By Mistral",
+    section: "browse",
+    bg: "linear-gradient(135deg, #FDE047 0%, #FACC15 100%)",
+    icon: "/sandbox/icons/global-summarizer.png",
+  },
+];
+
+export default function AgentsPage() {
+  const [tab, setTab] = useState<Tab>("all");
+
+  const mineAgents = AGENTS.filter((a) => a.section === "mine");
+  const browseAgents = AGENTS.filter((a) => a.section === "browse");
+
+  const showMine = tab === "all" || tab === "mine" || tab === "shared";
+  const showBrowse = tab === "all" || tab === "shared";
+
+  return (
+    <div className="h-[calc(100dvh-49px)] bg-[#FAFAF9] flex antialiased">
+      <Sidebar width={260} mode="chat" />
+      <div className="flex-1 flex flex-col bg-[#FAFAF9] min-w-0 overflow-y-auto">
+        {/* Page header */}
+        <div className="flex items-start justify-between gap-6 px-10 pt-10 pb-7">
+          <div className="flex flex-col gap-2 min-w-0 flex-1">
+            <h1
+              className="text-[32px] font-semibold text-[#14110F] leading-[1.2]"
+              style={{ letterSpacing: "-0.02em" }}
+            >
+              My Agents
+            </h1>
+            <p className="text-[14px] text-[#79716B] leading-[1.42]">
+              Your trusted sidekicks for automating tasks and supercharging
+              productivity.
+            </p>
+          </div>
+          <div className="flex items-center gap-2.5 shrink-0 pt-2">
+            <div className="inline-flex items-center h-9 bg-[#27272A0F] rounded-lg p-0.5 gap-0.5">
+              <TabButton active={tab === "all"} onClick={() => setTab("all")}>
+                All
+              </TabButton>
+              <TabButton active={tab === "mine"} onClick={() => setTab("mine")}>
+                Mine
+              </TabButton>
+              <TabButton
+                active={tab === "shared"}
+                onClick={() => setTab("shared")}
+              >
+                Shared
+              </TabButton>
+            </div>
+            <button className="h-9 px-3.5 rounded-lg bg-[#27272A0F] text-[13.5px] font-medium text-[#14110F] hover:bg-[#27272A14] active:scale-[0.97] transition-[colors,transform] duration-150">
+              Create an Agent
+            </button>
+          </div>
+        </div>
+
+        {/* My Agents grid */}
+        {showMine && mineAgents.length > 0 && (
+          <div className="px-10 pb-8">
+            <div className="grid grid-cols-4 gap-5 max-w-[1280px]">
+              {mineAgents.map((a) => (
+                <AgentTile key={a.id} agent={a} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Browse Agents */}
+        {showBrowse && (
+          <div className="px-10 pb-12">
+            <h2
+              className="text-[24px] font-semibold text-[#14110F] mb-5 leading-[1.3]"
+              style={{ letterSpacing: "-0.015em" }}
+            >
+              Browse Agents
+            </h2>
+            <div className="grid grid-cols-4 gap-5 max-w-[1280px]">
+              {browseAgents.map((a) => (
+                <AgentTile key={a.id} agent={a} />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function TabButton({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={cn(
+        "h-8 px-3.5 rounded-md text-[13px] font-medium transition-colors",
+        active
+          ? "bg-white text-[#14110F] shadow-sm"
+          : "text-[#79716B] hover:text-[#14110F]",
+      )}
+    >
+      {children}
+    </button>
+  );
+}
+
+function AgentTile({ agent }: { agent: AgentCard }) {
+  const Comp = (agent.href ? Link : "div") as React.ElementType;
+  return (
+    <Comp
+      {...(agent.href ? { href: agent.href } : {})}
+      className={cn(
+        "flex flex-col bg-white rounded-2xl overflow-hidden border border-[#27272A14]",
+        agent.href &&
+          "hover:shadow-[0_4px_16px_rgba(15,23,42,0.08)] active:scale-[0.99] transition-[box-shadow,transform] duration-150 cursor-pointer",
+      )}
+    >
+      <div
+        className="w-full flex items-center justify-center"
+        style={{ background: agent.bg, aspectRatio: "1.4 / 1" }}
+      >
+        <img
+          src={agent.icon}
+          alt=""
+          width={80}
+          height={80}
+          className="block"
+          style={{ imageRendering: "pixelated" }}
+          aria-hidden
+        />
+      </div>
+      <div className="flex flex-col p-5 gap-2">
+        <h3 className="text-[16px] font-semibold text-[#14110F] leading-[1.3]">
+          {agent.name}
+        </h3>
+        <p className="text-[13.5px] text-[#525252] leading-[1.5]">
+          {agent.subtitle}
+        </p>
+        <span className="text-[13px] text-[#79716B] mt-1.5">{agent.by}</span>
+      </div>
+    </Comp>
+  );
+}

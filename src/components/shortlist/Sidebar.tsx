@@ -39,9 +39,7 @@ export function Sidebar({
 
       {mode === "chat" ? <ChatNav activeChat={activeChat} /> : <WorkNav />}
 
-      <UserBlock subtitle={mode === "chat" ? "Vibe Free" : "CMA CGM · Enterprise"} />
-
-      {mode === "chat" && <UpgradeCard />}
+      <UserBlock subtitle="CMA CGM · Enterprise" />
     </aside>
   );
 }
@@ -125,6 +123,7 @@ function ChatNav({ activeChat }: { activeChat?: string }) {
         <NavRow
           icon={<Briefcase className="size-4 text-[#14110F]" strokeWidth={1.75} />}
           label="Agents"
+          href="/sandbox/agents"
         />
         <NavRow
           icon={<Box className="size-4 text-[#14110F]" strokeWidth={1.75} />}
@@ -217,16 +216,20 @@ function NavRow({
   badge,
   badgeBlue,
   highlighted,
+  href,
 }: {
   icon: React.ReactNode;
   label: string;
   badge?: string;
   badgeBlue?: boolean;
   highlighted?: boolean;
+  href?: string;
 }) {
+  const Comp = (href ? Link : "button") as React.ElementType;
   return (
     <div className="mx-3">
-      <button
+      <Comp
+        {...(href ? { href } : {})}
         className={cn(
           "group w-full flex items-center h-8 rounded-lg px-2 gap-1.5 transition-colors hover:bg-[#27272A0A]",
           highlighted && "bg-[#27272A0F]"
@@ -260,7 +263,7 @@ function NavRow({
             {badge}
           </span>
         )}
-      </button>
+      </Comp>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { Sidebar } from "@/components/layout/Sidebar";
+import { Lightbox } from "@/components/ui/Lightbox";
 import { Play } from "lucide-react";
 
 export default function Page() {
@@ -32,10 +33,9 @@ export default function Page() {
 function PeakMoment() {
   return (
     <section id="peak" className="pt-16 pb-8 w-full max-w-[634px] mx-auto">
-      <VideoPlaceholder
-        route="/sandbox/shortlist"
-        filename="peak-shortlist.png"
-        note="The hero shot. Full shortlist page, 12 candidates visible, Hélène's lens."
+      <Lightbox
+        src="/sandbox/peak-shortlist.png?v=3"
+        alt="The Recruiting Tool for CMA CGM, shortlist view"
       />
       <Caption>
         The Recruiting Tool for CMA CGM. Five Skills, four Connectors, one
