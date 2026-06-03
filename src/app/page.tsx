@@ -1,5 +1,6 @@
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Lightbox } from "@/components/ui/Lightbox";
+import { VideoLightbox } from "@/components/ui/VideoLightbox";
 import { Play } from "lucide-react";
 
 export default function Page() {
@@ -325,66 +326,66 @@ function FlowInFourActs() {
       <BodyCol>
         <H1>The flow</H1>
         <Body>
-          Two mini-sequences. First, how Hélène uses the app every morning.
-          Then, how the role even got there in the first place.
+          Three steps, chronological. How Hélène starts a new search, how
+          the Task is born, how she works through the shortlist.
         </Body>
       </BodyCol>
 
+      {/* Step 1 — Access */}
       <div className="mt-16">
         <BodyCol>
-          <H2>Part one, the daily reality</H2>
-        </BodyCol>
-      </div>
-
-      <div className="mt-8">
-        <FlowPlaceholder
-          filename="flow-part1-daily.png"
-          note="3 panels side-by-side, arrows between. Panel 1: Agents page, Shared tab, Recruiting card. Panel 2: Pipeline canvas (Kanban) with agent recap header. Panel 3: Compose modal (profile left, draft right)."
-          steps={[
-            {
-              title: "Entry",
-              body: "Agents page, Shared tab. She clicks Recruiting. Solutions put it there.",
-            },
-            {
-              title: "Pipeline",
-              body: "Cards grouped by stage. Agent recap on top, three picks named.",
-            },
-            {
-              title: "Commit",
-              body: "Click a candidate. Profile + draft. Edit one line, send. Eight minutes for four.",
-            },
-          ]}
-        />
-      </div>
-
-      <div className="mt-24">
-        <BodyCol>
-          <H2>Part two, how the role got there</H2>
+          <H2>1, Access</H2>
           <Body>
-            Two months ago, none of this existed. Here&rsquo;s how Hélène
-            briefed the agent and got her shortlist back.
+            Two months ago, Hélène opens a fresh chat. She types slash. The
+            menu lists every agent her workspace has, Recruiting included.
+            She picks it. The agent answers like any agent would.
           </Body>
         </BodyCol>
       </div>
-
       <div className="mt-8">
         <FlowPlaceholder
-          filename="flow-part2-brief.png"
-          note="3 panels side-by-side, arrows between. Panel 1: Chat mode with slash menu open, /recruiting highlighted. Panel 2: Brief conversation, three files attached, archetypes proposed. Panel 3: Create as Task moment, new Task appears in Work sidebar."
-          steps={[
-            {
-              title: "Invocation",
-              body: "Fresh chat, /recruiting. The agent answers like any agent.",
-            },
-            {
-              title: "Brief",
-              body: "Three files dragged in. The agent reads, asks one question, proposes four archetypes.",
-            },
-            {
-              title: "Create as Task",
-              body: "One click. The chat becomes a Task in Work mode. Sourcing starts.",
-            },
-          ]}
+          filename="flow-step1-access.png"
+          note="Short clip or screenshot — fresh chat, slash menu open, Recruiting highlighted."
+        />
+      </div>
+
+      {/* Step 2 — Brief & Create as Task */}
+      <div className="mt-24">
+        <BodyCol>
+          <H2>2, Brief, then Create as Task</H2>
+          <Body>
+            She drags her kick-off files into the chat. The agent reads,
+            summarizes, asks one critical question, proposes four
+            archetypes. When the brief is tight, it suggests Create as
+            Task. One click. A new Task appears in Work. Sourcing starts.
+          </Body>
+        </BodyCol>
+      </div>
+      <div className="mt-8">
+        <FlowPlaceholder
+          filename="flow-step2-brief.png"
+          note="Brief flow recording — files dropped, archetypes proposed, Create as Task clicked."
+        />
+      </div>
+
+      {/* Step 3 — Daily use */}
+      <div className="mt-24">
+        <BodyCol>
+          <H2>3, Daily use</H2>
+          <Body>
+            Forty-five minutes later, the Task is ready. Hélène switches to
+            Work mode and opens it. The shortlist is there, the agent&rsquo;s
+            recap names her three strongest picks. She clicks Anne, reads
+            the draft, edits one line, sends. Four candidates in eight
+            minutes.
+          </Body>
+        </BodyCol>
+      </div>
+      <div className="mt-8">
+        <FlowPlaceholder
+          filename="flow-step3-daily.png"
+          videoSrc="/sandbox/videos/flow-part1-daily.mp4?v=2"
+          note="Daily flow recording — shortlist → click candidate → compose modal → send."
         />
       </div>
     </section>
@@ -949,47 +950,55 @@ function FlowPlaceholder({
   filename,
   note,
   steps,
+  videoSrc,
 }: {
   filename: string;
   note?: string;
-  steps: { title: string; body: string }[];
+  steps?: { title: string; body: string }[];
+  videoSrc?: string;
 }) {
   return (
-    <div>
-      <div className="relative aspect-[3/1] w-full rounded-xl overflow-hidden bg-[#14110F] shadow-[0_1px_2px_rgba(15,23,42,0.06)]">
-        <div className="absolute inset-0 grid place-items-center p-8">
-          <div className="flex flex-col items-center gap-3 text-center">
-            <span className="text-[11px] uppercase tracking-[0.12em] text-white/50 font-medium">
-              Flow composite · {steps.length} panels side-by-side
-            </span>
-            <span className="font-mono text-[14px] text-white/90 px-2.5 py-1 rounded bg-white/10 border border-white/15">
-              /public/sandbox/{filename}
-            </span>
-            {note && (
-              <span className="text-[12px] text-white/60 max-w-[70%] leading-snug">
-                {note}
+    <div className="max-w-[634px] mx-auto">
+      <div className="relative w-full rounded-lg overflow-hidden">
+        {videoSrc ? (
+          <VideoLightbox src={videoSrc} />
+        ) : (
+          <div className="bg-[#14110F] aspect-[3/1] grid place-items-center p-8 shadow-[0_1px_2px_rgba(15,23,42,0.06)]">
+            <div className="flex flex-col items-center gap-3 text-center">
+              <span className="text-[11px] uppercase tracking-[0.12em] text-white/50 font-medium">
+                Flow recording
               </span>
-            )}
+              <span className="font-mono text-[14px] text-white/90 px-2.5 py-1 rounded bg-white/10 border border-white/15">
+                /public/sandbox/{filename}
+              </span>
+              {note && (
+                <span className="text-[12px] text-white/60 max-w-[70%] leading-snug">
+                  {note}
+                </span>
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
-      <div className="grid grid-cols-3 gap-6 mt-6 max-w-[1080px] mx-auto">
-        {steps.map((s, i) => (
-          <div key={s.title} className="flex flex-col gap-2">
-            <div className="flex items-center gap-2">
-              <span className="text-[11px] font-medium text-[#9CA3AF] tabular-nums">
+      {steps && steps.length > 0 && (
+        <div className="flex flex-col gap-4 mt-5">
+          {steps.map((s, i) => (
+            <div key={s.title} className="flex gap-3 items-start">
+              <span className="text-[13px] font-medium text-[#9CA3AF] tabular-nums leading-[1.55] shrink-0">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span className="text-[13px] font-semibold text-[#14110F]">
-                {s.title}
-              </span>
+              <div className="flex flex-col gap-1 min-w-0">
+                <span className="text-[14px] font-semibold text-[#14110F] leading-[1.4]">
+                  {s.title}
+                </span>
+                <p className="text-[14px] text-[#525252] leading-[1.55]">
+                  {s.body}
+                </p>
+              </div>
             </div>
-            <p className="text-[13px] text-[#525252] leading-[1.5]">
-              {s.body}
-            </p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

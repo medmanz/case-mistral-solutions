@@ -319,21 +319,32 @@ function AccessPageInner() {
                         <span className="text-[14px] font-medium text-[#79716B] leading-none">Fast</span>
                         <ChevronDown className="size-4 text-[#57534D]" />
                       </button>
-                      <button
-                        className="size-8 grid place-items-center rounded-lg bg-[#27272A0F] hover:bg-[#27272A1A] active:scale-[0.97] transition-[colors,transform] duration-150"
-                        aria-label="Voice"
-                      >
-                        <Mic className="size-4 text-[#57534D]" />
-                      </button>
-                      <button
-                        onClick={() => {
-                          if (selectedAgent) goBrief();
-                        }}
-                        className="size-8 grid place-items-center rounded-lg bg-[#14110F] hover:bg-[#2A2420] active:scale-[0.97] transition-[colors,transform] duration-150 shadow-[inset_0_-1.5px_0_rgba(0,0,0,0.08)]"
-                        aria-label="Send"
-                      >
-                        <SendPixelArrow />
-                      </button>
+                      {value.length === 0 ? (
+                        <button
+                          className="size-8 grid place-items-center rounded-lg bg-[#14110F] hover:bg-[#2A2420] active:scale-[0.97] transition-[colors,transform] duration-150 shadow-[inset_0_-1.5px_0_rgba(0,0,0,0.08)]"
+                          aria-label="Voice"
+                        >
+                          <Mic className="size-4 text-white" />
+                        </button>
+                      ) : (
+                        <>
+                          <button
+                            className="size-8 grid place-items-center rounded-lg bg-[#27272A0F] hover:bg-[#27272A1A] active:scale-[0.97] transition-[colors,transform] duration-150"
+                            aria-label="Voice"
+                          >
+                            <Mic className="size-4 text-[#57534D]" />
+                          </button>
+                          <button
+                            onClick={() => {
+                              if (selectedAgent) goBrief();
+                            }}
+                            className="size-8 grid place-items-center rounded-lg bg-[#14110F] hover:bg-[#2A2420] active:scale-[0.97] transition-[colors,transform] duration-150 shadow-[inset_0_-1.5px_0_rgba(0,0,0,0.08)]"
+                            aria-label="Send"
+                          >
+                            <SendPixelArrow />
+                          </button>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>

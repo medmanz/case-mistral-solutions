@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Caveat_Brush } from "next/font/google";
+import { Agentation } from "agentation";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body>
         {children}
         <Toaster />
+        {process.env.NODE_ENV === "development" && <Agentation />}
       </body>
     </html>
   );
