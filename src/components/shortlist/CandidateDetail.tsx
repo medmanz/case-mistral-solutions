@@ -283,15 +283,15 @@ export function CandidateDetail({
           </div>
         )}
         {view === "timeline" && (
-          <div className="flex items-center justify-between gap-2 px-6 py-3 border-t border-[#27272A19]">
+          <div className="flex items-center justify-end gap-2 px-6 py-3 border-t border-[#27272A19]">
+            <button className="inline-flex items-center px-3 py-1.5 rounded-md bg-[#27272A0F] text-[13px] font-medium text-[#57534D] hover:bg-[#FECACA] hover:text-[#B91C1C] active:scale-[0.97] transition-[colors,transform] duration-150">
+              Cancel follow-up
+            </button>
             <button
               onClick={() => setView("profile")}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[13px] font-medium text-[#79716B] hover:bg-[#27272A0F] hover:text-[#14110F] active:scale-[0.97] transition-[colors,transform] duration-150"
+              className="inline-flex items-center px-3 py-1.5 rounded-md bg-[#14110F] text-white text-[13px] font-medium shadow-[inset_0_-1.5px_0_rgba(0,0,0,0.12)] hover:bg-[#2A2420] active:scale-[0.97] transition-[colors,transform] duration-150"
             >
               View profile
-            </button>
-            <button className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[13px] font-medium text-[#79716B] hover:bg-[#27272A0F] hover:text-[#B91C1C] active:scale-[0.97] transition-[colors,transform] duration-150">
-              Cancel follow-up
             </button>
           </div>
         )}
@@ -558,23 +558,79 @@ function TimelineView({
   body: string;
   isInternal: boolean;
 }) {
-  const bodyPreview = body.split("\n").filter(Boolean).slice(0, 3).join(" · ");
+  const firstName = candidate.name.split(" ")[0];
+  const channel = isInternal ? "email" : "LinkedIn InMail";
+  const bodyPreview = body.split("\n").filter(Boolean).slice(0, 3).join(" ");
+
+  type EventGroup = {
+    label: string;
+    events: {
+      icon: LucideIcon;
+      title: string;
+      detail?: string;
+      time: string;
+    }[];
+  };
+
+  const groups: EventGroup[] = [
+    {
+      label: "Today",
+      events: [
+        {
+          icon: CalendarClock,
+          title: "Follow-up scheduled",
+          detail: `If ${firstName} hasn't replied by Mar 14, the agent will draft a nudge for your commit.`,
+          time: "2 min ago",
+        },
+        {
+          icon: Send,
+          title: "Outreach sent",
+          detail: `via ${channel}`,
+          time: "2 min ago",
+        },
+      ],
+    },
+    {
+      label: "31 minutes ago",
+      events: [
+        {
+          icon: Target,
+          title: "Scored against APAC trade-lane rubric",
+          detail: `${
+            candidate.score * 18 + (candidate.id.charCodeAt(0) % 7)
+          }/100 · ${candidate.reasons[0]}`,
+          time: "31 min ago",
+        },
+        {
+          icon: Database,
+          title: isInternal
+            ? "Re-engaged from ATS"
+            : "Sourced from LinkedIn Recruiter",
+          detail: isInternal
+            ? candidate.atsHistory?.notes ??
+              "Prior conversation found in our ATS."
+            : "First contact, no prior history with us.",
+          time: "31 min ago",
+        },
+      ],
+    },
+  ];
+
   return (
     <div className="flex-1 overflow-y-auto">
-      {/* Sent message card */}
+      {/* Sent message preview */}
       <div className="px-6 pt-5 pb-5">
         <div className="text-[13px] font-medium text-[#57534D] mb-3">
-          Outreach
+          Last outreach
         </div>
         <div className="rounded-lg border border-[#27272A14] bg-white p-4">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[12px] font-medium bg-[#16A34A1A] text-[#16734A]">
+          <div className="flex items-center gap-2 mb-2.5">
+            <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[13px] font-medium bg-[#16A34A1A] text-[#16734A]">
               <Send className="size-3" strokeWidth={2.25} />
               Sent
             </span>
-            <span className="text-[12px] text-[#79716B]">
-              2 min ago{" "}
-              {isInternal ? "via email" : "via LinkedIn InMail"}
+            <span className="text-[13px] text-[#79716B]">
+              2 min ago · via {channel}
             </span>
           </div>
           <div className="text-[14px] font-medium text-[#14110F] leading-[1.4] mb-1">
@@ -586,50 +642,32 @@ function TimelineView({
         </div>
       </div>
 
-      {/* Follow-up scheduled */}
-      <div className="px-6 pb-5 border-t border-[#27272A0F] pt-5">
-        <div className="text-[13px] font-medium text-[#57534D] mb-3">
-          Follow-up
-        </div>
-        <div className="flex items-start gap-2.5">
-          <CalendarClock
-            className="size-4 text-[#A6A09B] shrink-0 mt-0.5"
-            strokeWidth={2}
-          />
-          <div className="flex-1">
-            <div className="text-[14px] text-[#14110F] leading-[1.4]">
-              Scheduled for Mar 14
-            </div>
-            <div className="text-[13px] text-[#79716B] leading-[1.5] mt-0.5">
-              The agent will send a follow-up if {candidate.name.split(" ")[0]}{" "}
-              hasn&rsquo;t replied in 3 days.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Activity log */}
-      <div className="px-6 py-5 border-t border-[#27272A0F]">
-        <div className="text-[13px] font-medium text-[#57534D] mb-3">
+      {/* Activity timeline */}
+      <div className="px-6 pb-5 pt-5 border-t border-[#27272A0F]">
+        <div className="text-[13px] font-medium text-[#57534D] mb-4">
           Activity
         </div>
-        <ul className="flex flex-col gap-3">
-          <TimelineItem icon={Send} label="Outreach sent" time="2 min ago" />
-          <TimelineItem
-            icon={Target}
-            label="Scored 92/100 against APAC rubric"
-            time="31 min ago"
-          />
-          <TimelineItem
-            icon={Database}
-            label={
-              isInternal
-                ? "Sourced from Workday"
-                : "Sourced from LinkedIn Recruiter"
-            }
-            time="31 min ago"
-          />
-        </ul>
+        <div className="flex flex-col gap-5">
+          {groups.map((g) => (
+            <div key={g.label} className="flex flex-col gap-3">
+              <div className="text-[13px] font-medium text-[#A6A09B]">
+                {g.label}
+              </div>
+              <ul className="flex flex-col">
+                {g.events.map((e, i) => (
+                  <TimelineItem
+                    key={e.title}
+                    icon={e.icon}
+                    title={e.title}
+                    detail={e.detail}
+                    time={e.time}
+                    isLast={i === g.events.length - 1}
+                  />
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -637,24 +675,42 @@ function TimelineView({
 
 function TimelineItem({
   icon: Icon,
-  label,
+  title,
+  detail,
   time,
+  isLast,
 }: {
   icon: LucideIcon;
-  label: string;
+  title: string;
+  detail?: string;
   time: string;
+  isLast?: boolean;
 }) {
   return (
-    <li className="flex items-start gap-2.5">
-      <span className="grid place-items-center size-5 rounded-full bg-[#F6F6F5] shrink-0 mt-0.5">
-        <Icon className="size-3 text-[#79716B]" strokeWidth={2} />
+    <li className="flex items-start gap-3 relative">
+      {!isLast && (
+        <span
+          className="absolute left-[11px] top-[28px] bottom-[4px] w-px bg-[#27272A19]"
+          aria-hidden
+        />
+      )}
+      <span className="relative grid place-items-center size-6 rounded-full bg-[#F4F1EC] shrink-0 z-10">
+        <Icon className="size-3 text-[#57534D]" strokeWidth={2.25} />
       </span>
-      <div className="flex-1 min-w-0">
-        <div className="text-[13px] text-[#14110F] leading-[1.4]">{label}</div>
-        <div className="text-[12px] text-[#A6A09B] leading-[1.4] mt-0.5 inline-flex items-center gap-1">
-          <Clock className="size-3" strokeWidth={2} />
-          {time}
+      <div className={cn("flex-1 min-w-0", isLast ? "pb-0" : "pb-5")}>
+        <div className="flex items-baseline justify-between gap-3">
+          <div className="text-[14px] font-medium text-[#14110F] leading-[1.4]">
+            {title}
+          </div>
+          <div className="text-[13px] text-[#A6A09B] leading-[1.4] shrink-0 tabular-nums">
+            {time}
+          </div>
         </div>
+        {detail && (
+          <div className="text-[13px] text-[#79716B] leading-[1.5] mt-1 line-clamp-2">
+            {detail}
+          </div>
+        )}
       </div>
     </li>
   );
