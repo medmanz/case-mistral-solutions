@@ -888,7 +888,16 @@ function Body({ children }: { children: React.ReactNode }) {
 
 function Caption({ children }: { children: React.ReactNode }) {
   return (
-    <p className="mt-3 text-[12.5px] text-ink-soft leading-snug text-pretty">
+    <p
+      className="mt-3 text-pretty"
+      style={{
+        fontFamily: "Inter, sans-serif",
+        fontSize: "13px",
+        fontWeight: 400,
+        lineHeight: "18px",
+        color: "#9CA3AF",
+      }}
+    >
       {children}
     </p>
   );

@@ -166,7 +166,7 @@ function ShortlistInner() {
 
         {/* Table or Kanban */}
         {view === "table" ? (
-          <div className="px-2 pb-12">
+          <div className="pb-12">
             <table className="w-full table-fixed border-collapse">
               <thead className="sticky top-0 bg-[#FAFAF9] z-10">
                 <tr>
