@@ -13,7 +13,7 @@ const ITEMS: Item[] = [
   { id: "brief", label: "Reading the brief" },
   { id: "research", label: "User research" },
   { id: "inspiration", label: "Inspiration" },
-  { id: "flow", label: "Flow in 4 acts" },
+  { id: "flow", label: "The flow" },
   { id: "primitives", label: "Five primitives" },
   { id: "kit", label: "Same kit" },
   { id: "enablement", label: "How Solutions ships" },

@@ -13,6 +13,7 @@ const COMPANY_DOMAINS: Record<string, string> = {
   "Kuehne+Nagel": "kuehne-nagel.com",
   DHL: "dhl.com",
   ONE: "one-line.com",
+  "ONE (Ocean Network Express)": "one-line.com",
   COSCO: "coscoshipping.com",
   "DP World": "dpworld.com",
   "L'Oréal": "loreal.com",

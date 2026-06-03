@@ -207,6 +207,23 @@ body {
   animation: slashMenuEnter 150ms ease-out;
 }
 
+/* Centered modal entrance — scale up from 0.96 + fade. Never from scale(0). */
+@keyframes modalCenterEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-center-enter {
+  transform-origin: center;
+  animation: modalCenterEnter 220ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
 /* Stagger for draft cards entering the panel */
 .draft-stagger {
   opacity: 0;
@@ -217,7 +234,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .panel-slide-in,
   .overlay-fade-in,
-  .draft-stagger {
+  .draft-stagger,
+  .modal-center-enter {
     animation: none;
     opacity: 1;
     transform: none;

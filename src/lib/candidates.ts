@@ -33,8 +33,16 @@ export type Candidate = {
   atsHistory?: AtsHistory;
 };
 
-function statusFor(_id: string): Status {
-  return "pending";
+const STATUS_OVERRIDES: Record<string, Status> = {
+  // Two contacted, one replied, one in interview, rest shortlisted
+  "anne-lefevre": "contacted",
+  "marc-tessier": "contacted",
+  "mei-lin-chen": "replied",
+  "rajesh-krishnan": "interview",
+};
+
+function statusFor(id: string): Status {
+  return STATUS_OVERRIDES[id] ?? "pending";
 }
 
 // Less recognizable than the classic Unsplash portraits. randomuser.me gives
@@ -65,18 +73,18 @@ const RAW_CANDIDATES: Omit<Candidate, "photo" | "status">[] = [
     name: "Anne Lefèvre",
     initials: "AL",
     role: "Senior Supply Chain Director",
-    company: "CMA CGM",
-    location: "Marseille · Internal",
+    company: "Bolloré Logistics",
+    location: "Marseille",
     score: 5,
     fit: "strong",
     internal: true,
     topPick: true,
     reasons: [
-      "10 years across Bolloré Africa Logistics, retained in the CMA CGM integration",
-      "Knows your internal systems intimately (SAP TM, Workday, INTTRA)",
-      "Already cleared compliance and security review in 2024",
+      "10 years at Bolloré Logistics across Africa and EMEA trade lanes",
+      "We met her in 2024 for a VP search, panel scored 4.6/5",
+      "Already cleared compliance and security review during that process",
     ],
-    signals: ["Mandarin C1", "Singapore rotation 2019-2021", "9.2 last review"],
+    signals: ["Mandarin C1", "Singapore rotation 2019-2021", "Cleared 2024"],
     atsHistory: {
       appliedDate: "18 months ago",
       appliedRole: "VP, Trade Lanes EMEA",
@@ -90,24 +98,24 @@ const RAW_CANDIDATES: Omit<Candidate, "photo" | "status">[] = [
     name: "Marc Tessier",
     initials: "MT",
     role: "Senior Manager, Trade Operations EMEA",
-    company: "CMA CGM",
-    location: "Marseille · Internal",
+    company: "Maersk",
+    location: "Marseille",
     score: 5,
     fit: "strong",
     internal: true,
     topPick: true,
     reasons: [
-      "12 years at CMA CGM across Le Havre, Marseille and a Shanghai rotation",
+      "12 years at Maersk across Le Havre, Marseille and a Shanghai rotation",
       "Led the EMEA-Asia trade lane optimization that saved 8% on transit times",
-      "Flagged on last review as ready for a director-level move",
+      "Final round with us 2 years ago for the APAC Director seat",
     ],
     signals: ["Director-track", "Shanghai rotation 2018", "Mandarin B2"],
     atsHistory: {
       appliedDate: "2 years ago",
       appliedRole: "Director, Trade Lanes APAC",
-      outcome: "Hired into current role instead",
+      outcome: "Lost to internal mobility",
       notes:
-        "Panel preferred him for the EMEA seat at the time. Manager 1:1 last month flagged renewed interest in APAC.",
+        "Panel preferred internal at the time. Recruiter note: \"Strong second choice, re-engage when next APAC opening lands.\"",
     },
   },
   {
@@ -115,18 +123,18 @@ const RAW_CANDIDATES: Omit<Candidate, "photo" | "status">[] = [
     name: "Yuki Nakamura",
     initials: "YN",
     role: "Trade Lane Manager APAC",
-    company: "CMA CGM",
-    location: "Singapore · Internal (CEVA Logistics)",
+    company: "ONE (Ocean Network Express)",
+    location: "Singapore",
     score: 5,
     fit: "strong",
     internal: true,
     topPick: true,
     reasons: [
-      "Runs the APAC trade lane desk for CEVA, your logistics subsidiary",
+      "Runs the APAC trade lane desk for ONE",
       "Built the Singapore-Yokohama-Busan rotation playbook in 2024",
       "Native Japanese, fluent English, working Mandarin",
     ],
-    signals: ["CEVA subsidiary", "Finalist last cycle", "APAC-based"],
+    signals: ["APAC-based", "Finalist last cycle", "Trilingual"],
     atsHistory: {
       appliedDate: "14 months ago",
       appliedRole: "Senior Manager, APAC Trade Lanes",
@@ -177,23 +185,23 @@ const RAW_CANDIDATES: Omit<Candidate, "photo" | "status">[] = [
     name: "Camille Roux",
     initials: "CR",
     role: "Operations Lead, Trade Lanes",
-    company: "CMA CGM",
-    location: "Marseille · Internal",
+    company: "Geodis",
+    location: "Marseille",
     score: 4,
     fit: "good",
     internal: true,
     reasons: [
-      "7 years at CMA CGM, currently leads the EMEA-LATAM lane team",
-      "Completed the CMA CGM Senior Leadership program in 2024",
+      "7 years at Geodis, currently leads the EMEA-LATAM lane team",
+      "Completed the Geodis Senior Leadership program in 2024",
       "Strong on process discipline, slightly light on APAC exposure",
     ],
     signals: ["High-potential", "Leadership program 2024"],
     atsHistory: {
-      appliedDate: "Never applied externally",
-      appliedRole: "Promoted into current role 2022",
-      outcome: "High-potential per 2025 talent review",
+      appliedDate: "9 months ago",
+      appliedRole: "Senior Manager, Trade Operations EMEA",
+      outcome: "Strong second choice",
       notes:
-        "Talent review flagged as ready for a senior manager role within 12 months. APAC scope would be a stretch assignment.",
+        "Panel scored 4.2/5. Lost the EMEA seat to another candidate. Recruiter note: \"Stretch on APAC scope but ready, re-engage on next opening.\"",
     },
   },
   {
@@ -201,23 +209,23 @@ const RAW_CANDIDATES: Omit<Candidate, "photo" | "status">[] = [
     name: "Sofia Esposito",
     initials: "SE",
     role: "Senior Manager, Customer Operations",
-    company: "CMA CGM",
-    location: "Genoa · Internal",
+    company: "MSC",
+    location: "Genoa",
     score: 4,
     fit: "good",
     internal: true,
     reasons: [
-      "9 years at CMA CGM, runs the Genoa customer operations hub",
+      "9 years at MSC, runs the Genoa customer operations hub",
       "Comfortable across Mediterranean and APAC reefer trade",
       "Working English/Italian/French, basic Mandarin",
     ],
-    signals: ["Mediterranean lead", "Cleared mobility check"],
+    signals: ["Mediterranean lead", "Cleared 2024"],
     atsHistory: {
       appliedDate: "16 months ago",
       appliedRole: "Senior Manager, APAC Customer Operations (Singapore)",
       outcome: "Declined offer",
       notes:
-        "Declined for family reasons (partner's job). Workday signal: partner left employer in Q1 2026, may be open again.",
+        "Declined for family reasons (partner's job). LinkedIn signal: partner left employer in Q1 2026, may be open again.",
     },
   },
   {
@@ -225,17 +233,17 @@ const RAW_CANDIDATES: Omit<Candidate, "photo" | "status">[] = [
     name: "Tanguy Lefort",
     initials: "TL",
     role: "Logistics Strategy Manager",
-    company: "CMA CGM",
-    location: "Paris · Internal (CEVA Logistics)",
+    company: "DSV",
+    location: "Paris",
     score: 4,
     fit: "good",
     internal: true,
     reasons: [
-      "6 years at CEVA on contract logistics strategy for industrial clients",
+      "6 years at DSV on contract logistics strategy for industrial clients",
       "Built the APAC contract logistics expansion deck in 2025",
       "Less direct container shipping exposure, strong on adjacency",
     ],
-    signals: ["CEVA subsidiary", "Re-engage flag"],
+    signals: ["Adjacent expertise", "Re-engage flag"],
     atsHistory: {
       appliedDate: "11 months ago",
       appliedRole: "Senior Manager, Asia Strategy",
@@ -283,14 +291,14 @@ const RAW_CANDIDATES: Omit<Candidate, "photo" | "status">[] = [
     name: "Karim Belkacem",
     initials: "KB",
     role: "Trade Manager, North Africa",
-    company: "CMA CGM",
-    location: "Algiers · Internal",
+    company: "Bolloré Logistics",
+    location: "Algiers",
     score: 3,
     fit: "worth-exploring",
     internal: true,
     reasons: [
-      "8 years at CMA CGM on North Africa trade lanes",
-      "Completed APAC rotation in 2025, eased the previous APAC gap",
+      "8 years at Bolloré Logistics on North Africa trade lanes",
+      "Completed APAC rotation in 2025, closes the previous APAC gap",
       "Less senior than the bar, trajectory is sharp",
     ],
     signals: ["2025 APAC rotation", "Stretch candidate"],
@@ -307,23 +315,23 @@ const RAW_CANDIDATES: Omit<Candidate, "photo" | "status">[] = [
     name: "Léa Fournier",
     initials: "LF",
     role: "Senior Analyst, S&OP",
-    company: "CMA CGM",
-    location: "Marseille · Internal",
+    company: "Kuehne+Nagel",
+    location: "Marseille",
     score: 3,
     fit: "worth-exploring",
     internal: true,
     reasons: [
-      "5 years at CMA CGM on S&OP and trade analytics",
-      "Mandarin C1 per skills profile, rare in the internal pool",
-      "Stretch role at senior manager level, would need a manager sponsor",
+      "5 years at Kuehne+Nagel on S&OP and trade analytics",
+      "Mandarin C1 per LinkedIn skills, rare in the pool",
+      "Stretch role at senior manager level, would need a sponsor",
     ],
     signals: ["Mandarin C1", "High-potential"],
     atsHistory: {
-      appliedDate: "Never applied externally",
-      appliedRole: "Joined as analyst 2021",
-      outcome: "High-potential per 2025 talent review",
+      appliedDate: "10 months ago",
+      appliedRole: "Manager, APAC S&OP",
+      outcome: "Strong fit, no role at the time",
       notes:
-        "Manager flagged as ready for a stretch assignment. Skills profile lists Mandarin C1, rare in the internal pool for APAC roles.",
+        "Sourced via a previous APAC search, panel rated 4.0/5 but role closed before we could move. Recruiter note: \"Re-engage when an APAC analyst-to-manager seat opens.\"",
     },
   },
 ];

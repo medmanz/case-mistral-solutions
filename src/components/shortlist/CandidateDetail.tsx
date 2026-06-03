@@ -18,6 +18,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/Input";
+import { Textarea } from "@/components/ui/Textarea";
 
 const SCORE_PILL: Record<Candidate["fit"], string> = {
   strong: "bg-[#16A34A1A] text-[#16734A]",
@@ -48,10 +50,11 @@ export function CandidateDetail({
   const [draftSubject, setDraftSubject] = useState("");
   const [draftBody, setDraftBody] = useState("");
 
-  // Reset view when a new candidate is opened: timeline if sent, profile otherwise
+  // Reset view when a new candidate is opened: timeline if sent, compose otherwise
+  // (the 2-column modal is the default landing — profile left, compose right)
   useEffect(() => {
     if (!candidate) return;
-    setView(isSent ? "timeline" : "profile");
+    setView(isSent ? "timeline" : "compose");
     setDraftSubject(generateSubject(candidate));
     setDraftBody(generateBody(candidate));
   }, [candidate, isSent]);
@@ -77,6 +80,127 @@ export function CandidateDetail({
     (r) => !r.toLowerCase().startsWith("internal")
   );
   const companyLogo = companyLogoUrl(candidate.company);
+
+  const isCompose = view === "compose";
+
+  const headerEl = (showClose: boolean) => (
+    <div className="flex items-start justify-between gap-3 px-6 py-4 border-b border-[#27272A19]">
+      <div className="flex items-center gap-3 min-w-0">
+        <img
+          src={candidate.photo}
+          alt=""
+          className="size-9 rounded-full object-cover bg-[#F1EDE8] shrink-0"
+        />
+        <div className="min-w-0">
+          <h2
+            className="text-[16px] font-semibold text-[#14110F] leading-[1.3] truncate"
+            style={{ letterSpacing: "-0.01em" }}
+          >
+            {candidate.name}
+          </h2>
+          <p className="text-[13px] text-[#79716B] leading-[1.35] truncate inline-flex items-center gap-1.5 mt-0.5">
+            <span>{candidate.role}</span>
+            <span aria-hidden>·</span>
+            {companyLogo && (
+              <img
+                src={companyLogo}
+                alt=""
+                width={16}
+                height={16}
+                className="size-4 rounded-sm shrink-0 object-contain"
+                aria-hidden
+              />
+            )}
+            <span>{candidate.company}</span>
+          </p>
+        </div>
+      </div>
+      {showClose && (
+        <button
+          onClick={onClose}
+          aria-label="Close"
+          className="size-7 grid place-items-center rounded-md text-[#79716B] hover:bg-[#27272A0F] hover:text-[#14110F] transition-colors shrink-0"
+        >
+          <X className="size-3.5" strokeWidth={2} />
+        </button>
+      )}
+    </div>
+  );
+
+  if (isCompose) {
+    return (
+      <div className="fixed inset-0 z-40 flex items-center justify-center p-8 pointer-events-none">
+        <button
+          onClick={onClose}
+          aria-label="Close detail"
+          className="absolute inset-0 bg-ink/40 overlay-fade-in pointer-events-auto"
+        />
+        <div className="relative flex flex-row w-full max-w-[1100px] h-full max-h-[860px] bg-[#FAFAF9] rounded-xl shadow-2xl overflow-hidden pointer-events-auto antialiased modal-center-enter">
+          {/* Left column — profile (same design as drawer) */}
+          <aside className="w-[480px] shrink-0 flex flex-col border-r border-[#27272A19] bg-[#FAFAF9]">
+            {headerEl(false)}
+            <ProfileView
+              candidate={candidate}
+              scorePct={scorePct}
+              isInternal={isInternal}
+              externalRisk={externalRisk}
+            />
+          </aside>
+
+          {/* Right column — compose */}
+          <div className="flex-1 flex flex-col bg-[#FFFFFF] min-w-0">
+            <div className="flex items-start justify-between gap-3 px-6 py-4 border-b border-[#27272A19]">
+              <div className="flex flex-col gap-1 min-w-0">
+                <div className="text-[15px] font-semibold text-[#14110F] leading-[1.3]">
+                  Outreach draft
+                </div>
+                <div className="inline-flex items-center gap-2 text-[12.5px] font-medium text-[#79716B]">
+                  <RecruitingAgentBadge />
+                  AI-drafted from this candidate&rsquo;s signals
+                </div>
+              </div>
+              <button
+                onClick={onClose}
+                aria-label="Close"
+                className="size-7 grid place-items-center rounded-md text-[#79716B] hover:bg-[#27272A0F] hover:text-[#14110F] transition-colors shrink-0"
+              >
+                <X className="size-3.5" strokeWidth={2} />
+              </button>
+            </div>
+            <ComposeView
+              candidate={candidate}
+              isInternal={isInternal}
+              subject={draftSubject}
+              body={draftBody}
+              onSubjectChange={setDraftSubject}
+              onBodyChange={setDraftBody}
+            />
+            <div className="flex items-center justify-end gap-2 px-6 py-3 border-t border-[#27272A19]">
+              <span className="text-[12px] text-[#A6A09B] mr-auto">
+                Draft auto-saved
+              </span>
+              <button
+                onClick={onClose}
+                className="inline-flex items-center px-3 py-1.5 rounded-md bg-[#27272A0F] text-[13px] font-medium text-[#57534D] hover:bg-[#FECACA] hover:text-[#B91C1C] active:scale-[0.97] transition-[colors,transform] duration-150"
+              >
+                Reject candidate
+              </button>
+              <button
+                onClick={() => {
+                  onSend?.(candidate.id);
+                  setView("timeline");
+                }}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#14110F] text-white text-[13px] font-medium shadow-[inset_0_-1.5px_0_rgba(0,0,0,0.12)] hover:bg-[#2A2420] active:scale-[0.97] transition-[colors,transform] duration-150"
+              >
+                Send
+                <ArrowRight className="size-3.5" strokeWidth={2} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 z-40 flex justify-end pointer-events-none">
@@ -135,16 +259,6 @@ export function CandidateDetail({
             externalRisk={externalRisk}
           />
         )}
-        {view === "compose" && (
-          <ComposeView
-            candidate={candidate}
-            isInternal={isInternal}
-            subject={draftSubject}
-            body={draftBody}
-            onSubjectChange={setDraftSubject}
-            onBodyChange={setDraftBody}
-          />
-        )}
         {view === "timeline" && (
           <TimelineView
             candidate={candidate}
@@ -162,33 +276,9 @@ export function CandidateDetail({
             </button>
             <button
               onClick={() => setView("compose")}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#14110F] text-white text-[13px] font-medium shadow-[inset_0_-1.5px_0_rgba(0,0,0,0.12)] hover:bg-[#2A2420] active:scale-[0.97] transition-[colors,transform] duration-150"
+              className="inline-flex items-center px-3 py-1.5 rounded-md bg-[#14110F] text-white text-[13px] font-medium shadow-[inset_0_-1.5px_0_rgba(0,0,0,0.12)] hover:bg-[#2A2420] active:scale-[0.97] transition-[colors,transform] duration-150"
             >
-              <Sparkles
-                className="size-3.5 text-mistral-orange-yellow"
-                strokeWidth={2}
-              />
               Compose outreach
-            </button>
-          </div>
-        )}
-        {view === "compose" && (
-          <div className="flex items-center justify-between gap-2 px-6 py-3 border-t border-[#27272A19]">
-            <button
-              onClick={() => setView("profile")}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[13px] font-medium text-[#79716B] hover:bg-[#27272A0F] hover:text-[#14110F] active:scale-[0.97] transition-[colors,transform] duration-150"
-            >
-              Save draft
-            </button>
-            <button
-              onClick={() => {
-                onSend?.(candidate.id);
-                setView("timeline");
-              }}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#14110F] text-white text-[13px] font-medium shadow-[inset_0_-1.5px_0_rgba(0,0,0,0.12)] hover:bg-[#2A2420] active:scale-[0.97] transition-[colors,transform] duration-150"
-            >
-              Send
-              <ArrowRight className="size-3.5" strokeWidth={2} />
             </button>
           </div>
         )}
@@ -338,6 +428,43 @@ function ProfileView({
   );
 }
 
+function RecruitingAgentBadge() {
+  // Compact briefcase pixel-art — matches the Recruiting agent icon used in the shortlist header
+  return (
+    <span className="size-5 grid place-items-center rounded-md overflow-clip bg-[#F1EDE8] shrink-0">
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 14 14"
+        shapeRendering="crispEdges"
+        aria-hidden="true"
+      >
+        <rect x="5" y="1" width="4" height="1" fill="#4A2C0A" />
+        <rect x="4" y="2" width="1" height="1" fill="#4A2C0A" />
+        <rect x="9" y="2" width="1" height="1" fill="#4A2C0A" />
+        <rect x="4" y="3" width="1" height="1" fill="#4A2C0A" />
+        <rect x="9" y="3" width="1" height="1" fill="#4A2C0A" />
+        <rect x="1" y="3" width="12" height="1" fill="#4A2C0A" />
+        <rect x="0" y="4" width="1" height="9" fill="#4A2C0A" />
+        <rect x="13" y="4" width="1" height="9" fill="#4A2C0A" />
+        <rect x="1" y="13" width="12" height="1" fill="#4A2C0A" />
+        <rect x="1" y="4" width="12" height="9" fill="#8B3D1E" />
+        <rect x="1" y="7" width="12" height="1" fill="#FFD700" />
+        <rect x="6" y="6" width="2" height="1" fill="#FFD700" />
+        <rect x="6" y="8" width="2" height="1" fill="#FFD700" />
+        <rect x="4" y="9" width="1" height="1" fill="#FFAF00" />
+        <rect x="9" y="9" width="1" height="1" fill="#FFAF00" />
+        <rect x="4" y="10" width="2" height="1" fill="#FA500F" />
+        <rect x="8" y="10" width="2" height="1" fill="#FA500F" />
+        <rect x="4" y="11" width="6" height="1" fill="#E10500" />
+        <rect x="4" y="12" width="1" height="1" fill="#E10500" />
+        <rect x="6" y="12" width="1" height="1" fill="#E10500" />
+        <rect x="9" y="12" width="1" height="1" fill="#E10500" />
+      </svg>
+    </span>
+  );
+}
+
 function ComposeView({
   candidate,
   isInternal,
@@ -354,25 +481,22 @@ function ComposeView({
   onBodyChange: (v: string) => void;
 }) {
   const channel = isInternal ? "email" : "inmail";
-  const internalEmail = candidate.name
-    .toLowerCase()
-    .replace(/[^a-z\s]/g, "")
-    .trim()
-    .replace(/\s+/g, ".") + "@cma-cgm.com";
+  // Slug helper — strip diacritics + non-alphanum chars
+  const slugify = (s: string) =>
+    s
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "")
+      .replace(/[^a-z0-9\s]/g, "")
+      .trim()
+      .replace(/\s+/g, "-");
+  const namePart = slugify(candidate.name).replace(/-/g, ".");
+  const companyDomain = slugify(candidate.company);
+  const internalEmail = `${namePart}@${companyDomain}.com`;
 
   return (
     <div className="flex-1 overflow-y-auto">
       <div className="px-6 pt-5 pb-3">
-        <div className="inline-flex items-center gap-1.5 text-[13px] font-medium text-[#79716B]">
-          <Sparkles
-            className="size-3.5 text-mistral-orange-yellow"
-            strokeWidth={2}
-          />
-          AI-drafted from this candidate&rsquo;s signals
-        </div>
-      </div>
-
-      <div className="px-6 pb-3">
         <label className="block text-[13px] font-medium text-[#57534D] mb-1.5">
           To
         </label>
@@ -403,10 +527,9 @@ function ComposeView({
         <label className="block text-[13px] font-medium text-[#57534D] mb-1.5">
           Subject
         </label>
-        <input
+        <Input
           value={subject}
           onChange={(e) => onSubjectChange(e.target.value)}
-          className="w-full text-[14px] text-[#14110F] bg-white border border-[#27272A14] rounded-md px-3 py-2 outline-none focus:border-[#27272A4D] transition-colors"
         />
       </div>
 
@@ -414,11 +537,10 @@ function ComposeView({
         <label className="block text-[13px] font-medium text-[#57534D] mb-1.5">
           Message
         </label>
-        <textarea
+        <Textarea
           value={body}
           onChange={(e) => onBodyChange(e.target.value)}
           rows={12}
-          className="w-full text-[14px] text-[#14110F] leading-[1.55] bg-white border border-[#27272A14] rounded-md px-3 py-2 outline-none focus:border-[#27272A4D] transition-colors resize-none"
         />
       </div>
     </div>
@@ -539,7 +661,8 @@ function TimelineItem({
 }
 
 function generateSubject(candidate: Candidate): string {
-  return `Senior Supply Chain Manager, CMA CGM APAC, ${candidate.name.split(" ")[0]}`;
+  const firstName = candidate.name.split(" ")[0];
+  return `${firstName}, APAC role at CMA CGM`;
 }
 
 function generateBody(candidate: Candidate): string {

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useMemo, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect, useLayoutEffect, useMemo, useRef } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   DndContext,
   PointerSensor,
@@ -35,8 +35,11 @@ import {
   RotateCcw,
   Star,
   Upload,
+  Briefcase,
+  Check,
 } from "lucide-react";
 import { Sidebar } from "@/components/shortlist/Sidebar";
+import { TextShimmer } from "@/components/ui/TextShimmer";
 import { cn } from "@/lib/utils";
 
 type Attachment = {
@@ -155,10 +158,14 @@ const DEFAULT_WEIGHTS: Record<string, number> = {
 
 export default function BriefPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const isReplay = searchParams.get("state") === "complete";
   const [order, setOrder] = useState<string[]>(
     ARCHETYPES.map((a) => a.id)
   );
-  const [visibleCount, setVisibleCount] = useState(1);
+  const [visibleCount, setVisibleCount] = useState(
+    isReplay ? CONVERSATION.length : 1
+  );
   const [thinking, setThinking] = useState(false);
 
   // Progressive reveal. Auto-stream agent replies (with a thinking loader).
@@ -211,6 +218,15 @@ export default function BriefPage() {
     setShowScrollDown(dist > 40);
   }, [visibleCount, thinking]);
 
+  // When arriving in replay mode (from Open chat), jump to the bottom
+  // synchronously, before the browser paints — no visible scroll.
+  useLayoutEffect(() => {
+    if (!isReplay) return;
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollTop = el.scrollHeight;
+  }, [isReplay]);
+
   const scrollToBottom = () => {
     const el = scrollRef.current;
     if (!el) return;
@@ -242,7 +258,7 @@ export default function BriefPage() {
             </span>
             <ChevronDown className="size-4 text-[#14110F] shrink-0" strokeWidth={2} />
           </button>
-          <div className="flex items-center">
+          <div className="flex items-center gap-1">
             <button
               className="size-9 grid place-items-center rounded-lg hover:bg-[#27272A0A] transition-colors"
               aria-label="Star chat"
@@ -255,6 +271,18 @@ export default function BriefPage() {
             >
               <Upload className="size-4 text-[#79716B]" strokeWidth={2} />
             </button>
+            {isReplay && (
+              <>
+                <span className="h-5 w-px bg-[#ECECEC] mx-2" aria-hidden />
+                <button
+                  onClick={() => router.push("/sandbox/shortlist")}
+                  className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-[#27272A0F] text-[14px] text-[#14110F] font-medium hover:bg-[#27272A14] active:scale-[0.97] transition-[colors,transform] duration-150"
+                >
+                  <Briefcase className="size-4 text-[#14110F]" strokeWidth={2} />
+                  Open Task
+                </button>
+              </>
+            )}
           </div>
         </div>
 
@@ -262,10 +290,10 @@ export default function BriefPage() {
         <div ref={scrollRef} className="flex-1 overflow-y-auto bg-[#FAFAF9]">
           <div className="max-w-[768px] mx-auto px-6 py-10 flex flex-col gap-12">
             {CONVERSATION.slice(0, visibleCount).map((m, i) => (
-              <div key={i} className="fade-up">
+              <div key={i} className={isReplay ? "" : "fade-up"}>
                 {m.from === "agent" ? (
                   <>
-                    <AgentMessage body={m.body} final={m.final}>
+                    <AgentMessage body={m.body} final={m.final} instant={isReplay}>
                       {m.archetypes && (
                         <div className="mt-4">
                           <ArchetypeCards
@@ -278,12 +306,25 @@ export default function BriefPage() {
                       )}
                       {m.final && (
                         <div className="mt-4">
-                          <button
-                            onClick={() => router.push("/sandbox/shortlist")}
-                            className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-[#FA500F] text-white text-[14px] font-medium shadow-[inset_0_-1.5px_0_rgba(0,0,0,0.08)] hover:bg-[#FC783B] active:scale-[0.97] transition-[colors,transform] duration-150"
-                          >
-                            Open in Work Mode
-                          </button>
+                          {isReplay ? (
+                            <div
+                              className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-[#27272A0F] text-[14px] text-[#79716B] font-medium"
+                              aria-disabled="true"
+                            >
+                              <Check
+                                className="size-4 text-[#16A34A]"
+                                strokeWidth={2.5}
+                              />
+                              Task created
+                            </div>
+                          ) : (
+                            <button
+                              onClick={() => router.push("/sandbox/shortlist")}
+                              className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-[#FA500F] text-white text-[14px] font-medium shadow-[inset_0_-1.5px_0_rgba(0,0,0,0.08)] hover:bg-[#FC783B] active:scale-[0.97] transition-[colors,transform] duration-150"
+                            >
+                              Create as Task
+                            </button>
+                          )}
                         </div>
                       )}
                     </AgentMessage>
@@ -512,7 +553,9 @@ function ThinkingLoader() {
   return (
     <div className="inline-flex items-center gap-2 pl-1">
       <MatrixLoader />
-      <span className="text-[14px] text-[#79716B]">Thinking…</span>
+      <TextShimmer className="text-[14px]" duration={1.6}>
+        Thinking…
+      </TextShimmer>
     </div>
   );
 }
@@ -520,10 +563,12 @@ function ThinkingLoader() {
 function AgentMessage({
   body,
   final,
+  instant,
   children,
 }: {
   body: string;
   final?: boolean;
+  instant?: boolean;
   children?: React.ReactNode;
 }) {
   return (
@@ -532,7 +577,7 @@ function AgentMessage({
         <RecruitingIcon />
       </div>
       <div className="flex-1 min-w-0">
-        <StreamingBody text={body} />
+        <StreamingBody text={body} instant={instant} />
         {children}
       </div>
       <div className="shrink-0 w-7" />
@@ -541,11 +586,21 @@ function AgentMessage({
   );
 }
 
-function StreamingBody({ text }: { text: string }) {
+function StreamingBody({
+  text,
+  instant,
+}: {
+  text: string;
+  instant?: boolean;
+}) {
   const words = useMemo(() => text.split(/(\s+)/), [text]);
-  const [shown, setShown] = useState(0);
+  const [shown, setShown] = useState(instant ? words.length : 0);
 
   useEffect(() => {
+    if (instant) {
+      setShown(words.length);
+      return;
+    }
     setShown(0);
     let i = 0;
     const interval = setInterval(() => {
@@ -554,7 +609,7 @@ function StreamingBody({ text }: { text: string }) {
       if (i >= words.length) clearInterval(interval);
     }, 10);
     return () => clearInterval(interval);
-  }, [words]);
+  }, [words, instant]);
 
   return (
     <div className="text-[16px] leading-[150%] text-[#14110F] text-pretty whitespace-pre-line">

@@ -32,7 +32,16 @@ export default function Page() {
 function PeakMoment() {
   return (
     <section id="peak" className="pt-16 pb-8 w-full max-w-[634px] mx-auto">
-      <VideoPlaceholder />
+      <VideoPlaceholder
+        route="/sandbox/shortlist"
+        filename="peak-shortlist.png"
+        note="The hero shot. Full shortlist page, 12 candidates visible, Hélène's lens."
+      />
+      <Caption>
+        The Recruiting Tool for CMA CGM. Five Skills, four Connectors, one
+        Custom Mode, one Project. Swap the business layer and the same kit
+        becomes Alert Monitoring for ASML.
+      </Caption>
     </section>
   );
 }
@@ -45,15 +54,20 @@ function Hero() {
   return (
     <section id="hero" className="pt-16 pb-12">
       <BodyCol>
-        <H1>Custom AI Apps don&rsquo;t scale through components.</H1>
+        <H1>The bet behind that screen</H1>
         <Body>
-          They scale through primitives. I designed a Recruiting Tool for CMA
-          CGM so I had something concrete to argue from. The tool is what you
-          see. The primitives are what I actually built.
+          A custom AI app inside Vibe isn&rsquo;t a separate product. It&rsquo;s
+          a composition of Vibe&rsquo;s primitives, plus a thin business layer
+          on top. I built a Recruiting Tool for CMA CGM to make that argument
+          concrete. The Recruiting Tool is what you see. The primitives are
+          what I actually built.
         </Body>
-        <p className="mt-8 text-[13px] text-ink-soft">
-          Take-home for Mistral AI, Solutions Designer, June 2026.
-        </p>
+        <Body>
+          Solutions ships ninety-nine more like it from the same kit, with the
+          same shell and a different business layer. That&rsquo;s the bet.
+          The rest of this case study walks through what that means in
+          practice and why I think it holds.
+        </Body>
       </BodyCol>
     </section>
   );
@@ -67,7 +81,13 @@ function ReadingTheBrief() {
   return (
     <section id="brief" className="py-12">
       <BodyCol>
-        <H1>Reading the brief.</H1>
+        <H1>Reading the brief</H1>
+        <Body>
+          Quick context. The brief points at the Mistral Chat Figma. That
+          same week, Mistral shipped Vibe with the new Chat / Work split.
+          I went with Vibe. It&rsquo;s what people are using now, and the
+          older Figma felt like a moving target.
+        </Body>
         <Body>
           The brief asks three questions. I&rsquo;ll get to them. But first I
           want to say who I designed this for. The three answers shift quite a
@@ -85,30 +105,37 @@ function ReadingTheBrief() {
         </Body>
       </BodyCol>
 
-      <div className="mt-12">
+      <div className="mt-10">
         <BodyCol>
-          <Block title="What is a custom AI app, relative to Vibe?">
-            <Body>
-              It&rsquo;s a composition. Vibe&rsquo;s primitives at the base.
-              A thin business layer on top. Everything around the work stays
-              Vibe. The sidebar, the composer, the mode switcher, all of it.
-              The behavior is what changes.
-            </Body>
-          </Block>
-          <Block title="Where does the Recruiting Tool primarily live, Chat Mode or Work Mode?">
-            <Body>
-              Work Mode is the home. The work runs for hours, sometimes days.
-              Chat Mode is the fast door in, opened with a slash.
-            </Body>
-          </Block>
-          <Block title="What&rsquo;s the human-agent trust contract at each step?">
-            <Body>
-              I sized the sign-off to the risk. Auto-pilot for the things that
-              stay inside the company. A human commit before anything goes out
-              the door. A heavier commit when whatever is happening is hard to
-              undo. Friction maps to consequence.
-            </Body>
-          </Block>
+          <ol className="flex flex-col gap-6">
+            <NumberedQuestion
+              n={1}
+              question="What is a custom AI app, relative to Vibe?"
+            >
+              A composition of Vibe&rsquo;s primitives plus a thin business
+              layer. The sidebar, the composer, the mode switcher stay Vibe.
+              Only the behavior changes. The app slots into the existing
+              Agents page, Shared tab. Zero new top-level concept.
+            </NumberedQuestion>
+            <NumberedQuestion
+              n={2}
+              question="Where does the Recruiting Tool primarily live, Chat Mode or Work Mode?"
+            >
+              Work Mode is the home. A senior search runs for weeks, sometimes
+              months, across sourcing, screening, interviews, sign-off. Chat
+              Mode is the fast door in, opened with a slash for ad-hoc
+              questions.
+            </NumberedQuestion>
+            <NumberedQuestion
+              n={3}
+              question="What&rsquo;s the human-agent trust contract at each step?"
+            >
+              Sign-off scales with stakes. Auto-pilot on things that stay
+              inside the company. A human commit before anything goes out. A
+              heavier commit when an action is hard to undo. Friction maps to
+              consequence.
+            </NumberedQuestion>
+          </ol>
         </BodyCol>
       </div>
     </section>
@@ -123,7 +150,7 @@ function UserResearch() {
   return (
     <section id="research" className="py-12">
       <BodyCol>
-        <H1>User research.</H1>
+        <H1>User research</H1>
         <Body>
           I went through every AI recruiting tool that shipped in 2026.
           Workable Agent, Pin, Refolk, Noon, Wellfound Reach, HeyMilo,
@@ -133,17 +160,18 @@ function UserResearch() {
         </Body>
         <Body>
           I read frustration threads on Blind, on Reddit, in industry reports.
-          Then I sat down with two practitioners. Diane runs talent at a
-          French fintech. Mathias runs an agency placing senior product roles.
+          Then I sat down with three practitioners. Diane runs talent at a
+          French fintech. Mathias runs an agency placing senior product
+          roles. Prescilia runs talent at a fast-growing scale-up.
         </Body>
         <Body>
-          Five things stuck. They shaped the design.
+          Six things stuck. They shaped the design.
         </Body>
       </BodyCol>
 
       <div className="mt-12">
         <BodyCol>
-          <Block title="Trust is the differentiator.">
+          <Block title="Trust is the differentiator">
             <Body>
               Every tool sources well enough. Few of them earn confidence. An
               agent that acts without context burns brand trust in a single
@@ -151,7 +179,7 @@ function UserResearch() {
               AI is starting to filter the generic agent messages out anyway.
             </Body>
           </Block>
-          <Block title="Context is the quality lever.">
+          <Block title="Context is the quality lever">
             <Body>
               The kick-off conversation is where the real signal lives. The
               scoring rubric is downstream of it. So are the rejection
@@ -162,14 +190,14 @@ function UserResearch() {
               agent&rsquo;s job is to compose it.
             </Body>
           </Block>
-          <Block title="Inbound triage is the volumetric pain.">
+          <Block title="Inbound triage is the volumetric pain">
             <Body>
               Diane&rsquo;s team gets 165 applications in a day on one role.
               Three hours of sorting. Half a recruiter&rsquo;s day, gone. No
               manual process scales to that.
             </Body>
           </Block>
-          <Block title="AI earns its keep on structured text.">
+          <Block title="AI earns its keep on structured text">
             <Body>
               Scoring, qualification, drafts of any kind. The agent is
               reliable there. The final calls stay with the human. Mathias
@@ -178,12 +206,28 @@ function UserResearch() {
               first message to a senior candidate, he still writes himself.
             </Body>
           </Block>
-          <Block title="The product is a shared workspace.">
+          <Block title="The ATS is the real goldmine">
+            <Body>
+              Prescilia put it plainly. Past applicants, declined offers,
+              interview notes, second-choice candidates from previous
+              searches. Hundreds of people your team has already met and
+              scored, with notes from human screens you&rsquo;ve already
+              done. Most ATS make these unreachable. An AI that
+              re-discovers your own pool before reaching outside is more
+              valuable than one that scans more LinkedIn.
+            </Body>
+            <Body>
+              That&rsquo;s why the shortlist defaults to eight internal,
+              four external. Internal here means already in our ATS. The
+              agent searches the ATS first.
+            </Body>
+          </Block>
+          <Block title="The product is a shared workspace">
             <Body>
               Diane and Mathias described the same fragmentation. The TA
               reads one version of the role in Notion. The hiring manager
-              reads a different one buried in email. The ATS quietly holds a
-              third. So I put the Recruiting Tool inside a shared Vibe
+              reads a different one buried in email. The ATS quietly holds
+              a third. So I put the Recruiting Tool inside a shared Vibe
               Project. Every stakeholder reads the same state.
             </Body>
           </Block>
@@ -198,25 +242,37 @@ function UserResearch() {
 // ─────────────────────────────────────────────────────────────────────────────
 
 const REFERENCES = [
-  { name: "LiveKit voice agents", note: "Propose-to-commit as a primitive." },
-  { name: "Granola", note: "The agent&rsquo;s reasoning surfaces silently." },
-  { name: "Linear AI", note: "Calm by default." },
   {
-    name: "Notion AI",
-    note: "Agents that compose context across the workspace.",
+    name: "Workable Agent",
+    note: "Brief as conversation, scoring with reasons, hand-off with full context.",
   },
-  { name: "Cursor", note: "The human stays the editor." },
+  {
+    name: "LiveKit voice agents",
+    note: "Propose-to-commit named as a primitive.",
+  },
+  {
+    name: "Mercury inbox",
+    note: "Banking approvals as a calm table with a floating commit bar.",
+  },
+  {
+    name: "Linear AI triage",
+    note: "Live widgets that show each step of the agent&rsquo;s work.",
+  },
   {
     name: "Raycast Pro AI",
-    note: "Slash invocations as the unit of action.",
+    note: "Slash invocation as the unit of action.",
   },
   {
-    name: "Granola transcripts",
-    note: "The meeting becomes the document.",
+    name: "Granola",
+    note: "Background agent, calm artifact at the end, no interruption.",
   },
   {
-    name: "Anthropic Artifacts",
-    note: "Primitives that let conversation and output coexist.",
+    name: "v0 by Vercel",
+    note: "Beautiful by default, the design system carries the output.",
+  },
+  {
+    name: "Welcome to the Jungle ATS",
+    note: "Conversational brief, forty minutes becomes three.",
   },
 ];
 
@@ -224,7 +280,7 @@ function Inspiration() {
   return (
     <section id="inspiration" className="py-12">
       <BodyCol>
-        <H1>Pulled from these.</H1>
+        <H1>Pulled from these</H1>
         <Body>
           Eight references sat on the wall next to me while I worked. ChatGPT,
           Claude, Gemini, Perplexity stayed off it. The brief asked me to
@@ -260,110 +316,76 @@ function Inspiration() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Section 5 · The flow in 4 acts
+// Section 5 · The flow
 // ─────────────────────────────────────────────────────────────────────────────
 
 function FlowInFourActs() {
   return (
     <section id="flow" className="py-12">
       <BodyCol>
-        <H1>The flow in 4 acts.</H1>
+        <H1>The flow</H1>
         <Body>
-          Four screens. One primitive per screen. I&rsquo;ll walk through
-          each.
+          Two mini-sequences. First, how Hélène uses the app every morning.
+          Then, how the role even got there in the first place.
         </Body>
       </BodyCol>
 
-      <div className="mt-16 space-y-20">
-        <Act
-          title="Act 1, Access from Chat Mode."
-          caption="Invoking the Recruiting Tool from the slash menu."
-        >
-          <Body>
-            The recruiter types slash in the composer. The Recruiting Tool
-            sits inside the AGENTS section, right next to her personal
-            agents, alongside the other custom apps Solutions has already
-            shipped into her workspace.
-          </Body>
-          <Body>
-            I tried a separate APPS category. I pulled it out. OpenAI keeps
-            Workspace Agents under agents. So does Anthropic with Managed
-            Agents. Dust does the same. The grammar users are actually
-            learning says agent. I went with that.
-          </Body>
-        </Act>
+      <div className="mt-16">
+        <BodyCol>
+          <H2>Part one, the daily reality</H2>
+        </BodyCol>
+      </div>
 
-        <Act
-          title="Act 2, Brief in Chat Mode."
-          caption="Briefing the agent from the kick-off artifacts."
-        >
-          <Body>
-            The recruiter already had her kick-off with Sophie Bertrand, the
-            hiring manager. What the agent gets is the artifact of that
-            meeting. The transcript, plus the scoring rubric, plus an early
-            draft of the JD. Three files dragged into chat.
-          </Body>
-          <Body>
-            The agent reads. Summarizes what it read. Asks one critical
-            question that the kick-off left ambiguous. Proposes four
-            archetypes for who to chase. The recruiter sets the weights. The
-            agent confirms back. Then sourcing starts.
-          </Body>
-          <Body>
-            The agent frames before it executes. Propose-to-commit applied
-            at the intent stage, before any draft message even exists.
-          </Body>
-        </Act>
+      <div className="mt-8">
+        <FlowPlaceholder
+          filename="flow-part1-daily.png"
+          note="3 panels side-by-side, arrows between. Panel 1: Agents page, Shared tab, Recruiting card. Panel 2: Pipeline canvas (Kanban) with agent recap header. Panel 3: Compose modal (profile left, draft right)."
+          steps={[
+            {
+              title: "Entry",
+              body: "Agents page, Shared tab. She clicks Recruiting. Solutions put it there.",
+            },
+            {
+              title: "Pipeline",
+              body: "Cards grouped by stage. Agent recap on top, three picks named.",
+            },
+            {
+              title: "Commit",
+              body: "Click a candidate. Profile + draft. Edit one line, send. Eight minutes for four.",
+            },
+          ]}
+        />
+      </div>
 
-        <Act
-          title="Act 3, Shortlist in Work Mode."
-          caption="Reviewing the 12 candidates the agent surfaced."
-        >
+      <div className="mt-24">
+        <BodyCol>
+          <H2>Part two, how the role got there</H2>
           <Body>
-            Forty-five minutes later, the recruiter lands here. Twelve
-            candidates, surfaced out of 1,240 profiles.
+            Two months ago, none of this existed. Here&rsquo;s how Hélène
+            briefed the agent and got her shortlist back.
           </Body>
-          <Body>
-            This is where trust gets handed over. Every score sits next to
-            its reasons. Each reason is one click away from being
-            overridden. The agent flags risks too. Mei-Lin is in process at
-            MSC and might fast-track on us. Anne is internal, which means
-            her current manager needs a heads-up before anyone reaches out.
-            That&rsquo;s the contract.
-          </Body>
-          <Body>
-            The same primitive shows up elsewhere. Alerts inside Alert
-            Monitoring. The tickets queue inside Customer Support.
-            Production defects inside Industrial QC. Different domain each
-            time, the underlying pattern stays put.
-          </Body>
-          <InlinePlaceholder caption="The risk signal chip in detail." />
-          <Body>The Contact top 5 button is what kicks off the next act.</Body>
-        </Act>
+        </BodyCol>
+      </div>
 
-        <Act
-          title="Act 4, Propose-to-commit."
-          caption="Committing each outreach draft individually."
-        >
-          <Body>
-            Five drafts. Each one knows something specific about who
-            it&rsquo;s addressed to. Mei-Lin gets a line about her
-            Singapore-Shanghai transit work. Rajesh gets one about his
-            decarbonization piece. A template-driven version would have read
-            like a template. These read like something a recruiter would
-            have actually written.
-          </Body>
-          <Body>
-            The recruiter commits each one on its own. Send it, skip it, or
-            edit and then send. Every outbound message waits for a
-            human&rsquo;s hand.
-          </Body>
-          <Body>
-            I considered a Send all button. I pulled it. Commits need to
-            stay individual and conscious. A bulk button breaks the
-            contract the first time someone uses it without reading.
-          </Body>
-        </Act>
+      <div className="mt-8">
+        <FlowPlaceholder
+          filename="flow-part2-brief.png"
+          note="3 panels side-by-side, arrows between. Panel 1: Chat mode with slash menu open, /recruiting highlighted. Panel 2: Brief conversation, three files attached, archetypes proposed. Panel 3: Create as Task moment, new Task appears in Work sidebar."
+          steps={[
+            {
+              title: "Invocation",
+              body: "Fresh chat, /recruiting. The agent answers like any agent.",
+            },
+            {
+              title: "Brief",
+              body: "Three files dragged in. The agent reads, asks one question, proposes four archetypes.",
+            },
+            {
+              title: "Create as Task",
+              body: "One click. The chat becomes a Task in Work mode. Sourcing starts.",
+            },
+          ]}
+        />
       </div>
     </section>
   );
@@ -373,10 +395,16 @@ function Act({
   title,
   caption,
   children,
+  route,
+  filename,
+  note,
 }: {
   title: string;
   caption: string;
   children: React.ReactNode;
+  route?: string;
+  filename?: string;
+  note?: string;
 }) {
   return (
     <div>
@@ -384,7 +412,7 @@ function Act({
         <H2>{title}</H2>
       </BodyCol>
       <div className="mt-6 max-w-[634px] mx-auto">
-        <VideoPlaceholder />
+        <VideoPlaceholder route={route} filename={filename} note={note} />
         <Caption>{caption}</Caption>
       </div>
       <div className="mt-8">
@@ -402,33 +430,52 @@ function Primitives() {
   return (
     <section id="primitives" className="py-12">
       <BodyCol>
-        <H1>Five primitives that scale this to 100 apps.</H1>
+        <H1>Five primitives that scale this to 100 apps</H1>
         <Body>
           The brief asks how this scales. Components help. But components
-          are the symptom of a system, not the system itself. The primitives
-          underneath them are what actually scales. Five of them carry the
-          whole kit.
+          are the symptom of a system, not the system itself. The
+          primitives underneath them are what actually scales. Five of
+          them carry the whole kit.
+        </Body>
+        <Body>
+          The first one is the one that defines what an app even is. The
+          other four are how the app stays trustworthy at runtime.
         </Body>
       </BodyCol>
 
+      <div className="mt-10 max-w-[634px] mx-auto">
+        <div className="rounded-md overflow-hidden bg-[#FAFAF9] border border-[#EDE9E3]">
+          <img
+            src="/lofi/primitives-mapping.png?v=1"
+            alt="The five primitives, mapped to the five places they show up in the Recruiting Tool."
+            className="block w-full h-auto"
+          />
+        </div>
+        <Caption>
+          The five primitives, mapped to the five places they show up in
+          the Recruiting Tool.
+        </Caption>
+      </div>
+
       <div className="mt-12">
         <BodyCol>
-          <Block title="1, Explainable qualitative scoring.">
+          <Block title="1, Custom Mode surface">
             <Body>
-              Every score sits next to its reasons. Each reason is auditable
-              and override-able, tied back to a rubric the recruiter defined
-              up front. No black box.
+              The primitive that turns an agent into an app. A regular
+              agent in Vibe opens as a chat. With Custom Mode installed,
+              the same agent opens as a configured UI instead. A
+              shortlist, an inbox, a pipeline. Solutions writes that
+              surface once in Studio, then deploys.
             </Body>
             <Body>
-              In Recruiting, the twelve candidates get tagged Strong fit,
-              Good fit, or Worth exploring. At ASML, the same primitive
-              grades equipment alerts as Critical, High, or Medium. Over at
-              BNP Paribas, it scores tickets by compliance criticality.
-              Same shape underneath.
+              In Recruiting, Custom Mode delivers the Inbox and the
+              Shortlist. At ASML, the same primitive renders an Alert
+              triage table. At BNP, it&rsquo;s a Customer Support queue.
+              Same shell, swapped surface.
             </Body>
           </Block>
 
-          <Block title="2, Propose-to-commit.">
+          <Block title="2, Propose-to-commit">
             <Body>
               Anything irreversible, or anything that leaves the company,
               comes back as a draft. The human commits. Send it, skip it,
@@ -445,7 +492,22 @@ function Primitives() {
             </Body>
           </Block>
 
-          <Block title="3, Composed transverse context.">
+          <Block title="3, Explainable scoring with reasons">
+            <Body>
+              Every score sits next to its reasons. Each reason is
+              auditable and override-able, tied back to a rubric the
+              recruiter defined up front. No black box.
+            </Body>
+            <Body>
+              In Recruiting, the twelve candidates get tagged Strong fit,
+              Good fit, or Worth exploring. At ASML, the same primitive
+              grades equipment alerts as Critical, High, or Medium. Over
+              at BNP Paribas, it scores tickets by compliance criticality.
+              Same shape underneath.
+            </Body>
+          </Block>
+
+          <Block title="4, Composed transverse context">
             <Body>
               The agent pulls context across the enterprise&rsquo;s tools.
               Uploaded files, connectors, history, knowledge bases,
@@ -454,43 +516,29 @@ function Primitives() {
               reach. Then the agent assembles them when it needs to.
             </Body>
             <Body>
-              In Recruiting, that&rsquo;s three files and five connectors.
-              At ASML the agent pulls SCADA telemetry, Confluence, PLM, and
-              GMAO. The BNP version reaches into the CRM, core banking, and
-              the regulatory archives. The shape stays identical. The
-              sources change with the customer.
+              In Recruiting, that&rsquo;s three files and five connectors,
+              with the ATS first so the people we already know surface
+              before LinkedIn. At ASML the agent pulls SCADA telemetry,
+              Confluence, PLM, and GMAO. The BNP version reaches into the
+              CRM, core banking, and the regulatory archives. The shape
+              stays identical. The sources change with the customer.
             </Body>
           </Block>
 
-          <Block title="4, Risk-contextual sign-off.">
+          <Block title="5, Risk-contextual sign-off">
             <Body>
-              Approval scales with risk. Low-risk actions run on auto-pilot.
-              Moderate ones need a light commit. The critical ones ask for
-              a reinforced commit, often with a second pair of eyes.
-              Friction maps to consequence.
+              Approval scales with risk. Low-risk actions run on
+              auto-pilot. Moderate ones need a light commit. The critical
+              ones ask for a reinforced commit, often with a second pair
+              of eyes. Friction maps to consequence.
             </Body>
             <Body>
               In Recruiting, the agent runs auto-pilot on sourcing and
               scoring. Outreach asks for a light commit. An offer letter
               gets a reinforced one. Over at Alert Monitoring, a full line
-              shutdown triggers a two-person rule. Inside Customer Support,
-              a compliance officer signs off on anything MIFID-sensitive.
-              Same gradient, different stakes.
-            </Body>
-          </Block>
-
-          <Block title="5, Forgiveness by default.">
-            <Body>
-              Every automated action is reversible. Each score can be
-              overridden. Every commit has a window to undo it before it
-              lands.
-            </Body>
-            <Body>
-              In Recruiting, that means override on every score, edit on
-              every draft, and a thirty-second undo on every send. At ASML,
-              engineers can downgrade an alert after the fact. Advisors at
-              BNP can undo a sent response inside a minute. The agent moves
-              first. The human can always walk it back.
+              shutdown triggers a two-person rule. Inside Customer
+              Support, a compliance officer signs off on anything
+              MIFID-sensitive. Same gradient, different stakes.
             </Body>
           </Block>
         </BodyCol>
@@ -507,7 +555,7 @@ function SameKit() {
   return (
     <section id="kit" className="py-12">
       <BodyCol>
-        <H1>Same kit, different apps.</H1>
+        <H1>Same kit, different apps</H1>
         <Body>
           The Recruiting Tool is the worked example. The deliverable is the
           five primitives sitting behind it. Swap the domain layer and the
@@ -516,8 +564,15 @@ function SameKit() {
         </Body>
       </BodyCol>
       <div className="mt-10 max-w-[634px] mx-auto">
-        <VideoPlaceholder />
-        <Caption>Three apps from the same kit.</Caption>
+        <VideoPlaceholder
+          route="Paper · 8GL-0"
+          filename="samekit-inbox-twin.png"
+          note="Export of the Alert Monitoring Inbox from Paper, side-by-side with Recruiting Inbox."
+        />
+        <Caption>
+          The Recruiting Inbox next to the Alert Monitoring Inbox. Same
+          shell, same grammar, swapped business layer.
+        </Caption>
       </div>
       <div className="mt-10">
         <BodyCol>
@@ -525,13 +580,14 @@ function SameKit() {
             Solutions configures the domain layer per vertical. The scoring
             rubric learns the language of alerts in one app. Of tickets in
             another. Of defects in a third. The propose-to-commit pattern
-            wraps an outreach message in one context, a corrective action in
-            another. Same shape every time.
+            wraps an outreach message in one context, a corrective action
+            in another. Same shape every time.
           </Body>
           <Body>
-            Solutions composes apps out of Vibe&rsquo;s primitives. They
-            stay inside the existing chrome. Composition is the unit of
-            work.
+            The user shell stays put. Project + App card + Inbox + Tasks.
+            What changes is the labels, the connectors, the scoring rubric,
+            the sign-off thresholds. Solutions composes apps out of
+            Vibe&rsquo;s primitives. Composition is the unit of work.
           </Body>
         </BodyCol>
       </div>
@@ -547,7 +603,7 @@ function HowSolutionsShips() {
   return (
     <section id="enablement" className="py-12">
       <BodyCol>
-        <H1>How Solutions ships this.</H1>
+        <H1>How Solutions ships this</H1>
         <Body>
           The Recruiting Tool users open in Vibe is the front. The
           composition behind it lives in AI Studio. Solutions builds the
@@ -556,7 +612,11 @@ function HowSolutionsShips() {
         </Body>
       </BodyCol>
       <div className="mt-10 max-w-[634px] mx-auto">
-        <VideoPlaceholder />
+        <VideoPlaceholder
+          route="AI Studio mockup"
+          filename="studio-workflow.png"
+          note="AI Studio view, Recruiting Workflow open. To be mocked-up in Paper."
+        />
         <Caption>The Recruiting Workflow open inside AI Studio.</Caption>
       </div>
       <div className="mt-10">
@@ -588,64 +648,81 @@ function Choices() {
   return (
     <section id="choices" className="py-12">
       <BodyCol>
-        <H1>Trade-offs.</H1>
+        <H1>Trade-offs</H1>
         <Body>
-          Two moments got most of the craft. The hero shortlist is where
-          trust gets handed from agent to human, so I gave it the most
-          attention. The propose-to-commit panel is where the contract
-          actually lives, so it got the second most. Everything else is
-          functional. I went lighter there on purpose.
+          Honestly, I tergiversated a lot. Most of the week went into
+          framing the problem, sketching the architecture in Paper, and
+          arguing with myself about what fit Vibe and what didn&rsquo;t.
+          The polish came later, on the two screens where it mattered.
+          The hero shortlist is where trust gets handed from agent to
+          human. The propose-to-commit panel is where the contract
+          actually lives. Everything else is functional. I went lighter
+          there on purpose.
         </Body>
-        <Body>Four arbitrages worth naming. And what I scoped out.</Body>
+        <Body>Five arbitrages worth naming. And what I scoped out.</Body>
       </BodyCol>
 
       <div className="mt-12">
         <BodyCol>
-          <Block title="Slash menu invocation in AGENTS, not a separate APPS category.">
+          <Block title="App backs the surfaces, doesn't take a sidebar slot">
             <Body>
-              The market converged on a single AGENTS category. I could
-              have diverged from it. That would have made a statement. It
-              also would have broken the grammar users are still learning. I
-              kept the consistency. The Recruiting Tool sits in AGENTS,
-              sub-grouped under SHARED.
+              I tried a peer Apps section. I tried turning the Project into
+              the app. I tried nesting the app inside a Project. Each one
+              added a primitive Vibe didn&rsquo;t need. Then I realized the
+              app didn&rsquo;t need a sidebar item at all. Tasks already
+              live in the sidebar. The app backs the surfaces Tasks render
+              on. Discovery happens in the Agents page. Solutions deploys,
+              client uses.
+            </Body>
+            <LofiGrid
+              images={[
+                { src: "/lofi/sidebar-a-right-panel.png?v=3", alt: "Apps as a peer sidebar section" },
+                { src: "/lofi/sidebar-b-tabs.png?v=3", alt: "App turned into a Project" },
+                { src: "/lofi/sidebar-d-app-card.png?v=3", alt: "App nested inside a Project" },
+              ]}
+              caption="Three sidebar architectures I sketched and dropped. Each one promoted the app to a sidebar primitive. None survived because the app doesn't need to be one."
+            />
+          </Block>
+          <Block title="Chat is ad-hoc, Task is the bridge to Work">
+            <Body>
+              Chat with the agent first. Files dragged by hand, archetypes
+              proposed. When the conversation tightens into a real search,
+              Create as Task makes it persistent. The Task lands in Work
+              mode with the app&rsquo;s canvas attached. One bridge, no
+              parallel surfaces.
             </Body>
           </Block>
-          <Block title="Brief in Chat Mode, sourcing in Work Mode.">
+          <Block title="List rows with side panel, not a card grid">
             <Body>
-              The brief stays in Chat Mode. Files uploaded by hand, no
-              connectors needed at that stage. Work Mode kicks in when the
-              recruiter hits Start sourcing. That&rsquo;s when LinkedIn
-              Recruiter, Workday, and the heavier connectors come online.
-              Two modes serving two purposes, stitched into one flow.
+              Workable, Pin, HeyMilo use cards. I tried cards. Twelve
+              candidates as cards reads like inventory. I switched to list
+              rows with a side panel. Editorial density holds up when the
+              point is reading.
+            </Body>
+            <LofiGrid
+              images={[
+                { src: "/lofi/shortlist-card-grid.png?v=1", alt: "Card grid variant, dropped" },
+                { src: "/lofi/shortlist-list-rows.png?v=2", alt: "List rows variant, kept" },
+              ]}
+              caption="Same twelve candidates, sketched both ways. The list won."
+            />
+          </Block>
+          <Block title="Individual commits, no Send all">
+            <Body>
+              Five drafts, one click. I considered it. I pulled it. The
+              propose-to-commit contract holds only if every external
+              action waits for a conscious commit. The friction is doing
+              the work.
             </Body>
           </Block>
-          <Block title="List rows with side panel, not a card grid.">
+          <Block title="ATS-first sourcing, not LinkedIn-first">
             <Body>
-              Workable, Pin, and HeyMilo all use cards. Three lines of
-              metadata plus a fit score plus a photo. I tried it. The
-              screen ended up reading like a dashboard. Twelve candidates
-              as cards reads like inventory you&rsquo;re trying to clear.
-            </Body>
-            <Body>
-              So I switched to list rows. One row per candidate, two lines
-              of text. Name, role, company, city, fit, and a risk flag.
-              Clicking the row opens a side panel with the full reasoning
-              and the signals. Linear and Chronicle taught me the move.
-              Editorial density holds up when the point is reading
-              carefully. Card maximalism is for when you&rsquo;re
-              browsing.
-            </Body>
-          </Block>
-          <Block title="Individual commits, no Send all.">
-            <Body>
-              The honest case for Send all is speed. Five drafts, one
-              click, all gone. I sat with it. Then I pulled it.
-            </Body>
-            <Body>
-              The propose-to-commit contract only holds if every external
-              action waits for a conscious commit. A bulk button breaks
-              that contract the first time someone uses it without reading
-              the drafts. The bit of friction is doing actual work.
+              Every other tool leads with the size of its external pool.
+              Prescilia pointed at the opposite end. The biggest moat for
+              an enterprise client is the ATS already inside. Past
+              applicants, declined offers, finalists from prior searches.
+              The default shortlist for CMA CGM lands eight from the ATS
+              and four new sourced via LinkedIn.
             </Body>
           </Block>
 
@@ -673,7 +750,7 @@ function Feasibility() {
   return (
     <section id="feasibility" className="py-12">
       <BodyCol>
-        <H1>Feasibility.</H1>
+        <H1>Feasibility</H1>
         <Body>
           If I had to ship this in four weeks, here&rsquo;s how I&rsquo;d
           phase it. And the questions I&rsquo;d want to argue out with
@@ -683,7 +760,7 @@ function Feasibility() {
 
       <div className="mt-12">
         <BodyCol>
-          <Block title="4-week phasing.">
+          <Block title="4-week phasing">
             <Body>
               Week one is for locking the kit. I&rsquo;d freeze the
               primitive contracts with eng and science. Skills signatures,
@@ -711,7 +788,7 @@ function Feasibility() {
             </Body>
           </Block>
 
-          <Block title="For product.">
+          <Block title="For product">
             <Body>
               Pick the next five verticals after Recruiting. The kit only
               earns its keep if the second and third apps reuse eighty
@@ -720,7 +797,7 @@ function Feasibility() {
             </Body>
           </Block>
 
-          <Block title="For engineering.">
+          <Block title="For engineering">
             <Body>
               Decide where the Custom Mode layer lives in the Vibe
               codebase. Thin client on top of Workflows, or its own state
@@ -729,7 +806,7 @@ function Feasibility() {
             </Body>
           </Block>
 
-          <Block title="For science.">
+          <Block title="For science">
             <Body>
               Evaluate at the Skill level or at the Workflow level. And
               the failure-mode dataset for sign-off actions, what does
@@ -738,7 +815,7 @@ function Feasibility() {
             </Body>
           </Block>
 
-          <Block title="For design.">
+          <Block title="For design">
             <Body>
               Keep the kit opinionated as the team grows. Decide up front
               who can add a primitive. And who is allowed to change the
@@ -817,6 +894,31 @@ function Caption({ children }: { children: React.ReactNode }) {
   );
 }
 
+function NumberedQuestion({
+  n,
+  question,
+  children,
+}: {
+  n: number;
+  question: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <li className="flex gap-3 items-start">
+      <span className="text-[15px] font-medium text-[#9CA3AF] tabular-nums leading-[1.55] shrink-0">
+        {n}.
+      </span>
+      <div className="flex flex-col gap-1.5 min-w-0">
+        <span
+          className="text-[15px] font-medium text-[#14110F] leading-[1.55]"
+          dangerouslySetInnerHTML={{ __html: question }}
+        />
+        <p className="text-[15px] text-[#525252] leading-[1.55]">{children}</p>
+      </div>
+    </li>
+  );
+}
+
 function Block({
   title,
   children,
@@ -834,33 +936,177 @@ function Block({
   );
 }
 
-function VideoPlaceholder() {
+function FlowPlaceholder({
+  filename,
+  note,
+  steps,
+}: {
+  filename: string;
+  note?: string;
+  steps: { title: string; body: string }[];
+}) {
   return (
-    <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-[#14110F] shadow-[0_1px_2px_rgba(15,23,42,0.06)]">
-      <div className="absolute inset-0 grid place-items-center">
-        <span className="size-12 rounded-full bg-white/10 border border-white/15 grid place-items-center text-white">
-          <Play
-            className="size-5 ml-0.5"
-            strokeWidth={1.5}
-            fill="currentColor"
-          />
-        </span>
+    <div>
+      <div className="relative aspect-[3/1] w-full rounded-xl overflow-hidden bg-[#14110F] shadow-[0_1px_2px_rgba(15,23,42,0.06)]">
+        <div className="absolute inset-0 grid place-items-center p-8">
+          <div className="flex flex-col items-center gap-3 text-center">
+            <span className="text-[11px] uppercase tracking-[0.12em] text-white/50 font-medium">
+              Flow composite · {steps.length} panels side-by-side
+            </span>
+            <span className="font-mono text-[14px] text-white/90 px-2.5 py-1 rounded bg-white/10 border border-white/15">
+              /public/sandbox/{filename}
+            </span>
+            {note && (
+              <span className="text-[12px] text-white/60 max-w-[70%] leading-snug">
+                {note}
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+      <div className="grid grid-cols-3 gap-6 mt-6 max-w-[1080px] mx-auto">
+        {steps.map((s, i) => (
+          <div key={s.title} className="flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] font-medium text-[#9CA3AF] tabular-nums">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className="text-[13px] font-semibold text-[#14110F]">
+                {s.title}
+              </span>
+            </div>
+            <p className="text-[13px] text-[#525252] leading-[1.5]">
+              {s.body}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
-function InlinePlaceholder({ caption }: { caption: string }) {
+function VideoPlaceholder({
+  route,
+  filename,
+  note,
+}: {
+  route?: string;
+  filename?: string;
+  note?: string;
+} = {}) {
+  return (
+    <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-[#14110F] shadow-[0_1px_2px_rgba(15,23,42,0.06)]">
+      <div className="absolute inset-0 grid place-items-center p-6">
+        {route || filename ? (
+          <div className="flex flex-col items-center gap-3 text-center">
+            <span className="text-[11px] uppercase tracking-[0.12em] text-white/50 font-medium">
+              Screenshot slot
+            </span>
+            {route && (
+              <span className="font-mono text-[14px] text-white/90 px-2.5 py-1 rounded bg-white/10 border border-white/15">
+                {route}
+              </span>
+            )}
+            {filename && (
+              <span className="font-mono text-[11.5px] text-white/60">
+                /public/sandbox/{filename}
+              </span>
+            )}
+            {note && (
+              <span className="text-[12px] text-white/60 max-w-[60%] leading-snug">
+                {note}
+              </span>
+            )}
+          </div>
+        ) : (
+          <span className="size-12 rounded-full bg-white/10 border border-white/15 grid place-items-center text-white">
+            <Play
+              className="size-5 ml-0.5"
+              strokeWidth={1.5}
+              fill="currentColor"
+            />
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function LofiGrid({
+  images,
+  caption,
+}: {
+  images: { src: string; alt: string }[];
+  caption: string;
+}) {
+  const cols = images.length === 2 ? "grid-cols-2" : "grid-cols-3";
+  return (
+    <div className="mt-6 mb-2">
+      <div className={`grid ${cols} gap-3`}>
+        {images.map((img) => (
+          <div
+            key={img.src}
+            className="rounded-md overflow-hidden bg-[#FAFAF9] border border-[#EDE9E3]"
+          >
+            <img
+              src={img.src}
+              alt={img.alt}
+              className="block w-full h-auto"
+            />
+          </div>
+        ))}
+      </div>
+      <p className="mt-3 text-[12.5px] text-ink-soft leading-snug text-pretty">
+        {caption}
+      </p>
+    </div>
+  );
+}
+
+function InlinePlaceholder({
+  caption,
+  route,
+  filename,
+  note,
+}: {
+  caption: string;
+  route?: string;
+  filename?: string;
+  note?: string;
+}) {
   return (
     <div className="mt-8 mb-4">
-      <div className="mx-auto w-[60%] aspect-[16/10] rounded-xl overflow-hidden bg-[#14110F] shadow-[0_1px_2px_rgba(15,23,42,0.06)] grid place-items-center">
-        <span className="size-10 rounded-full bg-white/10 border border-white/15 grid place-items-center text-white">
-          <Play
-            className="size-4 ml-0.5"
-            strokeWidth={1.5}
-            fill="currentColor"
-          />
-        </span>
+      <div className="mx-auto w-[60%] aspect-[16/10] rounded-xl overflow-hidden bg-[#14110F] shadow-[0_1px_2px_rgba(15,23,42,0.06)] grid place-items-center p-5">
+        {route || filename ? (
+          <div className="flex flex-col items-center gap-2 text-center">
+            <span className="text-[10px] uppercase tracking-[0.12em] text-white/50 font-medium">
+              Screenshot slot
+            </span>
+            {route && (
+              <span className="font-mono text-[12.5px] text-white/90 px-2 py-0.5 rounded bg-white/10 border border-white/15">
+                {route}
+              </span>
+            )}
+            {filename && (
+              <span className="font-mono text-[11px] text-white/60">
+                /public/sandbox/{filename}
+              </span>
+            )}
+            {note && (
+              <span className="text-[11.5px] text-white/60 max-w-[80%] leading-snug">
+                {note}
+              </span>
+            )}
+          </div>
+        ) : (
+          <span className="size-10 rounded-full bg-white/10 border border-white/15 grid place-items-center text-white">
+            <Play
+              className="size-4 ml-0.5"
+              strokeWidth={1.5}
+              fill="currentColor"
+            />
+          </span>
+        )}
       </div>
       <p className="mt-3 text-[12.5px] text-ink-soft leading-snug text-center">
         {caption}

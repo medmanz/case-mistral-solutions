@@ -10,8 +10,9 @@ import {
   CirclePlus,
   Briefcase,
   Box,
+  Shapes,
   Folder,
-  Calendar,
+  Clock,
   ArrowUpCircle,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -165,24 +166,26 @@ function ChatNav({ activeChat }: { activeChat?: string }) {
 
 function WorkNav() {
   return (
-    <div className="flex flex-col grow min-h-0 overflow-clip gap-6">
+    <div className="flex flex-col grow min-h-0 overflow-clip gap-3">
       <div className="flex flex-col gap-0.5">
         <NavRow
           icon={<CirclePlus className="size-4" strokeWidth={2} />}
           label="New Task"
+          highlighted
         />
         <NavRow
-          icon={<Box className="size-4 text-[#14110F]" strokeWidth={1.75} />}
+          icon={<Shapes className="size-4 text-[#14110F]" strokeWidth={1.75} />}
           label="Context"
         />
         <NavRow
-          icon={<Calendar className="size-4 text-[#14110F]" strokeWidth={1.75} />}
+          icon={<Clock className="size-4 text-[#14110F]" strokeWidth={1.75} />}
           label="Scheduled"
           badge="Preview"
+          badgeBlue
         />
       </div>
 
-      <div className="flex flex-col grow min-h-0 overflow-y-auto pb-20 gap-6">
+      <div className="flex flex-col grow min-h-0 overflow-y-auto pb-20">
         <div>
           <SectionHeader label="Projects" />
           <div className="flex flex-col gap-1">
@@ -193,8 +196,10 @@ function WorkNav() {
           </div>
         </div>
 
+        <div className="h-px shrink-0 border-t border-[#27272A19] my-2 mx-3" />
+
         <div>
-          <SectionHeader label="Tasks" />
+          <SectionHeader label="Tasks" hideAction />
           <div className="flex flex-col gap-1">
             <ChatItem label="Senior Supply Chain Manager search" active />
             <ChatItem label="Staff PM intro briefs" muted />
@@ -210,11 +215,13 @@ function NavRow({
   icon,
   label,
   badge,
+  badgeBlue,
   highlighted,
 }: {
   icon: React.ReactNode;
   label: string;
   badge?: string;
+  badgeBlue?: boolean;
   highlighted?: boolean;
 }) {
   return (
@@ -235,11 +242,21 @@ function NavRow({
         >
           {icon}
         </span>
-        <span className="text-[14px] text-[#14110F] flex-1 text-left leading-snug line-clamp-1" style={{ fontWeight: 450 }}>
+        <span
+          className="text-[14px] text-[#14110F] flex-1 text-left leading-snug line-clamp-1"
+          style={{ fontWeight: highlighted ? 500 : 450 }}
+        >
           {label}
         </span>
         {badge && (
-          <span className="text-[9.5px] uppercase tracking-wider text-[#79716B] bg-[#27272A0F] px-1 py-0.5 rounded">
+          <span
+            className={cn(
+              "flex items-center shrink-0",
+              badgeBlue
+                ? "h-5 px-1.5 gap-1 rounded-md bg-[#067EFF19] text-[#006AFF] text-[12px] font-medium leading-[16px]"
+                : "text-[9.5px] font-medium uppercase tracking-wider text-[#79716B] bg-[#27272A0F] px-1 py-0.5 rounded"
+            )}
+          >
             {badge}
           </span>
         )}
@@ -248,12 +265,24 @@ function NavRow({
   );
 }
 
-function SectionHeader({ label }: { label: string }) {
+function SectionHeader({
+  label,
+  hideAction,
+}: {
+  label: string;
+  hideAction?: boolean;
+}) {
   return (
     <div className="flex items-center justify-between sticky w-full px-2 py-1" style={{ backgroundColor: SIDEBAR_BG }}>
       <div className="flex items-center justify-between w-full px-2 gap-2">
         <span className="text-[12px] font-medium text-[#57534D]">{label}</span>
-        <button className="size-6 grid place-items-center rounded-lg hover:bg-[#27272A0F] transition-colors" aria-label={`New ${label.toLowerCase()}`}>
+        <button
+          className={cn(
+            "size-6 grid place-items-center rounded-lg hover:bg-[#27272A0F] transition-colors",
+            hideAction && "opacity-0 pointer-events-none"
+          )}
+          aria-label={`New ${label.toLowerCase()}`}
+        >
           <Plus className="size-[18px] text-[#A6A09B]" strokeWidth={2} />
         </button>
       </div>
