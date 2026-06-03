@@ -374,7 +374,7 @@ function FlowInFourActs() {
         <BodyCol>
           <H2>3, Daily use</H2>
           <Body>
-            Forty-five minutes later, the Task is ready. Hélène switches to
+            A few minutes later, the Task is ready. Hélène switches to
             Work mode and opens it. The shortlist is there, the agent&rsquo;s
             recap names her three strongest picks. She clicks Anne, reads
             the draft, edits one line, sends. Four candidates in eight
