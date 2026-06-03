@@ -12,10 +12,10 @@ type AgentCard = {
   name: string;
   subtitle: string;
   by: string;
-  section: "mine" | "browse";
   href?: string;
   bg: string;
   icon: string;
+  customMode?: boolean; // marks Apps with a canvas (Custom Mode primitive)
 };
 
 const AGENTS: AgentCard[] = [
@@ -25,17 +25,16 @@ const AGENTS: AgentCard[] = [
     subtitle:
       "Source senior hires from your ATS first. Score, draft outreach, sign-off.",
     by: "By Mistral Solutions",
-    section: "mine",
     href: "/sandbox/shortlist",
     bg: "linear-gradient(135deg, #FF7A2C 0%, #FA500F 50%, #E14010 100%)",
     icon: "/sandbox/icons/recruiting.png",
+    customMode: true,
   },
   {
     id: "data-analyst",
     name: "Data Analyst",
     subtitle: "Convert any CSV file into an analysis.",
     by: "By Mistral",
-    section: "browse",
     bg: "linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%)",
     icon: "/sandbox/icons/data-analyst.png",
   },
@@ -45,7 +44,6 @@ const AGENTS: AgentCard[] = [
     subtitle:
       "Experience personalized learning. Begin by asking for any subject.",
     by: "By Mistral",
-    section: "browse",
     bg: "linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%)",
     icon: "/sandbox/icons/personal-tutor.png",
   },
@@ -55,7 +53,6 @@ const AGENTS: AgentCard[] = [
     subtitle:
       "Summarize documents of any type into clear, concise summaries.",
     by: "By Mistral",
-    section: "browse",
     bg: "linear-gradient(135deg, #FDE047 0%, #FACC15 100%)",
     icon: "/sandbox/icons/global-summarizer.png",
   },
@@ -63,12 +60,6 @@ const AGENTS: AgentCard[] = [
 
 export default function AgentsPage() {
   const [tab, setTab] = useState<Tab>("all");
-
-  const mineAgents = AGENTS.filter((a) => a.section === "mine");
-  const browseAgents = AGENTS.filter((a) => a.section === "browse");
-
-  const showMine = tab === "all" || tab === "mine" || tab === "shared";
-  const showBrowse = tab === "all" || tab === "shared";
 
   return (
     <div className="h-[calc(100dvh-49px)] bg-[#FAFAF9] flex antialiased">
@@ -109,33 +100,14 @@ export default function AgentsPage() {
           </div>
         </div>
 
-        {/* My Agents grid */}
-        {showMine && mineAgents.length > 0 && (
-          <div className="px-10 pb-8">
-            <div className="grid grid-cols-4 gap-5 max-w-[1280px]">
-              {mineAgents.map((a) => (
-                <AgentTile key={a.id} agent={a} />
-              ))}
-            </div>
+        {/* Single Agents grid */}
+        <div className="px-10 pb-12">
+          <div className="grid grid-cols-4 gap-5 max-w-[1280px]">
+            {AGENTS.map((a) => (
+              <AgentTile key={a.id} agent={a} />
+            ))}
           </div>
-        )}
-
-        {/* Browse Agents */}
-        {showBrowse && (
-          <div className="px-10 pb-12">
-            <h2
-              className="text-[24px] font-semibold text-[#14110F] mb-5 leading-[1.3]"
-              style={{ letterSpacing: "-0.015em" }}
-            >
-              Browse Agents
-            </h2>
-            <div className="grid grid-cols-4 gap-5 max-w-[1280px]">
-              {browseAgents.map((a) => (
-                <AgentTile key={a.id} agent={a} />
-              ))}
-            </div>
-          </div>
-        )}
+        </div>
       </div>
     </div>
   );
@@ -177,9 +149,15 @@ function AgentTile({ agent }: { agent: AgentCard }) {
       )}
     >
       <div
-        className="w-full flex items-center justify-center"
+        className="w-full flex items-center justify-center relative"
         style={{ background: agent.bg, aspectRatio: "1.4 / 1" }}
       >
+        {agent.customMode && (
+          <span className="absolute top-3 right-3 inline-flex items-center gap-1 h-5 px-2 rounded-md bg-white/22 backdrop-blur-sm text-[11px] font-medium text-white leading-none">
+            <span className="size-1.5 rounded-full bg-white" />
+            Custom Mode
+          </span>
+        )}
         <img
           src={agent.icon}
           alt=""
