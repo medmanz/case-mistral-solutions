@@ -250,7 +250,7 @@ function BriefPageInner() {
 
 
   return (
-    <div className="h-[calc(100dvh-49px)] bg-surface flex">
+    <div className="h-[100dvh] bg-surface flex">
       <Sidebar
         width={260}
         mode="chat"

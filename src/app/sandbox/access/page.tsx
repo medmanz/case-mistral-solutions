@@ -191,7 +191,7 @@ function AccessPageInner() {
   };
 
   return (
-    <div className="h-[calc(100dvh-49px)] bg-[#FAFAF9] flex">
+    <div className="h-[100dvh] bg-[#FAFAF9] flex">
       <SlashMenu
         open={slashOpen}
         query={query}

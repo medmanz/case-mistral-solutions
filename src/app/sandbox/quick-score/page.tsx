@@ -24,7 +24,7 @@ export default function QuickScorePage() {
   const [choice, setChoice] = useState<Choice>(null);
 
   return (
-    <div className="h-[calc(100dvh-49px)] bg-[#FAFAF9] flex">
+    <div className="h-[100dvh] bg-[#FAFAF9] flex">
       <Sidebar
         width={260}
         mode="chat"

@@ -87,7 +87,7 @@ export default function AgentsPage() {
   const showBrowse = tab === "all";
 
   return (
-    <div className="h-[calc(100dvh-49px)] bg-[#FAFAF9] flex antialiased">
+    <div className="h-[100dvh] bg-[#FAFAF9] flex antialiased">
       <Sidebar width={260} mode="chat" />
       <div className="flex-1 flex flex-col bg-[#FAFAF9] min-w-0 overflow-y-auto">
         {/* Page header */}

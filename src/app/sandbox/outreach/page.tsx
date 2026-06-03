@@ -21,7 +21,7 @@ export default function OutreachPage() {
   }, [filter]);
 
   return (
-    <div className="h-[calc(100dvh-49px)] bg-surface-subtle flex">
+    <div className="h-[100dvh] bg-surface-subtle flex">
       <Sidebar width={260} />
       <div className="flex-1 flex flex-col bg-surface min-w-0">
         <div className="px-8 py-3.5 border-b border-line flex items-center justify-between">
