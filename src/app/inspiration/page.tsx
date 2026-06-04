@@ -278,9 +278,14 @@ const companies: Company[] = [
     name: "Interfere",
     logo: "/designing-in-ai/interfere/logo.png",
     body: (
-      <p>
-        They built a debugging platform where the AI agent watches your app, detects anomalies, suggests fixes, and hands off to humans cleanly.
-      </p>
+      <>
+        <p>
+          They built a debugging platform where the AI agent watches your app, detects anomalies, suggests fixes, and hands off to humans cleanly.
+        </p>
+        <p>
+          So many great details. The pixelated style of the icons is unique.
+        </p>
+      </>
     ),
     gallery: interfereGallery,
   },
