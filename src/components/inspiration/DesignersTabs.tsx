@@ -21,15 +21,15 @@ export function DesignersTabs({ companies }: { companies: DesignersCompany[] }) 
 
   return (
     <div className="mt-12">
-      <div className="mx-auto max-w-[634px]">
+      <div className="flex justify-center">
         <div
-          className="relative inline-flex items-center gap-1 rounded-full bg-[#F4F4F5] p-1"
+          className="relative inline-flex items-center gap-1 rounded-md bg-[#F4F4F5] p-1"
           role="tablist"
         >
           <AnimatedBackground
             value={active}
             onValueChange={setActive}
-            className="rounded-full bg-white shadow-[0_1px_2px_rgba(20,17,15,0.06),0_0_0_1px_rgba(20,17,15,0.04)]"
+            className="rounded-md bg-white shadow-[0_1px_2px_rgba(20,17,15,0.06),0_0_0_1px_rgba(20,17,15,0.04)]"
             transition={{ type: "spring", bounce: 0.2, duration: 0.3 }}
             enableHover
           >
@@ -40,12 +40,13 @@ export function DesignersTabs({ companies }: { companies: DesignersCompany[] }) 
                 type="button"
                 role="tab"
                 aria-selected={active === c.id}
-                className={`inline-flex items-center whitespace-nowrap rounded-full px-3.5 py-1.5 text-[13px] leading-[20px] font-medium transition-colors duration-150 focus-visible:outline-none ${
+                className={`inline-flex items-center whitespace-nowrap rounded-md px-3.5 py-1.5 text-[13px] leading-[20px] font-medium transition-colors duration-150 focus-visible:outline-none ${
                   active === c.id
                     ? "text-[#14110F]"
                     : "text-[#79716B] hover:text-[#14110F]"
                 }`}
               >
+                {c.name}
                 {c.logo && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
@@ -53,10 +54,9 @@ export function DesignersTabs({ companies }: { companies: DesignersCompany[] }) 
                     alt=""
                     width={16}
                     height={16}
-                    className="mr-2 h-4 w-4 rounded-[3px] object-contain"
+                    className="ml-2 h-4 w-4 rounded-[3px] object-contain"
                   />
                 )}
-                {c.name}
               </button>
             ))}
           </AnimatedBackground>
