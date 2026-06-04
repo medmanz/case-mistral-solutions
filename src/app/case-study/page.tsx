@@ -885,11 +885,9 @@ function Feasibility() {
       <BodyCol>
         <H1>Feasibility</H1>
         <Body>
-          Four weeks to ship. I&rsquo;d phase it like this, and there are
-          three things I&rsquo;d want to figure out with the team before
-          drawing the final pixels. The questions whose answers actually
-          change the design itself, so I&rsquo;d rather ask them than
-          guess.
+          Four weeks to ship. Here’s how I’d phase it. Three things
+          I’d want to nail down with the team first, because the
+          answers actually change the design.
         </Body>
       </BodyCol>
 
@@ -912,27 +910,27 @@ function Feasibility() {
                 <div className="pl-6 pr-2 mt-2 flex flex-col gap-3">
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
                     <strong>Week 1.</strong> Lock the kit with eng. What
-                    does each primitive look like in code, what data it
-                    needs, what it returns. Nothing in the UI gets drawn
-                    final until that contract holds.
+                    each primitive looks like in code, what data it
+                    needs, what it returns. Nothing gets drawn final
+                    until the contract holds.
                   </p>
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                    <strong>Week 2.</strong> Build the Recruiting Tool as
-                    the reference. The canonical version, the one every
-                    later app clones. Real API calls behind the sign-off,
-                    not mocks.
+                    <strong>Week 2.</strong> Build the Recruiting Tool
+                    as the reference. The canonical version. Real API
+                    calls behind the sign-off.
                   </p>
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
                     <strong>Week 3.</strong> Instrument and evaluate.
-                    Where does the agent get scoring wrong? Where does the
-                    sign-off feel too heavy or too light? I want to find
-                    the trust breaks before the design partner does.
+                    Where does the agent get scoring wrong? Where does
+                    the sign-off feel too heavy or too light? I’d
+                    rather find the trust breaks before the design
+                    partner does.
                   </p>
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
                     <strong>Week 4.</strong> One design partner. A real
                     recruiter, on a real role, sending real outreach.
-                    First honest signal on whether the sign-off contract
-                    holds when the stakes are real.
+                    First honest signal on whether the contract holds
+                    when the stakes are real.
                   </p>
                 </div>
               </AccordionContent>
@@ -946,7 +944,7 @@ function Feasibility() {
                 <div className="flex items-center gap-2">
                   <ChevronRight className="size-4 text-[#14110F] transition-transform duration-200 group-data-[state=expanded]:rotate-90 shrink-0" />
                   <span className="text-[16px] leading-[24px] font-medium text-[#242529]">
-                    Three questions I&rsquo;d ask the team first
+                    Three questions I’d ask the team first
                   </span>
                 </div>
               </AccordionTrigger>
@@ -954,26 +952,25 @@ function Feasibility() {
                 <div className="pl-6 pr-2 mt-2 flex flex-col gap-3">
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
                     <strong>How fast does the agent score 300 candidates?</strong>{" "}
-                    I&rsquo;d ask science. If it&rsquo;s a 30-second batch,
-                    the UI shows a thinking chain while the user waits. If
-                    it&rsquo;s fast enough to stream candidate by candidate,
-                    the shortlist fills in live. Two completely different
-                    designs hang on that one number.
+                    I’d ask science. A 30-second batch means the UI
+                    shows a thinking chain. Fast enough to stream
+                    candidate by candidate means the shortlist fills in
+                    live. Two completely different designs hang on that
+                    number.
                   </p>
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
                     <strong>How do we know the shortlist is actually good?</strong>{" "}
-                    I&rsquo;d ask science again. I&rsquo;d want a small
-                    labeled baseline before the first ship. Fifty profiles
-                    scored by three senior recruiters, with reasons.
-                    Without that, we can&rsquo;t tell if the agent&rsquo;s
-                    11/12 score means anything.
+                    I’d want a small labeled baseline before the first
+                    ship. Fifty profiles scored by three senior
+                    recruiters, with reasons. Otherwise the agent’s
+                    11/12 score means nothing.
                   </p>
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
                     <strong>Where does the brief live between sessions?</strong>{" "}
-                    I&rsquo;d ask engineering. If a closed tab loses it,
-                    the recovery UX is one design. If it persists in a
-                    task that resumes, that&rsquo;s a different one.
-                    I&rsquo;d rather know before I draw the empty state.
+                    I’d ask engineering. If a closed tab loses it, the
+                    recovery UX is one design. If it persists and
+                    resumes, that’s a different one. I’d rather know
+                    before I draw the empty state.
                   </p>
                 </div>
               </AccordionContent>
@@ -987,7 +984,7 @@ function Feasibility() {
                 <div className="flex items-center gap-2">
                   <ChevronRight className="size-4 text-[#14110F] transition-transform duration-200 group-data-[state=expanded]:rotate-90 shrink-0" />
                   <span className="text-[16px] leading-[24px] font-medium text-[#242529]">
-                    What I&rsquo;d own as design
+                    What I’d own as design
                   </span>
                 </div>
               </AccordionTrigger>
@@ -995,11 +992,9 @@ function Feasibility() {
                 <p className="pl-6 pr-2 mt-2 text-[16px] leading-[24px] text-[#525252] text-pretty">
                   Beyond the screens, the thing that decides whether
                   this scales is governance. Who can add a primitive to
-                  the kit? Who can change a Le Chat surface? The kit
-                  stays opinionated only if those answers are written
-                  down explicitly. I&rsquo;d draft that one-pager in
-                  week one, before the team grows and the answer drifts
-                  to &ldquo;everyone, sometimes&rdquo;.
+                  the kit? Who can change a Le Chat surface? I’d draft
+                  that one-pager in week one, before the team grows and
+                  the answer drifts to “everyone, sometimes”.
                 </p>
               </AccordionContent>
             </AccordionItem>
