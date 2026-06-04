@@ -772,40 +772,23 @@ function HowSolutionsShips() {
       <BodyCol>
         <H1>Shipping in AI Studio</H1>
         <Body>
-          Honest disclaimer first. I didn&rsquo;t have time to mock
-          this part up. I prioritised the Recruiting Tool, the
-          primitives, and the trade-offs because those carry the
-          architectural argument. So instead of showing screens, let me
-          tell you how I see this piece working.
+          Disclaimer: I didn’t have time to mock this part up. I spent
+          the time on the Recruiting Tool, the primitives, and the
+          trade-offs because that’s where the architecture lives. So
+          no screens here, just how I see it working.
         </Body>
         <Body>
-          The Recruiting Tool a recruiter opens in Le Chat is the
-          front. The composition behind it lives in AI Studio.
-          Solutions builds the workflow once, configures it for the
-          customer, and pushes it out from there. One workflow in
-          Studio, many fronts in Le Chat. CMA CGM gets one
-          configuration of the kit. La Fromagerie gets another. The
-          agent stays the same. What changes is the connectors wired
-          in, the scoring rubric, the voice samples, and the sign-off
-          thresholds the client wants.
+          Recruiter opens the tool in Le Chat. The composition behind
+          it lives in AI Studio. Solutions builds the workflow once,
+          configures per customer, pushes it out. CMA CGM gets one
+          config. La Fromagerie gets another. Same agent, different
+          connectors, different rubric, different sign-off thresholds.
         </Body>
         <Body>
-          The Solutions experience I&rsquo;d want to design in Studio
-          looks roughly like this. A blank Custom App on the canvas, a
-          primitive palette on the side (drop in a ScoreGauge, drop in
-          an ApprovalLevel), connectors picked from a list, the rubric
-          authored in a form, a preview pane that shows the front
-          updating live. The same React components the Recruiting Tool
-          renders in Le Chat, configured here. That&rsquo;s the
-          demo-to-prod path.
-        </Body>
-        <Body>
-          That&rsquo;s how Solutions stops being the bottleneck. The
-          work that produced the Recruiting Tool produces the next
-          ninety-nine the same way. A new Solutions Engineer opens her
-          first app already half-built from the kit. Happy to walk
-          through this in more detail at the panel, or sketch it live
-          if that&rsquo;s useful.
+          The Studio experience I’d want to design: a blank Custom App
+          on the canvas, primitives on the side, connectors from a
+          list, the rubric in a form, a live preview. Same React
+          components as the Le Chat front.
         </Body>
       </BodyCol>
     </section>
