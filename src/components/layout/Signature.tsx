@@ -28,6 +28,15 @@ export function Signature({ onNavigate, height = 26 }: Props) {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    // Match canvas intrinsic resolution to its display size (× DPR for
+    // sharpness). Without this, the default 300×150 canvas gets stretched
+    // to the CSS box, which both blurs the sweep and makes glimm
+    // calculate its left→right band on the wrong width, so the sweep
+    // appears to cover the wrong slice of the signature.
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = WIDTH * dpr;
+    canvas.height = HEIGHT * dpr;
+
     const reduce =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -35,7 +44,7 @@ export function Signature({ onNavigate, height = 26 }: Props) {
 
     const ctrl = createShader({
       canvas,
-      bandTight: 0.55,
+      bandTight: 0.3,
       direction: "ltr",
     });
     if (!ctrl) return;
