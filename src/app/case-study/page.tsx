@@ -467,19 +467,11 @@ function SameKit() {
             Recruiting Tool is the one I built. Alert Monitoring for ASML
             and Customer Support for BNP Paribas are configurations of the
             same primitives. Different data sources, different scoring,
-            different approval levels. Click between the tabs.
+            different approval levels.
           </Body>
         </BodyCol>
         <div className="mt-6 max-w-[760px] mx-auto">
           <KitAppsTabs />
-        </div>
-        <div className="mt-6 max-w-[760px] mx-auto">
-          <Caption>
-            Same Le Chat shell. Same four primitives. What changes
-            per app: the data sources, the scoring, the approval
-            levels. Every new app is a configuration on top of work
-            already done.
-          </Caption>
         </div>
       </div>
     </section>
