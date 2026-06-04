@@ -829,7 +829,7 @@ function Choices() {
       <BodyCol>
         <H1>Trade-offs</H1>
         <Body>
-          Honestly, I tergiversated a lot. Most of the week went into
+          I tergiversated a lot. Most of the week went into
           framing the problem, sketching the architecture in Paper, and
           arguing with myself about what fit Vibe and what didn&rsquo;t.
           The polish came later, on the two screens where it mattered.
