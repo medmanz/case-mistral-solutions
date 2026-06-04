@@ -24,7 +24,7 @@ export default function LandingPage() {
             className="mb-6 text-[24px] leading-[32px] text-[#242529]"
             style={{ fontFamily: "Signifier, serif", fontWeight: 400 }}
           >
-            Today
+            Intro
           </h2>
           <p className="text-pretty text-[16px] leading-[24px] text-[#525252]">
             This space gathers the take-home I put together for Mistral, around the Solutions Designer role. I left it as a working document, so you can see the thinking, not just the polished frame.
