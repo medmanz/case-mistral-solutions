@@ -1,4 +1,5 @@
 import { Sidebar } from "@/components/layout/Sidebar";
+import { MoreScreensSlider } from "@/components/case-study/MoreScreensSlider";
 import { Lightbox } from "@/components/ui/Lightbox";
 import { VideoLightbox } from "@/components/ui/VideoLightbox";
 import { Play, ChevronRight, ChevronUp } from "lucide-react";
@@ -40,6 +41,7 @@ export default function Page() {
           <HowSolutionsShips />
           <Choices />
           <Feasibility />
+          <MoreScreens />
           <LookingBack />
         </main>
       </div>
@@ -1600,6 +1602,38 @@ function LookingBack() {
             height={1536}
           />
         </BodyCol>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Section · More screens (static designs gallery)
+// ─────────────────────────────────────────────────────────────────────────────
+
+function MoreScreens() {
+  return (
+    <section id="more-screens" className="pt-12 pb-12">
+      <BodyCol>
+        <H1>More screens</H1>
+        <Body>
+          A few of the static screens I designed alongside the interactive
+          flows. Click any one to open it full size.
+        </Body>
+      </BodyCol>
+
+      <div className="mt-8 w-full max-w-[1080px] mx-auto px-4">
+        <MoreScreensSlider
+          screens={[
+            { src: "/case-study/design-01.png", alt: "Screen 1" },
+            { src: "/case-study/design-02.png", alt: "Screen 2" },
+            { src: "/case-study/design-03.png", alt: "Screen 3" },
+            { src: "/case-study/design-04.png", alt: "Screen 4" },
+            { src: "/case-study/design-05.png", alt: "Screen 5" },
+            { src: "/case-study/design-06.png", alt: "Screen 6" },
+            { src: "/case-study/design-07.png", alt: "Screen 7" },
+          ]}
+        />
       </div>
     </section>
   );
