@@ -1639,17 +1639,16 @@ function LookingBack() {
         </Body>
       </BodyCol>
 
-      <div className="mt-12 w-full max-w-[1200px] mx-auto px-4">
-        <Lightbox
-          src="/case-study/explorations.png"
-          alt="Wide canvas showing all exploration clusters from the case study, grouped by category."
-          imgClassName="block w-full h-auto rounded"
-          width={2938}
-          height={1536}
-        />
-        <p className="mt-3 text-center text-[13px] leading-[18px] text-[#9CA3AF]">
-          The Paper canvas of explorations, grouped by category. 57 artboards across 17 clusters.
-        </p>
+      <div className="mt-8">
+        <BodyCol>
+          <Lightbox
+            src="/case-study/explorations.png"
+            alt="Wide canvas showing all exploration clusters from the case study, grouped by category."
+            imgClassName="block w-full h-auto rounded"
+            width={2938}
+            height={1536}
+          />
+        </BodyCol>
       </div>
     </section>
   );
