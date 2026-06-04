@@ -8,19 +8,19 @@ import { X, Send, Pencil, Check, Sparkles, RotateCcw } from "lucide-react";
 const DRAFTS: Record<string, string> = {
   "mei-lin-chen": `Hi Mei-Lin,
 
-Saw your work on the Singapore-Shanghai trade lane optimization — the 8% transit time improvement is exactly the kind of operational gain CMA CGM is hiring against. We're building out our APAC senior management team and your profile maps closely to what we need.
+Saw your work on the Singapore-Shanghai trade lane optimization. The 8% transit time improvement is exactly the kind of operational gain CMA CGM is hiring against. We're building out our APAC senior management team and your profile maps closely to what we need.
 
 20 minutes to compare notes?`,
   "rajesh-krishnan": `Hi Rajesh,
 
-Read your recent piece on decarbonization in container shipping — the framing on regional port partnerships was sharp. CMA CGM is investing heavily in this exact area for APAC and your network across Singapore, Hong Kong, and Mumbai is a major signal for us.
+Read your recent piece on decarbonization in container shipping. The framing on regional port partnerships was sharp. CMA CGM is investing heavily in this exact area for APAC and your network across Singapore, Hong Kong, and Mumbai is a major signal for us.
 
 Worth a conversation?`,
   "anne-lefevre": `Hi Anne,
 
 As you know, CMA CGM is opening a Senior Supply Chain Director role for APAC. Your decade at Bolloré Africa Logistics and your familiarity with our internal systems (SAP TM, Workday) make you an exceptional fit.
 
-I'd like to discuss confidentially before bringing your name forward — are you open?`,
+I'd like to discuss confidentially before bringing your name forward. Are you open?`,
   "hiroshi-tanaka": `Hi Hiroshi,
 
 Your Yokohama hub digital transformation work at NYK is referenced internally at CMA CGM as a benchmark. We're hiring for a Senior Supply Chain Manager APAC and your process and digital background is a strong match.
@@ -28,7 +28,7 @@ Your Yokohama hub digital transformation work at NYK is referenced internally at
 Open to a confidential discussion?`,
   "sarah-obrien": `Hi Sarah,
 
-Saw your APAC-Europe air-sea conversion playbook at DSV — the cross-modal optimization is a capability we're explicitly hiring for at CMA CGM. Your French fluency and cross-cultural team experience make this a strong fit.
+Saw your APAC-Europe air-sea conversion playbook at DSV. The cross-modal optimization is a capability we're explicitly hiring for at CMA CGM. Your French fluency and cross-cultural team experience make this a strong fit.
 
 15 minutes to explore?`,
 };

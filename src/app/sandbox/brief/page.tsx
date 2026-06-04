@@ -119,7 +119,7 @@ const CONVERSATION: Msg[] = [
   {
     from: "agent",
     body:
-      "Twelve candidates ready. Anne, Marc, and Priya are your strongest picks — already cleared compliance, fluent across APAC, and matched on every must-have. Open Task to dig in.",
+      "Twelve candidates ready. Anne, Marc, and Priya are your strongest picks. Already cleared compliance, fluent across APAC, matched on every must-have. Open Task to dig in.",
     reasoning: true,
     result: true,
   },

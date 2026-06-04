@@ -1,7 +1,21 @@
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Lightbox } from "@/components/ui/Lightbox";
 import { VideoLightbox } from "@/components/ui/VideoLightbox";
-import { Play } from "lucide-react";
+import { Play, ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/Accordion";
+import { TestimonialStack } from "@/components/ui/TestimonialStack";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/ui/Tabs";
 
 export default function Page() {
   return (
@@ -13,7 +27,6 @@ export default function Page() {
           <Hero />
           <ReadingTheBrief />
           <UserResearch />
-          <Inspiration />
           <FlowInFourActs />
           <Primitives />
           <SameKit />
@@ -33,16 +46,12 @@ export default function Page() {
 
 function PeakMoment() {
   return (
-    <section id="peak" className="pt-16 pb-8 w-full max-w-[634px] mx-auto">
+    <section id="peak" className="pt-16 pb-8 w-full max-w-[1080px] mx-auto px-4">
       <Lightbox
         src="/sandbox/peak-shortlist.png?v=3"
-        alt="The Recruiting Tool for CMA CGM, shortlist view"
+        alt="The Recruiting Tool for CMA CGM, shortlist view"
+        imgClassName="block w-full h-auto rounded-lg"
       />
-      <Caption>
-        The Recruiting Tool for CMA CGM. Five Skills, four Connectors, one
-        Custom Mode, one Project. Swap the business layer and the same kit
-        becomes Alert Monitoring for ASML.
-      </Caption>
     </section>
   );
 }
@@ -59,7 +68,7 @@ function Hero() {
         <Body>
           A custom AI app inside Vibe isn&rsquo;t a separate product. It&rsquo;s
           a composition of Vibe&rsquo;s primitives, plus a thin business layer
-          on top. I built a Recruiting Tool for CMA CGM to make that argument
+          on top. I built a Recruiting Tool for CMA CGM to make that argument
           concrete. The Recruiting Tool is what you see. The primitives are
           what I actually built.
         </Body>
@@ -90,53 +99,27 @@ function ReadingTheBrief() {
           older Figma felt like a moving target.
         </Body>
         <Body>
-          The brief asks three questions. I&rsquo;ll get to them. But first I
-          want to say who I designed this for. The three answers shift quite a
-          bit depending on which customer you pick.
+          The brief asks three questions. I&rsquo;ll answer them later. But
+          first I want to say who I designed this for. The three answers shift
+          quite a bit depending on which customer you pick.
         </Body>
         <Body>
-          So I looked at who actually pays Mistral. CMA CGM, ASML, Airbus, BMW,
-          Stellantis, HSBC, BNP Paribas, France Travail. Industrial groups.
-          Banks. Government. I picked CMA CGM. The user I had in mind is a
+          So I looked at who actually pays Mistral. CMA CGM, ASML, Airbus, BMW,
+          Stellantis, HSBC, BNP Paribas, France Travail. Industrial groups.
+          Banks. Government. I picked CMA CGM. The user I had in mind is a
           head of TA running senior hires across APAC, inside a 155,000-person
           shipping group.
         </Body>
         <Body>
-          Then I rewrote each of the three questions in architectural form.
+          Then I had to settle three architectural questions of my own
+          before I could answer the brief&rsquo;s. They&rsquo;re the ones
+          that decide what a custom AI app actually <em>is</em>.
         </Body>
       </BodyCol>
 
       <div className="mt-10">
         <BodyCol>
-          <ol className="flex flex-col gap-6">
-            <NumberedQuestion
-              n={1}
-              question="What is a custom AI app, relative to Vibe?"
-            >
-              A composition of Vibe&rsquo;s primitives plus a thin business
-              layer. The sidebar, the composer, the mode switcher stay Vibe.
-              Only the behavior changes. The app slots into the existing
-              Agents page, Shared tab. Zero new top-level concept.
-            </NumberedQuestion>
-            <NumberedQuestion
-              n={2}
-              question="Where does the Recruiting Tool primarily live, Chat Mode or Work Mode?"
-            >
-              Work Mode is the home. A senior search runs for weeks, sometimes
-              months, across sourcing, screening, interviews, sign-off. Chat
-              Mode is the fast door in, opened with a slash for ad-hoc
-              questions.
-            </NumberedQuestion>
-            <NumberedQuestion
-              n={3}
-              question="What&rsquo;s the human-agent trust contract at each step?"
-            >
-              Sign-off scales with stakes. Auto-pilot on things that stay
-              inside the company. A human commit before anything goes out. A
-              heavier commit when an action is hard to undo. Friction maps to
-              consequence.
-            </NumberedQuestion>
-          </ol>
+          <BriefQuestionsAccordion />
         </BodyCol>
       </div>
     </section>
@@ -153,22 +136,46 @@ function UserResearch() {
       <BodyCol>
         <H1>User research</H1>
         <Body>
-          I went through every AI recruiting tool that shipped in 2026.
-          Workable Agent, Pin, Refolk, Noon, Wellfound Reach, HeyMilo,
-          Metaview, Humanly. The tech works. Sourcing across 400 million
-          profiles is not a moat anymore. What&rsquo;s actually broken is the
-          trust.
+          The brief asked for a Recruiting Tool. Before I drew anything, I
+          spent a real chunk of time just framing the problem. Design for
+          AI recruiting isn&rsquo;t really about UI. It&rsquo;s about
+          which moments to take from the human and which moments to give
+          back. You can&rsquo;t decide that from your desk.
         </Body>
         <Body>
-          I read frustration threads on Blind, on Reddit, in industry reports.
-          Then I sat down with three practitioners. Diane runs talent at a
-          French fintech. Mathias runs an agency placing senior product
-          roles. Prescilia runs talent at a fast-growing scale-up.
+          So I did three things. First, I went through every AI recruiting
+          tool that shipped in 2026. Workable Agent, Pin, Refolk, Noon,
+          Wellfound Reach, HeyMilo, Metaview, Humanly. The tech works.
+          Sourcing across 400 million profiles isn&rsquo;t a moat anymore.
+          What&rsquo;s broken is the trust.
         </Body>
         <Body>
-          Six things stuck. They shaped the design.
+          Second, I read frustration threads on Blind, on Reddit, and in
+          industry reports. That&rsquo;s where the real friction lives.
+        </Body>
+        <Body>
+          Third, I jumped on video calls with three people I know
+          personally from my network. Diane runs talent at Qonto. Mathias
+          runs The Product Crew, an agency placing senior product roles.
+          Prescillia runs talent at Hexa. Talking to people I trust
+          shortened the loop. They told me what was actually broken without
+          dressing it up. I asked each of them to walk me through a real
+          role they were filling, the tools they had tried, and where
+          things broke down.
         </Body>
       </BodyCol>
+
+      <div className="mt-10 max-w-[634px] mx-auto">
+        <ResearchVerbatims />
+      </div>
+
+      <div className="mt-10">
+        <BodyCol>
+          <Body>
+            Six things stuck. They shaped the design.
+          </Body>
+        </BodyCol>
+      </div>
 
       <div className="mt-12">
         <BodyCol>
@@ -209,7 +216,7 @@ function UserResearch() {
           </Block>
           <Block title="The ATS is the real goldmine">
             <Body>
-              Prescilia put it plainly. Past applicants, declined offers,
+              Prescillia put it plainly. Past applicants, declined offers,
               interview notes, second-choice candidates from previous
               searches. Hundreds of people your team has already met and
               scored, with notes from human screens you&rsquo;ve already
@@ -233,84 +240,6 @@ function UserResearch() {
             </Body>
           </Block>
         </BodyCol>
-      </div>
-    </section>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Section 4 · Inspiration
-// ─────────────────────────────────────────────────────────────────────────────
-
-const REFERENCES = [
-  {
-    name: "Workable Agent",
-    note: "Brief as conversation, scoring with reasons, hand-off with full context.",
-  },
-  {
-    name: "LiveKit voice agents",
-    note: "Propose-to-commit named as a primitive.",
-  },
-  {
-    name: "Mercury inbox",
-    note: "Banking approvals as a calm table with a floating commit bar.",
-  },
-  {
-    name: "Linear AI triage",
-    note: "Live widgets that show each step of the agent&rsquo;s work.",
-  },
-  {
-    name: "Raycast Pro AI",
-    note: "Slash invocation as the unit of action.",
-  },
-  {
-    name: "Granola",
-    note: "Background agent, calm artifact at the end, no interruption.",
-  },
-  {
-    name: "v0 by Vercel",
-    note: "Beautiful by default, the design system carries the output.",
-  },
-  {
-    name: "Welcome to the Jungle ATS",
-    note: "Conversational brief, forty minutes becomes three.",
-  },
-];
-
-function Inspiration() {
-  return (
-    <section id="inspiration" className="py-12">
-      <BodyCol>
-        <H1>Pulled from these</H1>
-        <Body>
-          Eight references sat on the wall next to me while I worked. ChatGPT,
-          Claude, Gemini, Perplexity stayed off it. The brief asked me to
-          look elsewhere, and the elsewhere turned out to be much more
-          useful.
-        </Body>
-      </BodyCol>
-      <div className="mt-10 max-w-[634px] mx-auto">
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-line">
-          {REFERENCES.map((r) => (
-            <li
-              key={r.name}
-              className="bg-surface p-5 flex items-start gap-4"
-            >
-              <span className="shrink-0 size-10 rounded-md bg-surface-sunken grid place-items-center">
-                <span className="size-3 rounded bg-line" />
-              </span>
-              <span className="flex flex-col min-w-0">
-                <span className="text-[15px] font-medium text-ink leading-tight">
-                  {r.name}
-                </span>
-                <span
-                  className="mt-1 text-[15px] text-ink-muted leading-snug"
-                  dangerouslySetInnerHTML={{ __html: r.note }}
-                />
-              </span>
-            </li>
-          ))}
-        </ul>
       </div>
     </section>
   );
@@ -366,7 +295,7 @@ function FlowInFourActs() {
         <FlowPlaceholder
           filename="flow-step2-brief.png"
           videoSrc="/sandbox/videos/flow-step2-brief.mp4?v=2"
-          note="Brief flow — files dropped, archetypes proposed, Create as Task clicked."
+          note="Brief flow. Files dropped, archetypes proposed, Create as Task clicked."
         />
       </div>
 
@@ -387,7 +316,7 @@ function FlowInFourActs() {
         <FlowPlaceholder
           filename="flow-step3-daily.png"
           videoSrc="/sandbox/videos/flow-part1-daily.mp4?v=2"
-          note="Daily flow recording — shortlist → click candidate → compose modal → send."
+          note="Daily flow recording. Shortlist → click candidate → compose modal → send."
         />
       </div>
     </section>
@@ -505,7 +434,7 @@ function Primitives() {
               In Recruiting, the twelve candidates get tagged Strong fit,
               Good fit, or Worth exploring. At ASML, the same primitive
               grades equipment alerts as Critical, High, or Medium. Over
-              at BNP Paribas, it scores tickets by compliance criticality.
+              at BNP Paribas, it scores tickets by compliance criticality.
               Same shape underneath.
             </Body>
           </Block>
@@ -558,45 +487,364 @@ function SameKit() {
   return (
     <section id="kit" className="py-12">
       <BodyCol>
-        <H1>Same kit, different apps</H1>
+        <H1>How design helps Solutions ship faster</H1>
         <Body>
-          The Recruiting Tool is the worked example. The deliverable is the
-          five primitives sitting behind it. Swap the domain layer and the
-          same kit becomes Alert Monitoring for ASML. Swap it once more and
-          it&rsquo;s Customer Support for BNP Paribas. The kit travels.
+          Mistral Solutions ships custom AI apps for enterprise, plus
+          clickable demos before the real build. They&rsquo;re engineers,
+          not designers. If design only lives with me, I&rsquo;m the
+          bottleneck on every project. So the answer to that question is
+          three things, applied to what I built here.
+        </Body>
+        <Body>
+          <strong>One.</strong> A worked example. The Recruiting Tool for
+          CMA CGM is built end-to-end. World-class UI, polish, the X
+          factor. The brief asked for that. The local problem solved.
+        </Body>
+        <Body>
+          <strong>Two.</strong> Four primitives extracted from it. Abstract
+          composable concepts Le Chat doesn&rsquo;t ship today. Build them
+          once, every custom AI app gets them. Then a component kit that
+          implements each primitive. Drop-in for engineers.
+        </Body>
+        <Body>
+          <strong>Three.</strong> One code path from demo to production.
+          This case study <em>is</em> the demo Solutions would send a
+          prospect. If the prospect signs, the same React components ship
+          to production. We swap mock data for real APIs, that&rsquo;s it.
+          The demo, the prototype, and the product are one file.
         </Body>
       </BodyCol>
-      <div className="mt-10 max-w-[634px] mx-auto">
-        <VideoPlaceholder
-          route="Paper · 8GL-0"
-          filename="samekit-inbox-twin.png"
-          note="Export of the Alert Monitoring Inbox from Paper, side-by-side with Recruiting Inbox."
-        />
-        <Caption>
-          The Recruiting Inbox next to the Alert Monitoring Inbox. Same
-          shell, same grammar, swapped business layer.
-        </Caption>
-      </div>
-      <div className="mt-10">
+
+      {/* Four primitives */}
+      <div className="mt-12">
         <BodyCol>
+          <H2>The four primitives</H2>
           <Body>
-            Solutions configures the domain layer per vertical. The scoring
-            rubric learns the language of alerts in one app. Of tickets in
-            another. Of defects in a third. The propose-to-commit pattern
-            wraps an outreach message in one context, a corrective action
-            in another. Same shape every time.
-          </Body>
-          <Body>
-            The user shell stays put. Project + App card + Inbox + Tasks.
-            What changes is the labels, the connectors, the scoring rubric,
-            the sign-off thresholds. Solutions composes apps out of
-            Vibe&rsquo;s primitives. Composition is the unit of work.
+            One primitive = one composable concept that solves a class of
+            problems for any custom AI app. Each one is motivated by an
+            insight from the user research and manifests in three to five
+            components in the kit.
           </Body>
         </BodyCol>
+        <div className="mt-6 max-w-[760px] mx-auto">
+          <PrimitivesGrid />
+        </div>
+      </div>
+
+      {/* The component kit */}
+      <div className="mt-14">
+        <BodyCol>
+          <H2>The component kit that ships the primitives</H2>
+          <Body>
+            Forty React components, the implementations Solutions
+            Engineering drops into a new app. Each primitive shows up here
+            as three to five components. The grid below is a lo-fi
+            inventory. Drag-drop ready in the codebase, not a Figma
+            library.
+          </Body>
+          <div className="mt-6">
+            <Lightbox
+              src="/lofi/component-kit.png?v=3"
+              alt="Component kit. 40 React components extracted from the Recruiting Tool"
+            />
+            <Caption>
+              A sample of components that let Solutions build any custom AI
+              app faster. Each one ships one of the four primitives.
+            </Caption>
+          </div>
+        </BodyCol>
+      </div>
+
+      {/* Three apps from the same primitives */}
+      <div className="mt-14">
+        <BodyCol>
+          <H2>Three apps from the same four primitives</H2>
+          <Body>
+            Recruiting Tool is the one I built. Alert Monitoring for ASML
+            and Customer Support for BNP Paribas are configurations of the
+            same primitives. Different data sources, different scoring,
+            different approval levels. Click between the tabs.
+          </Body>
+        </BodyCol>
+        <div className="mt-6 max-w-[760px] mx-auto">
+          <KitAppsTabs />
+        </div>
+        <div className="mt-6 max-w-[760px] mx-auto">
+          <Caption>
+            Same Le Chat shell, same four primitives. Only the data,
+            scoring, and what needs approval change. A configuration, not a
+            project from scratch.
+          </Caption>
+        </div>
       </div>
     </section>
   );
 }
+
+// ─── Primitives grid ──────────────────────────────────────────────────────
+
+type Primitive = {
+  name: string;
+  definition: string;
+  motivation: string;
+  components: string[];
+};
+
+const PRIMITIVES: Primitive[] = [
+  {
+    name: "Explainable scoring",
+    definition:
+      "Every agent output carries a score and the criteria behind it, inspectable on demand.",
+    motivation: "Trust is the differentiator",
+    components: ["ScoreGauge", "ScoreBreakdown", "RankReason", "ConfidenceMeter"],
+  },
+  {
+    name: "Composed transparent context",
+    definition:
+      "The agent reads from multiple sources at once and shows which one supported each claim.",
+    motivation: "Context is the quality lever",
+    components: ["AppConnectors", "SourceCitation", "DataPreview", "ConnectorHealth"],
+  },
+  {
+    name: "Risk-graded autonomy",
+    definition:
+      "Action friction scales with the blast radius. Low for reversible, high for irreversible.",
+    motivation: "Action is the moment of truth",
+    components: ["ApprovalLevels", "TypeToConfirm", "UndoBar", "BlockingApproval"],
+  },
+  {
+    name: "Chat-to-Task escalation",
+    definition:
+      "Quick questions live in chat. Sustained work escalates to a Task in Work, with full context.",
+    motivation: "A senior search runs for weeks. A quick check takes minutes.",
+    components: [
+      "CreateAsTaskButton",
+      "TaskContextHandoff",
+      "SwitchToChatLink",
+      "TaskAgentHeader",
+    ],
+  },
+];
+
+function PrimitivesGrid() {
+  return (
+    <div className="grid grid-cols-2 gap-3">
+      {PRIMITIVES.map((p, i) => (
+        <PrimitiveCard key={p.name} primitive={p} index={i + 1} />
+      ))}
+    </div>
+  );
+}
+
+function PrimitiveCard({ primitive, index }: { primitive: Primitive; index: number }) {
+  return (
+    <div className="rounded-xl border border-[#27272A14] bg-white p-5 flex flex-col gap-3">
+      <div className="flex items-baseline gap-2">
+        <span className="inline-flex items-center justify-center size-5 rounded-full bg-mistral-cream text-[#FA500F] text-[11px] font-medium tabular-nums">
+          {index}
+        </span>
+        <span className="text-[14px] font-medium text-[#14110F] leading-tight">
+          {primitive.name}
+        </span>
+      </div>
+      <div className="text-[13px] text-[#79716B] leading-[1.5]">
+        {primitive.definition}
+      </div>
+      <div className="text-[12.5px] text-[#A6A09B] leading-tight italic">
+        Why: {primitive.motivation}
+      </div>
+      <div className="mt-auto pt-3 border-t border-[#27272A0F]">
+        <div className="text-[11px] font-mono text-[#A6A09B] uppercase tracking-wider mb-2">
+          Components
+        </div>
+        <div className="flex flex-wrap gap-1.5">
+          {primitive.components.map((c) => (
+            <span
+              key={c}
+              className="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-mono text-[#14110F] bg-[#FAFAF9] border border-[#27272A14]"
+            >
+              {c}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Kit apps tabs ────────────────────────────────────────────────────────
+
+type AppMock = {
+  id: string;
+  tab: string;
+  customer: string;
+  agentLabel: string;
+  count: string;
+  columns: [string, string, string];
+  rows: { name: string; source: string; signal: string; signalTone: "high" | "med" | "low" | "score" }[];
+  primary: string;
+  secondary: string;
+  built?: boolean;
+};
+
+const KIT_APPS: AppMock[] = [
+  {
+    id: "recruiting",
+    tab: "Recruiting",
+    customer: "CMA CGM",
+    agentLabel: "@Recruiting Agent",
+    count: "12 candidates · ranked",
+    columns: ["Name", "From", "Match"],
+    rows: [
+      { name: "Anne Pham", source: "Maersk APAC", signal: "11/12", signalTone: "score" },
+      { name: "Marc Lefèvre", source: "CMA CGM internal", signal: "10/12", signalTone: "score" },
+      { name: "Priya Subramanian", source: "ONE Singapore", signal: "10/12", signalTone: "score" },
+      { name: "Lin Chen", source: "L'Oréal", signal: "7/12", signalTone: "score" },
+    ],
+    secondary: "Reject",
+    primary: "Send outreach",
+    built: true,
+  },
+  {
+    id: "alerts",
+    tab: "Alert Monitoring",
+    customer: "ASML",
+    agentLabel: "@Alert Agent",
+    count: "20 active alerts",
+    columns: ["Event", "Source", "Severity"],
+    rows: [
+      { name: "Yield drop 4.2%", source: "Fab 3, line 7", signal: "high", signalTone: "high" },
+      { name: "Wafer warp anomaly", source: "Supplier Zeiss", signal: "medium", signalTone: "med" },
+      { name: "Stepper drift", source: "EUV cluster 2", signal: "low", signalTone: "low" },
+      { name: "Coolant pressure dip", source: "Fab 2, line 4", signal: "medium", signalTone: "med" },
+    ],
+    secondary: "Acknowledge",
+    primary: "Escalate",
+  },
+  {
+    id: "support",
+    tab: "Customer Support",
+    customer: "BNP Paribas",
+    agentLabel: "@Support Agent",
+    count: "30 priority tickets",
+    columns: ["Ticket", "Channel", "Priority"],
+    rows: [
+      { name: "KYC re-verify, account 8472", source: "App", signal: "high", signalTone: "high" },
+      { name: "Card declined abroad", source: "Phone", signal: "medium", signalTone: "med" },
+      { name: "Statement export missing", source: "Web", signal: "low", signalTone: "low" },
+      { name: "Transfer pending 48h", source: "App", signal: "high", signalTone: "high" },
+    ],
+    secondary: "Decline",
+    primary: "Send reply",
+  },
+];
+
+function KitAppsTabs() {
+  return (
+    <Tabs defaultValue={KIT_APPS[0].id} className="w-full">
+      <TabsList className="border-b border-[#27272A14]">
+        {KIT_APPS.map((app) => (
+          <TabsTrigger key={app.id} value={app.id}>
+            <span className="flex items-center gap-2">
+              <span>{app.tab}</span>
+              <span className="text-[12px] text-[#A6A09B] font-normal">
+                · {app.customer}
+              </span>
+              {app.built && (
+                <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-[#FA500F1A] text-[#EB3A0B]">
+                  built
+                </span>
+              )}
+            </span>
+          </TabsTrigger>
+        ))}
+      </TabsList>
+      {KIT_APPS.map((app) => (
+        <TabsContent
+          key={app.id}
+          value={app.id}
+          className="mt-5 focus-visible:outline-none"
+        >
+          <AppMockup app={app} />
+        </TabsContent>
+      ))}
+    </Tabs>
+  );
+}
+
+function AppMockup({ app }: { app: AppMock }) {
+  return (
+    <div className="rounded-xl border border-[#27272A14] bg-white overflow-hidden shadow-[0_1px_2px_rgba(15,23,42,0.04)]">
+      {/* Vibe top bar — same shell on every tab */}
+      <div className="flex items-center justify-between px-4 py-3 border-b border-[#27272A0F] bg-[#FAFAF9]">
+        <div className="inline-flex items-center gap-2">
+          <span className="size-2 rounded-full bg-[#16A34A]" />
+          <span className="text-[13px] font-medium text-[#14110F]">
+            {app.agentLabel}
+          </span>
+        </div>
+        <span className="text-[12px] text-[#79716B]">{app.count}</span>
+      </div>
+      {/* Column headers */}
+      <div className="grid grid-cols-[1.6fr_1fr_auto] gap-3 px-4 py-2 border-b border-[#27272A0F] text-[11px] font-mono uppercase tracking-wider text-[#A6A09B]">
+        {app.columns.map((c) => (
+          <span key={c}>{c}</span>
+        ))}
+      </div>
+      {/* Rows */}
+      {app.rows.map((r, i) => (
+        <div
+          key={i}
+          className={cn(
+            "grid grid-cols-[1.6fr_1fr_auto] gap-3 items-center px-4 py-3 text-[13px]",
+            i < app.rows.length - 1 && "border-b border-[#27272A0F]"
+          )}
+        >
+          <span className="text-[#14110F] truncate">{r.name}</span>
+          <span className="text-[#79716B] truncate">{r.source}</span>
+          <SignalPill tone={r.signalTone} label={r.signal} />
+        </div>
+      ))}
+      {/* Action bar — propose-to-commit */}
+      <div className="flex items-center justify-end gap-2 px-4 py-3 border-t border-[#27272A0F] bg-[#FAFAF9]">
+        <button className="inline-flex items-center h-8 px-3 rounded-md text-[13px] text-[#57534D] border border-[#27272A14] bg-white">
+          {app.secondary}
+        </button>
+        <button className="inline-flex items-center gap-1.5 h-8 px-3 rounded-md text-[13px] font-medium text-white bg-[#14110F]">
+          {app.primary} <span aria-hidden>→</span>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function SignalPill({
+  tone,
+  label,
+}: {
+  tone: "high" | "med" | "low" | "score";
+  label: string;
+}) {
+  const styles =
+    tone === "high"
+      ? "bg-[#FEE2E2] text-[#991B1B]"
+      : tone === "med"
+        ? "bg-[#FEF3C7] text-[#92400E]"
+        : tone === "low"
+          ? "bg-[#DCFCE7] text-[#166534]"
+          : "bg-[#27272A0F] text-[#14110F] tabular-nums";
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center px-2 py-0.5 rounded text-[12px] font-medium",
+        styles
+      )}
+    >
+      {label}
+    </span>
+  );
+}
+
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Section 7.5 · How Solutions ships this
@@ -625,7 +873,7 @@ function HowSolutionsShips() {
       <div className="mt-10">
         <BodyCol>
           <Body>
-            One workflow in AI Studio. Many fronts in Vibe. CMA CGM gets
+            One workflow in AI Studio. Many fronts in Vibe. CMA CGM gets
             one configuration of the kit. La Fromagerie gets another. The
             agent stays the same. What changes is the connectors, the
             rubric, the voice samples, and the sign-off thresholds the
@@ -721,10 +969,10 @@ function Choices() {
           <Block title="ATS-first sourcing, not LinkedIn-first">
             <Body>
               Every other tool leads with the size of its external pool.
-              Prescilia pointed at the opposite end. The biggest moat for
+              Prescillia pointed at the opposite end. The biggest moat for
               an enterprise client is the ATS already inside. Past
               applicants, declined offers, finalists from prior searches.
-              The default shortlist for CMA CGM lands eight from the ATS
+              The default shortlist for CMA CGM lands eight from the ATS
               and four new sourced via LinkedIn.
             </Body>
           </Block>
@@ -755,9 +1003,14 @@ function Feasibility() {
       <BodyCol>
         <H1>Feasibility</H1>
         <Body>
-          If I had to ship this in four weeks, here&rsquo;s how I&rsquo;d
-          phase it. And the questions I&rsquo;d want to argue out with
-          product, design, eng, and science before week one starts.
+          Four weeks to make this real. Feasibility isn&rsquo;t an
+          engineering-only conversation. Every implementation choice
+          reshapes the design. Latency budgets decide whether the agent
+          streams or batches. Data model choices decide whether identity
+          resolves silently or asks the user. Connector strategy decides
+          whether a new customer takes days or weeks. So here&rsquo;s the
+          phasing, and the questions I&rsquo;d want answered with eng,
+          science, and Solutions before I draw a final pixel.
         </Body>
       </BodyCol>
 
@@ -765,64 +1018,123 @@ function Feasibility() {
         <BodyCol>
           <Block title="4-week phasing">
             <Body>
-              Week one is for locking the kit. I&rsquo;d freeze the
-              primitive contracts with eng and science. Skills signatures,
-              the connector auth model, the layout of Custom Mode. Everything
-              else waits its turn.
+              Week one is for locking the kit. The primitive contracts get
+              frozen with eng and science. Component signatures, the
+              connector auth model, the latency budgets per primitive.
+              Nothing in the UI gets drawn final until the contract holds.
             </Body>
             <Body>
-              Week two, I build Recruiting as the reference implementation.
-              The canonical version of the kit, the one every later app
-              will cite as the template. Sign-off pattern wired through
-              Workflows.
+              Week two, Recruiting becomes the reference implementation.
+              The canonical app every later one will clone. The sign-off
+              ladder gets wired into actual API calls, not mocks.
             </Body>
             <Body>
-              Week three goes to instrumentation and stress-tests.
-              Observability on every Skill and every Connector. Failure-mode
-              evals on the sign-off gates, run with science. I want to find
-              where trust breaks before the design partner does.
+              Week three is instrumentation and evals. Observability on
+              every primitive, every connector. Failure-mode evals on the
+              sign-off gates, run with science. I want to find where trust
+              breaks before a design partner does.
             </Body>
             <Body>
-              Week four, I deploy with one design partner. A single
-              enterprise pilot, scoped tight. Real recruiters working a
-              real role, sending real outreach to real candidates. First
-              honest signal on whether the sign-off contract holds in
-              production.
+              Week four, one design partner. A single enterprise pilot
+              scoped tight. Real recruiters working a real role, sending
+              real outreach to real candidates. First honest signal on
+              whether the sign-off contract holds in production.
             </Body>
           </Block>
 
-          <Block title="For product">
+          <Block title="What I&rsquo;d want answered first">
             <Body>
-              Pick the next five verticals after Recruiting. The kit only
-              earns its keep if the second and third apps reuse eighty
-              percent of it or more. I want to find that out now. Not in
-              month six.
+              Five questions whose answers actually change what I draw.
+              I&rsquo;d surface these in week one, not month two.
+            </Body>
+            <Body>
+              <strong>Scoring latency.</strong> Which Mistral endpoint
+              scores three hundred candidates against twelve criteria, and
+              how fast? If it&rsquo;s batched at thirty seconds, the UI
+              streams a reasoning chain. If it&rsquo;s sub-second per
+              candidate, the UI updates the shortlist live. Two different
+              designs.
+            </Body>
+            <Body>
+              <strong>Connectors, build or buy.</strong> Thin custom
+              connectors per customer or a paid abstraction like
+              Merge.dev. Build is cheaper at scale but slower per
+              customer. Buy ships the first ten pilots in days. The
+              answer reshapes the architecture and the Solutions onboarding.
+            </Body>
+            <Body>
+              <strong>Eval baseline.</strong> What does a labeled dataset
+              of &ldquo;good shortlist&rdquo; look like? I&rsquo;d want
+              fifty candidate profiles scored by three senior recruiters,
+              with rationale. Anchor the eval before the first product
+              launch. False positives carry a real brand cost.
+            </Body>
+            <Body>
+              <strong>Candidate identity.</strong> The same person
+              probably exists in Workday, in LinkedIn, in past Bolloré
+              pools. Who owns the merge logic, and does it run in the
+              agent&rsquo;s prompt or upstream as a dedup service? Design
+              consequence: do duplicates ever surface to the recruiter, or
+              never.
+            </Body>
+            <Body>
+              <strong>Component scope.</strong> Which Le Chat primitives
+              are stable enough to import directly, and which need to be
+              forked for the custom layer. Picking the wrong cut means
+              breaking changes upstream wreck every custom app. The
+              version contract is design infrastructure.
             </Body>
           </Block>
 
           <Block title="For engineering">
             <Body>
-              Decide where the Custom Mode layer lives in the Vibe
-              codebase. Thin client on top of Workflows, or its own state
-              model. This decision shapes how Solutions ships every future
-              app, so it can&rsquo;t slide.
+              Where does the Custom Mode state live? In the Le Chat
+              session, or in a Workflows runtime? Decides whether a brief
+              survives a tab close. That choice shapes the entire
+              recovery UX.
+            </Body>
+            <Body>
+              Connector auth model is governance, not just plumbing. Per-user
+              OAuth or per-tenant service account? Different security
+              postures, different consent screens, different failure
+              modes. I&rsquo;d argue this out before week two.
             </Body>
           </Block>
 
           <Block title="For science">
             <Body>
-              Evaluate at the Skill level or at the Workflow level. And
-              the failure-mode dataset for sign-off actions, what does
-              that even look like. The eval contract is design-shaped. I
-              want to argue it out early.
+              Evaluate at the primitive level (does ScoreGauge return a
+              defensible number?) or at the workflow level (does the
+              shortlist actually map to good hires?). The first is easy
+              to instrument and misses composition failures. The second
+              is honest and slow. I&rsquo;d argue for both, workflow-first.
+            </Body>
+            <Body>
+              Failure-mode dataset for sign-off. The agent occasionally
+              tries to send outreach that shouldn&rsquo;t go out. What
+              does &ldquo;shouldn&rsquo;t&rdquo; look like in data? I want
+              labeled examples before we calibrate the friction thresholds.
             </Body>
           </Block>
 
-          <Block title="For design">
+          <Block title="For product / Solutions">
             <Body>
-              Keep the kit opinionated as the team grows. Decide up front
-              who can add a primitive. And who is allowed to change the
-              Vibe interface itself. Governance before regret.
+              Pick the next five verticals. For each, validate three
+              things. Does the same primitive set hold? Does the same
+              decision matrix hold? What&rsquo;s customer-specific and
+              outside the kit? The kit only earns its keep if app two and
+              three reuse eighty percent or more. I want that signal in
+              month one, not month six.
+            </Body>
+          </Block>
+
+          <Block title="For design (me)">
+            <Body>
+              Component kit governance. Who can add a primitive? Who can
+              modify Le Chat surfaces? The kit stays opinionated only if
+              the answer is named, not inferred. I&rsquo;d write the
+              one-pager in week one, before the team scales and regret
+              starts.
             </Body>
           </Block>
         </BodyCol>
@@ -859,8 +1171,12 @@ function BodyCol({ children }: { children: React.ReactNode }) {
 function H1({ children }: { children: React.ReactNode }) {
   return (
     <h1
-      className="text-[15px] leading-[23px] font-medium text-[#242529] text-balance"
-      style={{ letterSpacing: "-0.1px" }}
+      className="text-[24px] leading-[32px] text-[#242529] text-balance"
+      style={{
+        fontFamily: "Signifier, ui-serif, Georgia, serif",
+        fontWeight: 400,
+        letterSpacing: "-0.01em",
+      }}
     >
       {children}
     </h1>
@@ -870,8 +1186,12 @@ function H1({ children }: { children: React.ReactNode }) {
 function H2({ children }: { children: React.ReactNode }) {
   return (
     <h2
-      className="text-[15px] leading-[23px] font-medium text-[#242529] text-balance"
-      style={{ letterSpacing: "-0.1px" }}
+      className="text-[24px] leading-[32px] text-[#242529] text-balance"
+      style={{
+        fontFamily: "Signifier, ui-serif, Georgia, serif",
+        fontWeight: 400,
+        letterSpacing: "-0.01em",
+      }}
     >
       {children}
     </h2>
@@ -881,8 +1201,8 @@ function H2({ children }: { children: React.ReactNode }) {
 function Body({ children }: { children: React.ReactNode }) {
   return (
     <p
-      className="text-[15px] leading-[23px] text-[#525252] text-pretty mt-2"
-      style={{ letterSpacing: "-0.1px" }}
+      className="text-[16px] leading-[24px] text-[#525252] text-pretty mt-4"
+      style={{ fontWeight: 400, letterSpacing: "-0.005em" }}
     >
       {children}
     </p>
@@ -894,7 +1214,7 @@ function Caption({ children }: { children: React.ReactNode }) {
     <p
       className="mt-3 text-pretty"
       style={{
-        fontFamily: "Inter, sans-serif",
+        fontFamily: "var(--font-geist), Geist, sans-serif",
         fontSize: "13px",
         fontWeight: 400,
         lineHeight: "18px",
@@ -903,6 +1223,236 @@ function Caption({ children }: { children: React.ReactNode }) {
     >
       {children}
     </p>
+  );
+}
+
+type Verbatim = {
+  quote: string;
+  name: string;
+  company: string;
+  logo: string | null;
+  initials: string;
+  background: string;
+  quoteColor: string;
+  footerColor: string;
+};
+
+const VERBATIMS: Verbatim[] = [
+  {
+    quote:
+      "Sourcing AIs base their match on the job ad alone. The job ad is the essence of the kick-off, not the substance. The agent should be learning from the kick-off conversation to actually understand what fits.",
+    name: "Diane Levron",
+    company: "Qonto",
+    logo: "/logos/qonto.png",
+    initials: "Q",
+    background:
+      "linear-gradient(135deg, #FFE4D2 0%, #FFF7ED 60%, #FAF7F2 100%)",
+    quoteColor: "#1A1614",
+    footerColor: "#525252",
+  },
+  {
+    quote:
+      "How do you add a tool that integrates and doesn’t sit on top as another layer? Because otherwise it never gets used.",
+    name: "Prescillia Kumponza",
+    company: "Hexa",
+    logo: "/logos/hexa.png",
+    initials: "H",
+    background: "#FCE7F3",
+    quoteColor: "#1A1614",
+    footerColor: "#525252",
+  },
+  {
+    quote:
+      "Today, few ATSs let you search your own candidate database properly. Just being able to source inside your own database, that’s already a huge plus. It’s a goldmine.",
+    name: "Prescillia Kumponza",
+    company: "Hexa",
+    logo: "/logos/hexa.png",
+    initials: "H",
+    background: "#FCE7F3",
+    quoteColor: "#1A1614",
+    footerColor: "#525252",
+  },
+  {
+    quote:
+      "The modern method is to step above the job description. Challenge the need itself. Often there’s a gap between what’s being asked and what’s actually needed.",
+    name: "Mathias Frachon",
+    company: "The Product Crew",
+    logo: null,
+    initials: "TPC",
+    background: "#E6F4D7",
+    quoteColor: "#1A1614",
+    footerColor: "#525252",
+  },
+  {
+    quote:
+      "I would never let a message go out without reviewing the profile first.",
+    name: "Prescillia Kumponza",
+    company: "Hexa",
+    logo: "/logos/hexa.png",
+    initials: "H",
+    background: "#FCE7F3",
+    quoteColor: "#1A1614",
+    footerColor: "#525252",
+  },
+  {
+    quote:
+      "A high-value recruiter in 2027 is a relationship operator, a quality-of-hire owner, and a pipeline strategist. Not a sourcer or scheduler.",
+    name: "Pin",
+    company: "AI recruiting platform",
+    logo: "/logos/pin.png",
+    initials: "P",
+    background: "#E0F2FE",
+    quoteColor: "#1A1614",
+    footerColor: "#525252",
+  },
+];
+
+function ResearchVerbatims() {
+  return (
+    <TestimonialStack cardHeightVh={45}>
+      {VERBATIMS.map((v, i) => (
+        <VerbatimCard key={i} verbatim={v} />
+      ))}
+    </TestimonialStack>
+  );
+}
+
+function VerbatimCard({ verbatim }: { verbatim: Verbatim }) {
+  return (
+    <div
+      className="rounded-2xl p-8 md:p-10 flex flex-col"
+      style={{ background: verbatim.background }}
+    >
+      <p
+        className="text-[20px] md:text-[22px] font-medium leading-[1.5] tracking-[-0.005em] text-pretty"
+        style={{ color: verbatim.quoteColor }}
+      >
+        “{verbatim.quote}”
+      </p>
+      <div className="mt-4 flex items-center gap-3">
+        <CompanyLogo
+          logo={verbatim.logo}
+          initials={verbatim.initials}
+          alt={verbatim.company}
+          quoteColor={verbatim.quoteColor}
+        />
+        <div className="flex flex-col min-w-0 leading-[16px]">
+          <span
+            className="text-[14px] font-medium"
+            style={{ color: verbatim.quoteColor }}
+          >
+            {verbatim.name}
+          </span>
+          <span
+            className="text-[14px] mt-0.5"
+            style={{ color: verbatim.footerColor }}
+          >
+            {verbatim.company}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CompanyLogo({
+  logo,
+  initials,
+  alt,
+  quoteColor,
+}: {
+  logo: string | null;
+  initials: string;
+  alt: string;
+  quoteColor: string;
+}) {
+  if (!logo) {
+    return (
+      <span
+        className="size-8 grid place-items-center text-[12px] font-mono font-semibold shrink-0 tracking-tight"
+        style={{ color: quoteColor }}
+        aria-label={alt}
+      >
+        {initials}
+      </span>
+    );
+  }
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={logo}
+      alt={alt}
+      width={32}
+      height={32}
+      className="size-8 object-contain shrink-0"
+      loading="lazy"
+    />
+  );
+}
+
+function BriefQuestionsAccordion() {
+  const questions: { id: string; q: string; a: React.ReactNode }[] = [
+    {
+      id: "q1",
+      q: "What is a custom AI app, relative to Vibe?",
+      a: (
+        <>
+          A composition of Vibe&rsquo;s primitives plus a thin business
+          layer. The sidebar, the composer, the mode switcher stay Vibe.
+          Only the behavior changes. The app slots into the existing
+          Agents page, Shared tab. Zero new top-level concept.
+        </>
+      ),
+    },
+    {
+      id: "q2",
+      q: "Where does the Recruiting Tool primarily live, Chat Mode or Work Mode?",
+      a: (
+        <>
+          Work Mode is the home. A senior search runs for weeks, sometimes
+          months, across sourcing, screening, interviews, sign-off. Chat
+          Mode is the fast door in, opened with a slash for ad-hoc
+          questions.
+        </>
+      ),
+    },
+    {
+      id: "q3",
+      q: "What’s the human-agent trust contract at each step?",
+      a: (
+        <>
+          Sign-off scales with stakes. Auto-pilot on things that stay
+          inside the company. A human commit before anything goes out. A
+          heavier commit when an action is hard to undo. Friction maps to
+          consequence.
+        </>
+      ),
+    },
+  ];
+  return (
+    <Accordion className="flex w-full flex-col" defaultValue="q1">
+      {questions.map((q) => (
+        <AccordionItem
+          key={q.id}
+          value={q.id}
+          className="py-3 border-b border-[#EDE9E3] last:border-b-0"
+        >
+          <AccordionTrigger className="w-full text-left">
+            <div className="flex items-center gap-2">
+              <ChevronRight className="size-4 text-[#14110F] transition-transform duration-200 group-data-[state=expanded]:rotate-90 shrink-0" />
+              <span className="text-[16px] leading-[24px] font-medium text-[#242529]">
+                {q.q}
+              </span>
+            </div>
+          </AccordionTrigger>
+          <AccordionContent className="origin-top">
+            <p className="pl-6 pr-2 mt-2 text-[16px] leading-[24px] text-[#525252] text-pretty">
+              {q.a}
+            </p>
+          </AccordionContent>
+        </AccordionItem>
+      ))}
+    </Accordion>
   );
 }
 

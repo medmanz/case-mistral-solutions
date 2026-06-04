@@ -60,7 +60,7 @@ const PRIMITIVES: Primitive[] = [
     index: "03",
     title: "Composed transverse context",
     description:
-      "The agent doesn't rely on a single data source. It composes context across the enterprise's tools, files, and systems — uploads, connectors, files, history. Context isn't in the agent. It's in the enterprise. Solutions team configures the sources. The agent composes.",
+      "The agent doesn't rely on a single data source. It composes context across the enterprise's tools, files, and systems. Uploads, connectors, files, history. Context isn't in the agent. It's in the enterprise. Solutions team configures the sources. The agent composes.",
     recruiting:
       "The brief uploads 3 files: kick-off transcript, scoring rubric, JD draft. In Work Mode, the agent layers connectors (LinkedIn Recruiter, Workday, Gmail, Calendar, shipping industry networks). Context assembles across the workflow.",
     cross: [
@@ -134,7 +134,7 @@ export function DesignPrimitives() {
         </h2>
         <p className="mt-4 text-ink-muted text-pretty">
           Custom AI Apps don&rsquo;t scale through reusable UI components alone.
-          They scale through reusable design primitives — patterns that recur
+          They scale through reusable design primitives. Patterns that recur
           across verticals and that Solutions team configures rather than
           rebuilds. Five primitives structure every Custom AI App in this kit.
         </p>
