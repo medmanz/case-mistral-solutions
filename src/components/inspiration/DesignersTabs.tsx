@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { AnimatedBackground } from "@/components/ui/AnimatedBackground";
 import {
   InspirationGallery,
@@ -63,25 +64,36 @@ export function DesignersTabs({ companies }: { companies: DesignersCompany[] }) 
         </div>
       </div>
 
-      {current && (
-        <>
-          <article className="mx-auto mt-10 max-w-[634px]">
-            <h3
-              className="mb-4 text-[20px] leading-[28px] text-[#242529]"
-              style={{ fontFamily: "Signifier, serif", fontWeight: 400 }}
-            >
-              {current.name}
-            </h3>
-            <div className="text-pretty text-[16px] leading-[24px] text-[#525252]">
-              {current.body}
-            </div>
-          </article>
+      <AnimatePresence mode="wait" initial={false}>
+        {current && (
+          <motion.div
+            key={current.id}
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -2 }}
+            transition={{
+              duration: 0.22,
+              ease: [0.23, 1, 0.32, 1],
+            }}
+          >
+            <article className="mx-auto mt-10 max-w-[634px]">
+              <h3
+                className="mb-4 text-[20px] leading-[28px] text-[#242529]"
+                style={{ fontFamily: "Signifier, serif", fontWeight: 400 }}
+              >
+                {current.name}
+              </h3>
+              <div className="text-pretty text-[16px] leading-[24px] text-[#525252]">
+                {current.body}
+              </div>
+            </article>
 
-          <div className="mx-auto mt-12 max-w-[634px]">
-            <InspirationGallery items={current.gallery} layout="stack" />
-          </div>
-        </>
-      )}
+            <div className="mx-auto mt-12 max-w-[634px]">
+              <InspirationGallery items={current.gallery} layout="stack" />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
