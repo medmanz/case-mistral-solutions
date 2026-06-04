@@ -455,11 +455,6 @@ function SameKit() {
               src="/lofi/component-kit.png?v=3"
               alt="Component kit. 40 React components extracted from the Recruiting Tool"
             />
-            <Caption>
-              Working draft of the kit inventory. The shipped library
-              would live as a versioned React package, browsable in
-              Storybook.
-            </Caption>
           </div>
         </BodyCol>
       </div>
