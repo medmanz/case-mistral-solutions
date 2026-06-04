@@ -1623,13 +1623,13 @@ function MoreScreens() {
       <div className="mt-8 w-full max-w-[1080px] mx-auto px-4">
         <MoreScreensSlider
           screens={[
-            { src: "/case-study/more-screens/design-01.png", alt: "Screen 1" },
-            { src: "/case-study/more-screens/design-02.png", alt: "Screen 2" },
-            { src: "/case-study/more-screens/design-03.png", alt: "Screen 3" },
-            { src: "/case-study/more-screens/design-04.png", alt: "Screen 4" },
-            { src: "/case-study/more-screens/design-05.png", alt: "Screen 5" },
-            { src: "/case-study/more-screens/design-06.png", alt: "Screen 6" },
-            { src: "/case-study/more-screens/design-07.png", alt: "Screen 7" },
+            { src: "/case-study/more-screens/design-01.png", alt: "Chat home with @Recruiting agent selected" },
+            { src: "/case-study/more-screens/design-02.png", alt: "Agents page, Made for CMA CGM" },
+            { src: "/case-study/more-screens/design-03.png", alt: "Brief, candidate archetypes proposed" },
+            { src: "/case-study/more-screens/design-04.png", alt: "Shortlist, table view" },
+            { src: "/case-study/more-screens/design-05.png", alt: "Outreach compose for Anne Lefèvre" },
+            { src: "/case-study/more-screens/design-06.png", alt: "Shortlist with candidate drawer + activity feed" },
+            { src: "/case-study/more-screens/design-07.png", alt: "Shortlist, kanban view" },
           ]}
         />
       </div>
