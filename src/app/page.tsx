@@ -8,7 +8,7 @@ export default function LandingPage() {
         <header className="mb-32 flex flex-col">
           <Signature />
           <span
-            className="mt-1 text-[16px] leading-[24px] text-[#9CA3AF]"
+            className="text-[16px] leading-[24px] text-[#9CA3AF]"
             style={{ fontFamily: "var(--font-geist)" }}
           >
             Designer
