@@ -24,7 +24,7 @@ const caveatBrush = Caveat_Brush({
 });
 
 export const metadata: Metadata = {
-  title: "Composing custom AI apps inside Vibe · Médéric Manière",
+  title: "Médéric Manière · Mistral case study",
   description:
     "Solutions Designer take-home for Mistral. A custom AI app inside Vibe is a composition of Vibe's primitives with a thin business layer on top.",
 };
