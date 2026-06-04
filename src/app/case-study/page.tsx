@@ -870,16 +870,6 @@ function Choices() {
               </p>
             </ChoicesItem>
           </Accordion>
-
-          <div className="mt-10">
-            <Body>
-              Two things I scoped out: inbound triage and the pipeline
-              view. Same scoring and propose-to-commit primitives apply
-              to both. I focused on the moments where trust gets
-              transmitted. The rest is composition on top of the same
-              primitives.
-            </Body>
-          </div>
         </BodyCol>
       </div>
     </section>
