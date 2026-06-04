@@ -1,0 +1,93 @@
+.stack {
+  --item-size: 28px;
+  --overlap-offset: calc(var(--item-size) / 2);
+  --shadow-color: 0deg 0% 0%;
+
+  cursor: pointer;
+  list-style: none;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(var(--item-size) - var(--overlap-offset));
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+}
+
+.item {
+  display: grid;
+  place-self: center;
+  inline-size: var(--item-size);
+  block-size: var(--item-size);
+  border-radius: 50%;
+  background: #fff;
+  position: relative;
+  box-shadow:
+    0 0 0 1.5px #fff,
+    -6px 0px 10px -3px hsl(var(--shadow-color) / 0.12);
+  transition: transform 700ms;
+  transition-timing-function: linear(
+    0,
+    0.79 14.4%,
+    1.026 22.4%,
+    1.164 31.2%,
+    1.207 38.2%,
+    1.208 46.2%,
+    1.033 80%,
+    1
+  );
+  isolation: isolate;
+}
+
+.link {
+  display: grid;
+  place-content: center;
+  place-self: center;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: #fff;
+  overflow: hidden;
+  text-decoration: none;
+  color: #525252;
+  font-weight: 600;
+  font-size: 13px;
+  outline: none;
+}
+
+.link:focus-visible {
+  outline: 2px solid #14110f;
+  outline-offset: 2px;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item:hover {
+  transform: scale(1.25);
+  z-index: 10;
+  box-shadow:
+    0 0 0 1.5px #fff,
+    0 8px 24px -6px hsl(var(--shadow-color) / 0.2);
+}
+
+@supports (selector(:has(*))) {
+  .stack:has(.item:hover) .item:hover ~ .item {
+    transform: translateX(
+      calc(
+        min(
+          15px * (sibling-count() - sibling-index()),
+          var(--overlap-offset)
+        )
+      )
+    );
+  }
+
+  .stack:has(.item:hover) .item:has(~ .item:hover) {
+    transform: translateX(
+      calc(-1 * min(15px * (sibling-index() - 1), var(--overlap-offset)))
+    );
+  }
+}

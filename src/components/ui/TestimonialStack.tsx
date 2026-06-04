@@ -15,9 +15,9 @@ import {
  */
 export function TestimonialStack({
   children,
-  cardHeightVh = 70,
+  cardHeightVh = 45,
   topOffset = 120,
-  staggerPx = 16,
+  staggerPx = 0,
 }: {
   children: ReactNode;
   /** Vertical scroll length per card, in viewport heights. */

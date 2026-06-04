@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { Signature } from "./Signature";
 
 type Item = {
@@ -8,21 +10,21 @@ type Item = {
   label: string;
 };
 
-const ITEMS: Item[] = [
-  { id: "hero", label: "Intro" },
+const DEFAULT_ITEMS: Item[] = [
+  { id: "hero", label: "Where I landed" },
   { id: "brief", label: "Reading the brief" },
   { id: "research", label: "User research" },
-  { id: "inspiration", label: "Inspiration" },
   { id: "flow", label: "The flow" },
-  { id: "primitives", label: "Five primitives" },
-  { id: "kit", label: "Same kit" },
-  { id: "enablement", label: "How Solutions ships" },
+  { id: "kit", label: "Design for Solutions" },
+  { id: "enablement", label: "Shipping in AI Studio" },
   { id: "choices", label: "Trade-offs" },
   { id: "feasibility", label: "Feasibility" },
 ];
 
-export function Sidebar() {
-  const [active, setActive] = useState<string>("hero");
+export function Sidebar({ items, topId }: { items?: Item[]; topId?: string } = {}) {
+  const ITEMS = items ?? DEFAULT_ITEMS;
+  const TOP = topId ?? ITEMS[0]?.id ?? "hero";
+  const [active, setActive] = useState<string>(TOP);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -45,7 +47,7 @@ export function Sidebar() {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [ITEMS]);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
@@ -57,9 +59,31 @@ export function Sidebar() {
 
   return (
     <aside className="sticky top-0 h-screen w-[260px] shrink-0 py-12 pl-8 flex flex-col bg-surface">
+      <Link
+        href="/"
+        className="group inline-flex items-center gap-1.5 mb-8 -ml-0.5 transition-colors"
+        style={{
+          fontSize: "13px",
+          lineHeight: "18px",
+          letterSpacing: "-0.18px",
+          color: "#9CA3AF",
+          fontWeight: 500,
+          fontVariationSettings: `"wght" 500`,
+          width: "max-content",
+        }}
+      >
+        <ArrowLeft
+          className="size-3.5 transition-transform duration-150 group-hover:-translate-x-0.5"
+          strokeWidth={2}
+        />
+        <span className="group-hover:text-[#242529] transition-colors">
+          Home
+        </span>
+      </Link>
+
       <Signature
         onNavigate={() => {
-          const el = document.getElementById("hero");
+          const el = document.getElementById(TOP);
           if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
         }}
       />
