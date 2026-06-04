@@ -220,12 +220,12 @@ export function CandidateDetail({
             />
             <div className="min-w-0">
               <h2
-                className="text-[18px] font-semibold text-[#14110F] leading-[1.55] truncate"
+                className="text-[16px] font-semibold text-[#14110F] leading-[1.3] truncate"
                 style={{ letterSpacing: "-0.01em" }}
               >
                 {candidate.name}
               </h2>
-              <p className="text-[14px] text-[#79716B] leading-[1.42] truncate inline-flex items-center gap-1.5">
+              <p className="text-[14px] text-[#79716B] leading-[1.4] truncate inline-flex items-center gap-1.5 mt-0.5">
                 <span>{candidate.role}</span>
                 <span aria-hidden>·</span>
                 {companyLogo && (
