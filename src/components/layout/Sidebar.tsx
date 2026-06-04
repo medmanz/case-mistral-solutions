@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { Signature } from "./Signature";
 
 type Item = {
   id: string;
@@ -80,13 +79,6 @@ export function Sidebar({ items, topId }: { items?: Item[]; topId?: string } = {
           Home
         </span>
       </Link>
-
-      <Signature
-        onNavigate={() => {
-          const el = document.getElementById(TOP);
-          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }}
-      />
 
       <div style={{ width: "max-content" }}>
         <nav>
