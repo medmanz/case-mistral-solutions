@@ -27,7 +27,7 @@ export default function LandingPage() {
             Intro
           </h2>
           <p className="text-pretty text-[16px] leading-[24px] text-[#525252]">
-            This space gathers the take-home I put together for Mistral, around the Solutions Designer role. I left it as a working document, so you can see the thinking, not just the polished frame.
+            I built this page for my Solutions Designer take-home at Mistral. Rather than a clean deck, I wanted to show how I think on the way to the answer.
           </p>
           <p className="mt-4 text-pretty text-[16px] leading-[24px] text-[#525252]">
             On a normal day, I design product interfaces. I like sitting close to engineering, sweating the small interactions, and turning fuzzy problems into something you can click.
