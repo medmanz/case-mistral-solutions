@@ -694,7 +694,7 @@ function TimelineItem({
           aria-hidden
         />
       )}
-      <span className="relative grid place-items-center size-6 rounded-full bg-[#F4F1EC] shrink-0 z-10">
+      <span className="relative grid place-items-center size-6 rounded-full bg-[#F4F4F5] shrink-0 z-10">
         <Icon className="size-3 text-[#57534D]" strokeWidth={2.25} />
       </span>
       <div className={cn("flex-1 min-w-0", isLast ? "pb-0" : "pb-5")}>
