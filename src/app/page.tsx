@@ -1,16 +1,12 @@
 import Link from "next/link";
+import { Signature } from "@/components/layout/Signature";
 
 export default function LandingPage() {
   return (
     <main className="min-h-screen bg-white antialiased">
       <div className="mx-auto max-w-[634px] px-6 pt-32 pb-24">
         <header className="mb-32 flex flex-col">
-          <span
-            className="text-[16px] leading-[24px] text-[#14110F]"
-            style={{ fontFamily: "var(--font-geist)", fontWeight: 500 }}
-          >
-            Médéric Manière
-          </span>
+          <Signature />
           <span
             className="text-[16px] leading-[24px] text-[#8B827B]"
             style={{ fontFamily: "var(--font-geist)" }}

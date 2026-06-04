@@ -63,7 +63,7 @@ export function Signature({ onNavigate }: Props) {
         e.preventDefault();
         onNavigate?.();
       }}
-      className="relative inline-block mb-16 hover:opacity-80 transition-opacity"
+      className="relative inline-block hover:opacity-80 transition-opacity"
       aria-label="Top"
       style={{ width: `${WIDTH}px`, height: `${HEIGHT}px`, lineHeight: 1 }}
     >
