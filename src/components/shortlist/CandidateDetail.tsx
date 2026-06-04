@@ -690,12 +690,12 @@ function TimelineItem({
     <li className="flex items-start gap-3 relative">
       {!isLast && (
         <span
-          className="absolute left-[11px] top-[28px] bottom-[4px] w-px bg-[#27272A19]"
+          className="absolute left-[13px] top-[32px] bottom-[4px] w-px bg-[#27272A19]"
           aria-hidden
         />
       )}
-      <span className="relative grid place-items-center size-6 rounded-full bg-[#F4F4F5] shrink-0 z-10">
-        <Icon className="size-3 text-[#57534D]" strokeWidth={2.25} />
+      <span className="relative grid place-items-center size-7 rounded-full bg-[#F4F4F5] shrink-0 z-10">
+        <Icon className="size-4 text-[#57534D]" strokeWidth={2} />
       </span>
       <div className={cn("flex-1 min-w-0", isLast ? "pb-0" : "pb-5")}>
         <div className="flex items-baseline justify-between gap-3">
