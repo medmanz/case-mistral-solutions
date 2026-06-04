@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 
 /**
@@ -27,6 +27,15 @@ export function Lightbox({
   priority?: boolean;
 }) {
   const [open, setOpen] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement | null>(null);
+
+  // If the image is already in the browser cache, onLoad may have fired
+  // before hydration. Catch that case on mount so we don't sit at
+  // opacity:0 forever for cached visits.
+  useEffect(() => {
+    if (imgRef.current?.complete) setLoaded(true);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -50,6 +59,7 @@ export function Lightbox({
         className={`block w-full cursor-zoom-in ${className ?? ""}`}
       >
         <img
+          ref={imgRef}
           src={src}
           alt={alt}
           width={width}
@@ -57,7 +67,9 @@ export function Lightbox({
           loading={priority ? "eager" : "lazy"}
           fetchPriority={priority ? "high" : "auto"}
           decoding="async"
-          className={imgClassName ?? "block w-full h-auto"}
+          onLoad={() => setLoaded(true)}
+          data-loaded={loaded ? "true" : "false"}
+          className={`img-fade ${imgClassName ?? "block w-full h-auto"}`}
         />
       </button>
       {open && (

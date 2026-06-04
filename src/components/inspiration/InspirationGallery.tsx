@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 
 export type GalleryItem = {
@@ -49,27 +49,9 @@ export function InspirationGallery({
           >
             <figure className="gallery__thumb">
               {item.kind === "video" ? (
-                <video
-                  src={item.src}
-                  className="gallery__image"
-                  width={item.width}
-                  height={item.height}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                />
+                <GalleryVideo item={item} />
               ) : (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  className="gallery__image"
-                  width={item.width}
-                  height={item.height}
-                  loading="lazy"
-                />
+                <GalleryImage item={item} />
               )}
               {item.caption && (
                 <figcaption className="gallery__caption">
@@ -130,5 +112,61 @@ export function InspirationGallery({
         </div>
       )}
     </>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Thumbs fade in once their media is actually ready — avoids the "blank
+// box → pop" effect on arrival. Layout space is already reserved by
+// .gallery__link's aspect-ratio, so the fade carries no layout shift.
+
+function GalleryImage({ item }: { item: GalleryItem }) {
+  const [loaded, setLoaded] = useState(false);
+  const ref = useRef<HTMLImageElement | null>(null);
+
+  useEffect(() => {
+    if (ref.current?.complete) setLoaded(true);
+  }, []);
+
+  return (
+    /* eslint-disable-next-line @next/next/no-img-element */
+    <img
+      ref={ref}
+      src={item.src}
+      alt={item.alt}
+      className="gallery__image img-fade"
+      width={item.width}
+      height={item.height}
+      loading="lazy"
+      decoding="async"
+      onLoad={() => setLoaded(true)}
+      data-loaded={loaded ? "true" : "false"}
+    />
+  );
+}
+
+function GalleryVideo({ item }: { item: GalleryItem }) {
+  const [loaded, setLoaded] = useState(false);
+  const ref = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    if (ref.current && ref.current.readyState >= 2) setLoaded(true);
+  }, []);
+
+  return (
+    <video
+      ref={ref}
+      src={item.src}
+      className="gallery__image img-fade"
+      width={item.width}
+      height={item.height}
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      onLoadedData={() => setLoaded(true)}
+      data-loaded={loaded ? "true" : "false"}
+    />
   );
 }

@@ -22,7 +22,7 @@ export default function Page() {
     <div className="bg-surface text-ink min-h-screen">
       <div className="flex">
         <Sidebar />
-        <main className="page-enter flex-1 min-w-0 flex flex-col items-center px-8">
+        <main className="flex-1 min-w-0 flex flex-col items-center px-8">
           <PeakMoment />
           <Hero />
           <ReadingTheBrief />
