@@ -811,7 +811,6 @@ function Choices() {
           mattered: the hero shortlist and the propose-to-commit
           panel. The rest stayed lighter on purpose.
         </Body>
-        <Body>Four trade-offs worth naming. And what I scoped out.</Body>
       </BodyCol>
 
       <div className="mt-10">
