@@ -12,11 +12,19 @@ export function Lightbox({
   alt,
   className,
   imgClassName,
+  width,
+  height,
+  priority = false,
 }: {
   src: string;
   alt: string;
   className?: string;
   imgClassName?: string;
+  /** Intrinsic image dimensions — required to reserve layout before the image decodes. */
+  width?: number;
+  height?: number;
+  /** Above-the-fold image: eager + high fetchpriority so paint is not delayed. */
+  priority?: boolean;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -44,6 +52,11 @@ export function Lightbox({
         <img
           src={src}
           alt={alt}
+          width={width}
+          height={height}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
+          decoding="async"
           className={imgClassName ?? "block w-full h-auto"}
         />
       </button>

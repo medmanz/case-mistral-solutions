@@ -46,7 +46,10 @@ function PeakMoment() {
   return (
     <section id="peak" className="pt-16 pb-8 w-full max-w-[1080px] mx-auto px-4">
       <Lightbox
-        src="/sandbox/peak-shortlist.png?v=3"
+        src="/sandbox/peak-shortlist.jpg"
+        width={1920}
+        height={1080}
+        priority
         alt="The Recruiting Tool for CMA CGM, shortlist view"
         imgClassName="block w-full h-auto rounded"
       />
