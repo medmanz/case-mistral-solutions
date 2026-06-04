@@ -7,12 +7,7 @@ import {
   DesignerStack,
   type Designer,
 } from "@/components/inspiration/DesignerStack";
-import {
-  Tabs,
-  TabsList,
-  TabsTab,
-  TabsPanel,
-} from "@/components/ui/TabsBase";
+import { DesignersTabs } from "@/components/inspiration/DesignersTabs";
 
 type Company = {
   id: string;
@@ -406,47 +401,7 @@ export default function InspirationPage() {
               </p>
             </div>
 
-            <Tabs defaultValue={companies[0].id} className="mt-12">
-              <div className="mx-auto max-w-[634px]">
-                <TabsList>
-                  {companies.map((c) => (
-                    <TabsTab key={c.id} value={c.id}>
-                      {c.logo && (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={c.logo}
-                          alt=""
-                          width={16}
-                          height={16}
-                          className="mr-2 h-4 w-4 rounded-[3px] object-contain"
-                        />
-                      )}
-                      {c.name}
-                    </TabsTab>
-                  ))}
-                </TabsList>
-              </div>
-
-              {companies.map((c) => (
-                <TabsPanel key={c.id} value={c.id}>
-                  <article className="mx-auto mt-10 max-w-[634px]">
-                    <h3
-                      className="mb-4 text-[20px] leading-[28px] text-[#242529]"
-                      style={{ fontFamily: "Signifier, serif", fontWeight: 400 }}
-                    >
-                      {c.name}
-                    </h3>
-                    <div className="text-pretty text-[16px] leading-[24px] text-[#525252]">
-                      {c.body}
-                    </div>
-                  </article>
-
-                  <div className="mx-auto mt-12 max-w-[634px]">
-                    <InspirationGallery items={c.gallery} layout="stack" />
-                  </div>
-                </TabsPanel>
-              ))}
-            </Tabs>
+            <DesignersTabs companies={companies} />
           </section>
         </main>
       </div>
