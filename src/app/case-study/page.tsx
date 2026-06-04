@@ -1568,7 +1568,7 @@ function InlinePlaceholder({
 
 function LookingBack() {
   return (
-    <section id="looking-back" className="pt-12 pb-64">
+    <section id="looking-back" className="pt-12 pb-12">
       <BodyCol>
         <H1>Looking back</H1>
         <Body>
@@ -1613,7 +1613,7 @@ function LookingBack() {
 
 function MoreScreens() {
   return (
-    <section id="more-screens" className="pt-12 pb-12">
+    <section id="more-screens" className="pt-12 pb-64">
       <BodyCol>
         <H1>More screens</H1>
         <Body>A few of the screens I designed.</Body>
