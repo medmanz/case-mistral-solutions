@@ -391,7 +391,7 @@ export default function InspirationPage() {
               </div>
 
               <p className="mt-8 text-pretty text-[16px] leading-[24px] text-[#525252]">
-                Below are some of the latest things I&apos;ve bookmarked, screenshotted, or kept around because they stuck with me.
+                I look at design stuff pretty much all the time. Talks, meetups, podcasts, YouTube, X, the occasional coffee with another designer. When I see something on X I love, I just bookmark it or save it to mymind. Below is the latest of what I&apos;ve kept.
               </p>
             </div>
 
