@@ -380,29 +380,29 @@ function SameKit() {
       <BodyCol>
         <H1>How design helps Solutions ship faster</H1>
         <Body>
-          Mistral AI Solutions ships custom AI apps for enterprise, plus
-          clickable demos before the real build. The team is engineers,
-          mostly. If design only lives with me, I become the bottleneck
-          on every project. So the answer to that question is three
-          things, applied to what I built here.
+          Mistral AI Solutions ships custom AI apps to enterprise, plus
+          the clickable demos that come before them. The team is
+          engineers, mostly. Which means if every design decision routes
+          through me, I’m a one-person bottleneck. Bad outcome for
+          everyone.
+        </Body>
+        <Body>So three moves.</Body>
+        <Body>
+          <strong>One.</strong> I picked one app and built it for real.
+          The Recruiting Tool for CMA CGM, end to end. The brief asked
+          for world-class UI and that’s where I spent the polish.
         </Body>
         <Body>
-          <strong>One.</strong> A worked example. The Recruiting Tool for
-          CMA CGM is built end-to-end. World-class UI, polish, the X
-          factor. The brief asked for that. The local problem solved.
+          <strong>Two.</strong> While building it, I extracted four
+          primitives. Composable ideas Le Chat doesn’t ship today,
+          but any custom AI app will want. Each one is implemented as a
+          small set of components engineers can drop in.
         </Body>
         <Body>
-          <strong>Two.</strong> Four primitives extracted from it. Abstract
-          composable concepts Le Chat doesn&rsquo;t ship today. Build them
-          once, every custom AI app gets them. Then a component kit that
-          implements each primitive. Drop-in for engineers.
-        </Body>
-        <Body>
-          <strong>Three.</strong> One code path from demo to production.
-          This case study <em>is</em> the demo Solutions would send a
-          prospect. If the prospect signs, the same React components ship
-          to production. We swap mock data for real APIs, that&rsquo;s it.
-          The demo, the prototype, and the product are one file.
+          <strong>Three.</strong> One code path, demo to prod. This case
+          study is what Solutions would send a prospect. If the prospect
+          signs, the same React components ship for real. The only thing
+          that changes is the data source.
         </Body>
       </BodyCol>
 
