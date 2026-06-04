@@ -83,6 +83,21 @@ const designers: Designer[] = [
     href: "https://x.com/Gavmn",
     avatarSrc: "/designers/Gavmn.jpg",
   },
+  {
+    name: "Soleio",
+    href: "https://x.com/soleio",
+    avatarSrc: "/designers/soleio.jpg",
+  },
+  {
+    name: "Ryo Lu",
+    href: "https://x.com/ryolu_",
+    avatarSrc: "/designers/ryolu_.jpg",
+  },
+  {
+    name: "Brian Lovin",
+    href: "https://x.com/brian_lovin",
+    avatarSrc: "/designers/brian_lovin.jpg",
+  },
 ];
 
 const rampGallery: GalleryItem[] = [
