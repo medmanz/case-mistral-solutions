@@ -32,6 +32,7 @@ export default function Page() {
           <HowSolutionsShips />
           <Choices />
           <Feasibility />
+          <LookingBack />
         </main>
       </div>
     </div>
@@ -926,7 +927,7 @@ function Choices() {
 
 function Feasibility() {
   return (
-    <section id="feasibility" className="pt-12 pb-64">
+    <section id="feasibility" className="pt-12 pb-12">
       <BodyCol>
         <H1>Feasibility</H1>
         <Body>
@@ -1605,5 +1606,38 @@ function InlinePlaceholder({
         {caption}
       </p>
     </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Section · Looking back (honest closing reflection)
+// ─────────────────────────────────────────────────────────────────────────────
+
+function LookingBack() {
+  return (
+    <section id="looking-back" className="pt-12 pb-64">
+      <BodyCol>
+        <H1>Looking back</H1>
+        <Body>
+          The thing that ate most of my time was just framing the problem.
+          The brief came with the old Mistral Chat Figma kit, which only
+          had Chat in it. The same day I got the brief, Vibe shipped with
+          the new Chat / Work split. I&rsquo;m not sure if that was a
+          coincidence. I made the call to build against the new
+          architecture instead of the Figma kit. Following where the
+          product was actually heading just felt more honest. I knew I was
+          making my own life harder with that. I sat with the architecture
+          question for a good while.
+        </Body>
+        <Body>
+          So I had less time to sweat the details than I would&rsquo;ve
+          wanted. The screens, the interactions, the small flow moments.
+          I had to make choices. My priority was something that holds up
+          structurally first, UI and architecture, and the polish would
+          come on top. The brief was dense too. Part 1 inspiration, Part 2
+          design challenge, both pretty meaty. So yes, trade-offs :)
+        </Body>
+      </BodyCol>
+    </section>
   );
 }

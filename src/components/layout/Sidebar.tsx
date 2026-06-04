@@ -18,6 +18,7 @@ const DEFAULT_ITEMS: Item[] = [
   { id: "enablement", label: "Shipping in AI Studio" },
   { id: "choices", label: "Trade-offs" },
   { id: "feasibility", label: "Feasibility" },
+  { id: "looking-back", label: "Looking back" },
 ];
 
 export function Sidebar({ items, topId }: { items?: Item[]; topId?: string } = {}) {
