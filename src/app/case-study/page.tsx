@@ -535,16 +535,7 @@ function PrimitivesGrid() {
 
 function PrimitiveCard({ primitive, index }: { primitive: Primitive; index: number }) {
   return (
-    <div
-      className="
-        group relative flex flex-col gap-4
-        rounded-2xl border border-[#27272A14] bg-white p-6
-        transition-[border-color,transform,box-shadow]
-        duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]
-        hover:border-[#27272A33] hover:-translate-y-[1px]
-        hover:shadow-[0_2px_8px_-4px_rgba(20,17,15,0.08)]
-      "
-    >
+    <div className="relative flex flex-col gap-4 rounded-2xl border border-[#27272A14] bg-white p-6">
       {/* Index, sits as an editorial number on its own line */}
       <span
         className="font-mono text-[11px] tracking-[0.08em] text-[#FA500F]"
@@ -564,7 +555,7 @@ function PrimitiveCard({ primitive, index }: { primitive: Primitive; index: numb
       </div>
 
       {/* Motivation: small italic line, readable contrast */}
-      <p className="text-[13px] leading-[20px] text-[#79716B] italic">
+      <p className="text-[13px] leading-[20px] text-[#79716B]">
         {primitive.motivation}
       </p>
 
@@ -577,14 +568,7 @@ function PrimitiveCard({ primitive, index }: { primitive: Primitive; index: numb
           {primitive.components.map((c) => (
             <span
               key={c}
-              className="
-                inline-flex items-center
-                px-2 py-[3px] rounded-md
-                text-[11.5px] font-mono text-[#525252]
-                bg-[#F4F4F5]
-                transition-colors duration-150
-                group-hover:bg-[#EDEDED]
-              "
+              className="inline-flex items-center px-2 py-[3px] rounded-md text-[11.5px] font-mono text-[#525252] bg-[#F4F4F5]"
             >
               {c}
             </span>
