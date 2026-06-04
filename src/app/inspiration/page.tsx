@@ -144,6 +144,14 @@ const cofounderGallery: GalleryItem[] = [
 
 const interfereGallery: GalleryItem[] = [
   {
+    kind: "image",
+    src: "/designing-in-ai/interfere/04-interfere.jpeg",
+    alt: "Interfere",
+    caption: "",
+    width: 1200,
+    height: 779,
+  },
+  {
     kind: "video",
     src: "/designing-in-ai/interfere/01-interfere.mp4",
     alt: "Interfere interaction recording",
@@ -166,14 +174,6 @@ const interfereGallery: GalleryItem[] = [
     caption: "",
     width: 3000,
     height: 1816,
-  },
-  {
-    kind: "image",
-    src: "/designing-in-ai/interfere/04-interfere.jpeg",
-    alt: "Interfere",
-    caption: "",
-    width: 1200,
-    height: 779,
   },
 ];
 
