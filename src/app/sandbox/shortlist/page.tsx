@@ -379,7 +379,7 @@ function KanbanView({
         {KANBAN_COLUMNS.map(({ status, label }) => (
           <div
             key={status}
-            className="flex flex-col w-[280px] shrink-0 bg-[#F4F1EC] rounded-lg overflow-hidden"
+            className="flex flex-col w-[280px] shrink-0 bg-[#F4F4F5] rounded-lg overflow-hidden"
           >
             <div className="flex items-center justify-between px-3 py-2.5">
               <div className="flex items-center gap-2">
