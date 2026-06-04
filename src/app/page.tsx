@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { TextScramble } from "@/components/ui/TextScramble";
 
 export default function LandingPage() {
   return (
@@ -25,7 +24,7 @@ export default function LandingPage() {
             className="mb-6 text-[24px] leading-[32px] text-[#242529]"
             style={{ fontFamily: "Signifier, serif", fontWeight: 400 }}
           >
-            <TextScramble>Intro</TextScramble>
+            Intro
           </h2>
           <p className="text-pretty text-[16px] leading-[24px] text-[#525252]">
             I built this page for my Solutions Designer take-home at Mistral AI. Rather than a clean deck, I wanted to show how I think on the way to the answer.
@@ -40,7 +39,7 @@ export default function LandingPage() {
             className="mb-6 text-[24px] leading-[32px] text-[#242529]"
             style={{ fontFamily: "Signifier, serif", fontWeight: 400 }}
           >
-            <TextScramble>Projects</TextScramble>
+            Projects
           </h2>
           <ul className="-mx-3 flex flex-col">
             <li>

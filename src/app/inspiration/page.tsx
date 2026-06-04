@@ -283,7 +283,7 @@ const companies: Company[] = [
           They built a debugging platform where the AI agent watches your app, detects anomalies, suggests fixes, and hands off to humans cleanly.
         </p>
         <p>
-          So many great details. The pixelated style of the icons is unique.
+          So many great details. I think I just love the pixelated style of the icons.
         </p>
       </>
     ),
