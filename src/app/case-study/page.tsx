@@ -76,19 +76,20 @@ function Hero() {
       <BodyCol>
         <H1>Where I landed</H1>
         <Body>
-          After a week of framing, the call I made: a custom AI app
-          inside Le Chat is one composition. Le Chat&rsquo;s shell. Le
-          Chat&rsquo;s agent. A thin layer of domain logic on top.
-          That&rsquo;s the position the rest of this case study defends.
+          After a week of framing, here&rsquo;s where I landed. A
+          custom AI app lives inside Le Chat itself. The user opens it
+          as a Task in Work mode. The agent is the same one that ships
+          with Le Chat, and the chat surface stays. What&rsquo;s
+          customer-specific is a thin layer on top: their data sources,
+          their scoring rubric, their approval rules.
         </Body>
         <Body>
-          To make it concrete, I built the Recruiting Tool for CMA CGM.
-          It&rsquo;s the worked example. Chat is the door in. Task in
-          Work is where the search actually lives over weeks. The four
-          design primitives I pulled out of the tool are what scales the
-          kit to the next ninety-nine apps. The rest of the case study
-          walks through how the position holds, and where I had to make
-          trade-offs.
+          The reusable part is a small set of design primitives I
+          extracted from the work. A primitive is a concept (like
+          explainable scoring or risk-graded autonomy) that ships as a
+          few React components engineers can drop into the next app
+          and configure per customer. Design done once compounds
+          across every app after.
         </Body>
       </BodyCol>
     </section>
