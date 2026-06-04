@@ -14,12 +14,12 @@ const NATURAL_W = 346;
 const NATURAL_H = 100;
 const ASPECT = NATURAL_W / NATURAL_H;
 
-// Custom 4-anchor palette. Pink → deep blue → grey → purple.
+// Custom 4-anchor palette.
 const PALETTE = {
-  a: [0.92, 0.36, 0.56] as [number, number, number],
-  b: [0.10, 0.14, 0.37] as [number, number, number],
+  a: [0.53, 0.59, 0.81] as [number, number, number],
+  b: [0.58, 0.31, 0.21] as [number, number, number],
   c: [0.50, 0.50, 0.50] as [number, number, number],
-  d: [0.66, 0.39, 1.00] as [number, number, number],
+  d: [0.41, 0.06, 0.76] as [number, number, number],
 };
 
 export function Signature({ onNavigate, height = 26 }: Props) {
