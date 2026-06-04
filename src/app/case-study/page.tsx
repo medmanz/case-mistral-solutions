@@ -805,16 +805,13 @@ function Choices() {
       <BodyCol>
         <H1>Trade-offs</H1>
         <Body>
-          I tergiversated a lot. Most of the week went into
-          framing the problem, sketching the architecture in Paper, and
-          arguing with myself about what fit Vibe and what didn&rsquo;t.
-          The polish came later, on the two screens where it mattered.
-          The hero shortlist is where trust gets handed from agent to
-          human. The propose-to-commit panel is where the contract
-          actually lives. Everything else is functional. I went lighter
-          there on purpose.
+          I tergiversated a lot. Most of the week went into framing the
+          problem and arguing with myself about how a custom app fits
+          into Vibe. The polish came later, on the two screens where it
+          mattered: the hero shortlist and the propose-to-commit
+          panel. The rest stayed lighter on purpose.
         </Body>
-        <Body>Five arbitrages worth naming. And what I scoped out.</Body>
+        <Body>Four trade-offs worth naming. And what I scoped out.</Body>
       </BodyCol>
 
       <div className="mt-10">
@@ -822,16 +819,16 @@ function Choices() {
           <Accordion className="flex w-full flex-col">
             <ChoicesItem
               value="surfaces"
-              title="App backs the surfaces, doesn't take a sidebar slot"
+              title="App backs the surfaces, doesn’t take a sidebar slot"
             >
               <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
                 I tried a peer Apps section. I tried turning the Project
                 into the app. I tried nesting the app inside a Project.
-                Each one added a primitive Vibe didn&rsquo;t need. Then I
-                realized the app didn&rsquo;t need a sidebar item at all.
-                Tasks already live in the sidebar. The app backs the
-                surfaces Tasks render on. Discovery happens in the Agents
-                page. Solutions deploys, client uses.
+                All three added a primitive Vibe doesn’t have. Then I
+                realized the app doesn’t need its own sidebar item at
+                all. Tasks already do that job. The app just backs the
+                surfaces Tasks render on. Discovery lives in the Agents
+                page.
               </p>
               <div className="mt-4">
                 <LofiGrid
@@ -847,61 +844,40 @@ function Choices() {
 
             <ChoicesItem value="chat-task" title="Chat is ad-hoc, Task is the bridge to Work">
               <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                Chat with the agent first. Files dragged by hand,
-                archetypes proposed. When the conversation tightens into a
-                real search, Create as Task makes it persistent. The Task
-                lands in Work mode with the app&rsquo;s canvas attached.
-                One bridge, no parallel surfaces.
+                Chat first. When the conversation tightens into a real
+                search, Create as Task makes it persistent. The Task
+                lands in Work with the app’s canvas attached. One
+                bridge, no parallel surfaces.
               </p>
-            </ChoicesItem>
-
-            <ChoicesItem value="list-rows" title="List rows with side panel, not a card grid">
-              <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                Workable, Pin, HeyMilo use cards. I tried cards. Twelve
-                candidates as cards reads like inventory. I switched to
-                list rows with a side panel. Editorial density holds up
-                when the point is reading.
-              </p>
-              <div className="mt-4">
-                <LofiGrid
-                  images={[
-                    { src: "/lofi/shortlist-card-grid.png?v=1", alt: "Card grid variant, dropped" },
-                    { src: "/lofi/shortlist-list-rows.png?v=2", alt: "List rows variant, kept" },
-                  ]}
-                  caption="Same twelve candidates, sketched both ways. The list won."
-                />
-              </div>
             </ChoicesItem>
 
             <ChoicesItem value="individual-commits" title="Individual commits, no Send all">
               <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                Five drafts, one click. I considered it. I pulled it. The
-                propose-to-commit contract holds only if every external
-                action waits for a conscious commit. The friction is doing
-                the work.
+                Five drafts, one click. I considered it. Pulled it.
+                Propose-to-commit only works if every external action
+                waits for a conscious commit. The friction is the point.
               </p>
             </ChoicesItem>
 
             <ChoicesItem value="ats-first" title="ATS-first sourcing, not LinkedIn-first">
               <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                Every other tool leads with the size of its external pool.
-                Prescillia pointed at the opposite end. The biggest moat
-                for an enterprise client is the ATS already inside. Past
+                Every other tool leads with the size of its external
+                pool. Prescillia kept pointing the other way. The real
+                moat for enterprise is the ATS already inside. Past
                 applicants, declined offers, finalists from prior
-                searches. The default shortlist for CMA CGM lands
-                eight from the ATS and four new sourced via LinkedIn.
+                searches. The default shortlist lands eight from the
+                ATS, four new via LinkedIn.
               </p>
             </ChoicesItem>
           </Accordion>
 
           <div className="mt-10">
             <Body>
-              Two areas I scoped out. Inbound triage and the pipeline
-              view. The same scoring and propose-to-commit primitives
-              apply to both. I focused on the moments where trust gets
-              transmitted because that&rsquo;s where the architecture has
-              something to teach. The rest is composition on top of the
-              same five primitives.
+              Two things I scoped out: inbound triage and the pipeline
+              view. Same scoring and propose-to-commit primitives apply
+              to both. I focused on the moments where trust gets
+              transmitted. The rest is composition on top of the same
+              primitives.
             </Body>
           </div>
         </BodyCol>
