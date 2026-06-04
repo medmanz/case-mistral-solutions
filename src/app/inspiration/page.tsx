@@ -391,7 +391,7 @@ export default function InspirationPage() {
               </div>
 
               <p className="mt-8 text-pretty text-[16px] leading-[24px] text-[#525252]">
-                I look at design stuff pretty much all the time. Talks, meetups, podcasts, YouTube, X, the occasional coffee with another designer. When I see something I love, I just bookmark it or save it to mymind. Below is the latest of what I&apos;ve kept.
+                I look at design stuff pretty much all the time. Talks, meetups, podcasts, YouTube, X, the occasional coffee with another designer. When I see something I love, I just bookmark it or save it to <a href="https://mymind.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 decoration-[#D4D4D4] hover:decoration-[#525252] transition-colors">mymind</a>. Below is the latest of what I&apos;ve kept.
               </p>
             </div>
 
