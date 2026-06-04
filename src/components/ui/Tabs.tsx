@@ -5,7 +5,7 @@ import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { cn } from "@/lib/utils";
 
 /**
- * Tabs — port of shadcn/Radix Tabs.
+ * Tabs, port of shadcn/Radix Tabs.
  * Underline-style active indicator. Used in Task header to switch between
  * Shortlist / Pipeline / etc.
  */

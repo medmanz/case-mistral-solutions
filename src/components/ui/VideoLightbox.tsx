@@ -2,7 +2,7 @@
 
 /**
  * Video with native HTML5 controls (incl. fullscreen).
- * No autoplay — the user clicks play, and the clip starts from the start.
+ * No autoplay, the user clicks play, and the clip starts from the start.
  */
 export function VideoLightbox({
   src,

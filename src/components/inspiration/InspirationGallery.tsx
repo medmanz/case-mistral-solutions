@@ -116,7 +116,7 @@ export function InspirationGallery({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Thumbs fade in once their media is actually ready — avoids the "blank
+// Thumbs fade in once their media is actually ready, avoids the "blank
 // box → pop" effect on arrival. Layout space is already reserved by
 // .gallery__link's aspect-ratio, so the fade carries no layout shift.
 

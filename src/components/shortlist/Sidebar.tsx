@@ -49,7 +49,7 @@ function Header({ mode }: { mode: Mode }) {
     <div className="flex flex-col w-full pt-5 px-3 gap-3 mb-3">
       <div className="flex items-center min-w-0 gap-1">
         <div className="flex items-center h-12 max-w-full rounded-lg px-2 gap-3">
-          {/* Vibe logo — simplified M castle */}
+          {/* Vibe logo, simplified M castle */}
           <div className="flex items-center justify-center shrink-0 rounded-md overflow-clip size-8 bg-mistral-orange">
             <svg
               width="16"

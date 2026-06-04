@@ -265,7 +265,7 @@ function RecruitingIconSmall() {
 }
 
 function RecruitingIcon() {
-  // Briefcase pixel-art — matches the AGENTS slash menu icon
+  // Briefcase pixel-art, matches the AGENTS slash menu icon
   return (
     <span className="size-8 grid place-items-center rounded-lg overflow-clip bg-[#F1EDE8] shrink-0">
       <svg

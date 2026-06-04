@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 
 /**
- * Lightbox image — click thumbnail to view full-size in an overlay.
+ * Lightbox image, click thumbnail to view full-size in an overlay.
  * Esc or click outside to close.
  */
 export function Lightbox({
@@ -20,7 +20,7 @@ export function Lightbox({
   alt: string;
   className?: string;
   imgClassName?: string;
-  /** Intrinsic image dimensions — required to reserve layout before the image decodes. */
+  /** Intrinsic image dimensions, required to reserve layout before the image decodes. */
   width?: number;
   height?: number;
   /** Above-the-fold image: eager + high fetchpriority so paint is not delayed. */

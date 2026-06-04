@@ -40,19 +40,19 @@ export function VibeLogo({ size = 34, className, palette = "mistral" }: Props) {
       className={className}
       aria-label="Vibe"
     >
-      {/* Row 1 — crown */}
+      {/* Row 1, crown */}
       <rect x="30.303" y="0" width="30.303" height="30.303" fill={c.r1} />
       <rect x="151.515" y="0" width="30.303" height="30.303" fill={c.r1} />
       {/* Row 2 */}
       <rect x="30.303" y="30.303" width="60.606" height="30.303" fill={c.r2} />
       <rect x="121.212" y="30.303" width="60.606" height="30.303" fill={c.r2} />
-      {/* Row 3 — bridge */}
+      {/* Row 3, bridge */}
       <rect x="30.303" y="60.606" width="151.515" height="30.303" fill={c.r3} />
       {/* Row 4 */}
       <rect x="30.303" y="90.909" width="30.303" height="30.303" fill={c.r4} />
       <rect x="90.909" y="90.909" width="30.303" height="30.303" fill={c.r4} />
       <rect x="151.515" y="90.909" width="30.303" height="30.303" fill={c.r4} />
-      {/* Row 5 — base */}
+      {/* Row 5, base */}
       <rect x="0" y="121.212" width="90.909" height="30.303" fill={c.r5} />
       <rect x="121.212" y="121.212" width="90.909" height="30.303" fill={c.r5} />
     </svg>

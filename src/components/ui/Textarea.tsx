@@ -2,7 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Textarea component — port of shadcn/Base UI Textarea.
+ * Textarea component, port of shadcn/Base UI Textarea.
  * Matches the Input shadow + focus ring style.
  */
 const Textarea = React.forwardRef<

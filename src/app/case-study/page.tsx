@@ -276,7 +276,7 @@ function FlowInFourActs() {
         </Body>
       </BodyCol>
 
-      {/* Step 1 — Access */}
+      {/* Step 1, Access */}
       <div className="mt-16">
         <BodyCol>
           <H2>1. Access</H2>
@@ -295,7 +295,7 @@ function FlowInFourActs() {
         />
       </div>
 
-      {/* Step 2 — Brief & Create as Task */}
+      {/* Step 2, Brief & Create as Task */}
       <div className="mt-24">
         <BodyCol>
           <H2>2. Brief, then Create as Task</H2>
@@ -315,7 +315,7 @@ function FlowInFourActs() {
         />
       </div>
 
-      {/* Step 3 — Daily use */}
+      {/* Step 3, Daily use */}
       <div className="mt-24">
         <BodyCol>
           <H2>3. Daily use</H2>
@@ -427,28 +427,27 @@ function SameKit() {
         <BodyCol>
           <H2>How I&rsquo;d ship the primitives to Solutions</H2>
           <Body>
-            Concepts don&rsquo;t scale a team. Code does. The way I see
-            this landing is a versioned React library that Solutions
-            imports the same way they import any internal package.
+            Concepts don’t scale a team, code does. So the way I see
+            this landing is a small React library you import like any
+            other internal package.
             <code className="font-mono text-[14px] mx-1 px-1.5 py-0.5 rounded bg-[#F4F4F5] text-[#242529]">
               @mistral/custom-app-kit
             </code>
             ships <code className="font-mono text-[14px] mx-1 px-1.5 py-0.5 rounded bg-[#F4F4F5] text-[#242529]">{"<ScoreGauge />"}</code>,{" "}
             <code className="font-mono text-[14px] mx-1 px-1.5 py-0.5 rounded bg-[#F4F4F5] text-[#242529]">{"<ApprovalLevel />"}</code>,{" "}
             <code className="font-mono text-[14px] mx-1 px-1.5 py-0.5 rounded bg-[#F4F4F5] text-[#242529]">{"<ReasoningChain />"}</code>{" "}
-            and the rest, with stable props and design tokens baked in.
-            Solutions doesn&rsquo;t restyle, they configure.
+            and the rest, with design tokens baked in and a stable
+            interface. Engineers don’t restyle them, they configure
+            them.
           </Body>
           <Body>
             The grid below is the inventory I sketched while building
-            Recruiting. Roughly forty components, each tied to one of the
-            four primitives. Consider it a working draft of what the
-            library would hold. The shipped version lives behind a real
-            <code className="font-mono text-[14px] mx-1 px-1.5 py-0.5 rounded bg-[#F4F4F5] text-[#242529]">
-              npm install
-            </code>
-            , with Storybook for browsing and changelogs that signal
-            breaking changes the day they happen.
+            Recruiting. About forty components, four primitives. Treat
+            it as a working draft of what the library would hold. How
+            it ends up shipping, how engineers browse it, how breaking
+            changes get flagged, all that I’d want to figure out with
+            you. What doesn’t change is the contract: a stable
+            interface, design tokens, clear version numbers.
           </Body>
           <div className="mt-6">
             <Lightbox
@@ -685,7 +684,7 @@ function KitAppsTabs() {
 function AppMockup({ app }: { app: AppMock }) {
   return (
     <div className="rounded-xl border border-[#27272A14] bg-white overflow-hidden shadow-[0_1px_2px_rgba(15,23,42,0.04)]">
-      {/* Vibe top bar — same shell on every tab */}
+      {/* Vibe top bar, same shell on every tab */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-[#27272A0F] bg-[#FAFAF9]">
         <div className="inline-flex items-center gap-2">
           <span className="size-2 rounded-full bg-[#16A34A]" />
@@ -715,7 +714,7 @@ function AppMockup({ app }: { app: AppMock }) {
           <SignalPill tone={r.signalTone} label={r.signal} />
         </div>
       ))}
-      {/* Action bar — propose-to-commit */}
+      {/* Action bar, propose-to-commit */}
       <div className="flex items-center justify-end gap-2 px-4 py-3 border-t border-[#27272A0F] bg-[#FAFAF9]">
         <button className="inline-flex items-center h-8 px-3 rounded-md text-[13px] text-[#57534D] border border-[#27272A14] bg-white">
           {app.secondary}

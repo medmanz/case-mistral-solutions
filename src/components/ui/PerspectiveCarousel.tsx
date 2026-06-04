@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 /**
- * Coverflow-style carousel — one card prominent, neighbors peek at the
+ * Coverflow-style carousel, one card prominent, neighbors peek at the
  * sides with a subtle 3D rotation. Skiper47-inspired.
  */
 export function PerspectiveCarousel({

@@ -34,7 +34,7 @@ export type Candidate = {
 };
 
 function statusFor(_id: string): Status {
-  // Initial state — Hélène just discovered the shortlist, no one contacted yet
+  // Initial state, Hélène just discovered the shortlist, no one contacted yet
   return "pending";
 }
 

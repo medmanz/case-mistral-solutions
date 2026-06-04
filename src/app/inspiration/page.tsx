@@ -274,7 +274,7 @@ const companies: Company[] = [
     body: (
       <>
         <p>
-          I went from Cursor to Superset to Conductor. Each one taught me something, but Conductor is where things clicked. What got me is the worktree UX: multiple agents running in parallel on isolated branches, each doing its own thing. One is fixing a spacing issue. Another is prototyping an animation. A third is exploring a completely different approach to the same problem. That&apos;s how I think as a designer — I want to explore directions in parallel, not commit to one path upfront.
+          I went from Cursor to Superset to Conductor. Each one taught me something, but Conductor is where things clicked. What got me is the worktree UX: multiple agents running in parallel on isolated branches, each doing its own thing. One is fixing a spacing issue. Another is prototyping an animation. A third is exploring a completely different approach to the same problem. That&apos;s how I think as a designer, I want to explore directions in parallel, not commit to one path upfront.
         </p>
         <p className="mt-4">
           They also made a ton of one-click buttons and commands for the things you&apos;d normally context-switch to a terminal for: spinning up localhost, reviewing a branch, creating and merging PRs. It feels like they productized my whole flow. The stuff that used to break the creative process is just handled.

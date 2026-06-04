@@ -101,7 +101,7 @@ export function Signature({ onNavigate }: Props) {
           Mederic
         </text>
 
-        {/* Canvas clipped to text shape — sweep paints only inside letters */}
+        {/* Canvas clipped to text shape, sweep paints only inside letters */}
         <foreignObject
           x="0"
           y="0"

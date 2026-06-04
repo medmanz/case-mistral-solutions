@@ -51,7 +51,7 @@ export function CandidateDetail({
   const [draftBody, setDraftBody] = useState("");
 
   // Reset view when a new candidate is opened: timeline if sent, compose otherwise
-  // (the 2-column modal is the default landing — profile left, compose right)
+  // (the 2-column modal is the default landing, profile left, compose right)
   useEffect(() => {
     if (!candidate) return;
     setView(isSent ? "timeline" : "compose");
@@ -136,7 +136,7 @@ export function CandidateDetail({
           className="absolute inset-0 bg-ink/40 overlay-fade-in pointer-events-auto"
         />
         <div className="relative flex flex-row w-full max-w-[1100px] h-full max-h-[860px] bg-[#FAFAF9] rounded-xl shadow-2xl overflow-hidden pointer-events-auto antialiased modal-center-enter">
-          {/* Left column — profile (same design as drawer) */}
+          {/* Left column, profile (same design as drawer) */}
           <aside className="w-[480px] shrink-0 flex flex-col border-r border-[#27272A19] bg-[#FAFAF9]">
             {headerEl(false)}
             <ProfileView
@@ -147,7 +147,7 @@ export function CandidateDetail({
             />
           </aside>
 
-          {/* Right column — compose */}
+          {/* Right column, compose */}
           <div className="flex-1 flex flex-col bg-[#FFFFFF] min-w-0">
             <div className="flex items-start justify-between gap-3 px-6 py-4 border-b border-[#27272A19]">
               <div className="flex flex-col gap-1 min-w-0">
@@ -429,7 +429,7 @@ function ProfileView({
 }
 
 function RecruitingAgentBadge() {
-  // Compact briefcase pixel-art — matches the Recruiting agent icon used in the shortlist header
+  // Compact briefcase pixel-art, matches the Recruiting agent icon used in the shortlist header
   return (
     <span className="size-5 grid place-items-center rounded-md overflow-clip bg-[#F1EDE8] shrink-0">
       <svg
@@ -481,7 +481,7 @@ function ComposeView({
   onBodyChange: (v: string) => void;
 }) {
   const channel = isInternal ? "email" : "inmail";
-  // Slug helper — strip diacritics + non-alphanum chars
+  // Slug helper, strip diacritics + non-alphanum chars
   const slugify = (s: string) =>
     s
       .toLowerCase()

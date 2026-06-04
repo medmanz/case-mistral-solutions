@@ -26,7 +26,7 @@
 }
 
 @theme {
-  /* Mistral palette — based on observed Le Chat / Vibe / AI Studio screenshots */
+  /* Mistral palette, based on observed Le Chat / Vibe / AI Studio screenshots */
   --color-mistral-orange: #FA500F;
   --color-mistral-orange-soft: #FF7A47;
   --color-mistral-orange-amber: #FF9B47;
@@ -100,7 +100,7 @@ html {
 
 /* Typography wrapping (per Emil Kowalski).
    - Headings: balance line lengths (works on text ≤ 6 lines).
-   - Body paragraphs: pretty — optimize the last line to avoid orphans. */
+   - Body paragraphs: pretty, optimize the last line to avoid orphans. */
 h1, h2, h3, h4 {
   text-wrap: balance;
 }
@@ -281,7 +281,7 @@ body {
  * images were decoded. Each image now fades itself in via .img-fade
  * synced to its own load event. */
 
-/* Per-image fade — used by Lightbox + InspirationGallery. Image
+/* Per-image fade, used by Lightbox + InspirationGallery. Image
  * renders at opacity:0 until its onLoad fires (or it's already
  * cached). Then it smoothly fades in with no layout shift (intrinsic
  * width/height reserve the space). The transition includes transform
@@ -352,7 +352,7 @@ body {
   animation: slashMenuEnter 150ms ease-out;
 }
 
-/* Centered modal entrance — scale up from 0.96 + fade. Never from scale(0). */
+/* Centered modal entrance, scale up from 0.96 + fade. Never from scale(0). */
 @keyframes modalCenterEnter {
   from {
     opacity: 0;
@@ -369,7 +369,7 @@ body {
   animation: modalCenterEnter 220ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* Vibe logo wave — one-shot greeting on mount. Pendulum decay. */
+/* Vibe logo wave, one-shot greeting on mount. Pendulum decay. */
 @keyframes vibeWave {
   0%   { transform: rotate(0deg); }
   18%  { transform: rotate(-14deg); }
@@ -385,7 +385,7 @@ body {
   animation-iteration-count: 1;
 }
 
-/* Skiper47-style coverflow carousel — make navigation + pagination
+/* Skiper47-style coverflow carousel, make navigation + pagination
    blend with the page rather than Swiper's stock blue. */
 .perspective-carousel .swiper-button-prev,
 .perspective-carousel .swiper-button-next {
@@ -426,7 +426,7 @@ body {
   background: #14110F;
 }
 
-/* Reasoning chain — substep reveal */
+/* Reasoning chain, substep reveal */
 @keyframes detailFadeIn {
   from {
     opacity: 0;

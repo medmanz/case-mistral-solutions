@@ -2,7 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Input component — port of shadcn/Base UI Input.
+ * Input component, port of shadcn/Base UI Input.
  * Subtle inset shadow + clean focus ring. Uses raw classes (no CVA) to keep deps light.
  */
 const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>(

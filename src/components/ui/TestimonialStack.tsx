@@ -85,7 +85,7 @@ function StackedCard({
 }) {
   // Each card occupies a fraction of the scroll range.
   const cardStart = index / total;
-  // The earlier the card, the smaller it ends up — earlier cards sit
+  // The earlier the card, the smaller it ends up, earlier cards sit
   // behind newer ones in the stack.
   const targetScale = 1 - (total - 1 - index) * 0.04;
   const scale = useTransform(progress, [cardStart, 1], [1, targetScale]);

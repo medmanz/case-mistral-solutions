@@ -13,7 +13,7 @@ export type ReasoningStep = {
 
 type Props = {
   steps: ReasoningStep[];
-  // Demo timing — total compressed wall time
+  // Demo timing, total compressed wall time
   stepDurationMs?: number;
   detailIntervalMs?: number;
   // Narrative duration shown when complete (e.g. "Thought for 2m 47s")
@@ -53,7 +53,7 @@ export function ReasoningChain({
     return () => clearTimeout(t);
   }, [currentStep, steps.length, stepDurationMs, instant, onComplete]);
 
-  // Header — collapsed bar
+  // Header, collapsed bar
   const header = (
     <button
       type="button"
@@ -93,7 +93,7 @@ export function ReasoningChain({
       >
         <div className="overflow-hidden">
           <ol className="relative">
-            {/* Continuous vertical rail — centered under each bullet (x=7.5) */}
+            {/* Continuous vertical rail, centered under each bullet (x=7.5) */}
             <span
               aria-hidden
               className="absolute left-[7px] top-2 bottom-2 w-px bg-[#27272A19]"
@@ -110,7 +110,7 @@ export function ReasoningChain({
                   key={i}
                   className="relative pl-[26px] py-2 first:pt-0 last:pb-0"
                 >
-                  {/* Bullet — 15px wrapper centered on the rail (x=0..15 → center 7.5) */}
+                  {/* Bullet, 15px wrapper centered on the rail (x=0..15 → center 7.5) */}
                   <span
                     aria-hidden
                     className="absolute left-0 top-[10px] size-[15px] grid place-items-center rounded-full bg-[#FAFAF9]"

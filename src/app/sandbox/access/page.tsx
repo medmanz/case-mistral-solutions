@@ -171,7 +171,7 @@ function AccessPageInner() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [presetAgent]);
 
-  // Prefetch the next route as soon as an agent is selected — the Send
+  // Prefetch the next route as soon as an agent is selected, the Send
   // click is highly likely. Removes the cold-load latency on navigation.
   useEffect(() => {
     if (selectedAgent) router.prefetch("/sandbox/brief");
@@ -238,7 +238,7 @@ function AccessPageInner() {
               </h1>
             </div>
 
-            {/* Composer — ported from Paper */}
+            {/* Composer, ported from Paper */}
             <div className="relative">
               <div
                 className={
@@ -306,7 +306,7 @@ function AccessPageInner() {
                       />
                     </div>
 
-                    {/* Action row — 36px height */}
+                    {/* Action row, 36px height */}
                     <div className="flex items-center w-full gap-2 h-9">
                       <button
                         className="size-8 grid place-items-center rounded-lg bg-white border-[0.5px] border-[#27272A26] hover:bg-[#27272A0A] active:scale-[0.97] transition-[colors,transform] duration-150 text-[#57534D]"

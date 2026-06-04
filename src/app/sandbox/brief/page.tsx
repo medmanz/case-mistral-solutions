@@ -115,7 +115,7 @@ const CONVERSATION: Msg[] = [
   // Right-aligned user confirmation appears when Create as Task is clicked.
   { from: "user", body: "Create as Task" },
   // The agent's reply renders its reasoning chain first, then the body and
-  // the Open Task button — all under a single agent avatar.
+  // the Open Task button, all under a single agent avatar.
   {
     from: "agent",
     body:
@@ -243,7 +243,7 @@ function BriefPageInner() {
   const isReplay = searchParams.get("state") === "complete";
   const [, startTransition] = useTransition();
 
-  // Prefetch the shortlist route on mount — by the time Open Task or the
+  // Prefetch the shortlist route on mount, by the time Open Task or the
   // header Briefcase is clicked, the JS chunks are already warm.
   useEffect(() => {
     router.prefetch("/sandbox/shortlist");
@@ -273,7 +273,7 @@ function BriefPageInner() {
     if (next.from === "user") return; // wait for manual trigger
 
     const lastShown = CONVERSATION[visibleCount - 1];
-    // Stop after the "All set" final message — wait for Create as Task click.
+    // Stop after the "All set" final message, wait for Create as Task click.
     if (lastShown && lastShown.from === "agent" && lastShown.final) return;
     const isLastUser = lastShown.from === "user";
 
@@ -303,12 +303,12 @@ function BriefPageInner() {
   const [showScrollDown, setShowScrollDown] = useState(false);
   // Stick-to-bottom: tracks whether the user is at/near the bottom.
   // While true, new content auto-scrolls. While false (user scrolled up),
-  // new content does NOT yank them down — show the floating pill instead.
+  // new content does NOT yank them down, show the floating pill instead.
   const stickToBottomRef = useRef(true);
   const STICK_THRESHOLD = 80;
 
   // Distance from the viewport's bottom edge to the actual last message's
-  // bottom — ignoring the bottom spacer that pads the scroll area for the
+  // bottom, ignoring the bottom spacer that pads the scroll area for the
   // scroll-to-top trick.
   const computeContentDist = (el: HTMLDivElement): number => {
     const lastIdx = visibleCount - 1;
@@ -340,7 +340,7 @@ function BriefPageInner() {
   // ChatGPT/Claude pattern: scroll happens ONLY when the user sends a
   // message. The user's message lands at the top of the viewport, freeing
   // the rest of the screen for the thinking state + agent response that
-  // stream in below — no re-scrolling on each agent reveal, no cropping.
+  // stream in below, no re-scrolling on each agent reveal, no cropping.
   // Agent reveals only update the down-arrow state.
   useEffect(() => {
     const el = scrollRef.current;
@@ -372,7 +372,7 @@ function BriefPageInner() {
   }, [visibleCount, thinking]);
 
   // When arriving in replay mode (from Open chat), jump to the bottom
-  // synchronously, before the browser paints — no visible scroll.
+  // synchronously, before the browser paints, no visible scroll.
   useLayoutEffect(() => {
     if (!isReplay) return;
     const el = scrollRef.current;
@@ -417,7 +417,7 @@ function BriefPageInner() {
       />
 
       <div className="flex-1 flex flex-col bg-surface min-w-0">
-        {/* Top bar — ported from Paper */}
+        {/* Top bar, ported from Paper */}
         <div className="flex items-center justify-between bg-[#FAFAF9] pt-5 pr-3 pb-3 pl-1 gap-4">
           <button className="inline-flex items-center h-9 max-w-xl min-w-0 rounded-lg px-3 gap-1.5 hover:bg-[#27272A0A] transition-colors">
             <span className="text-[14px] text-[#14110F] truncate" style={{ fontWeight: 450 }}>
@@ -526,7 +526,7 @@ function BriefPageInner() {
             )}
             {/* ChatGPT trick: a tall bottom spacer ensures the page is always
                 taller than the viewport, so the user message can be scrolled
-                to the very top — leaving room below for the agent response
+                to the very top, leaving room below for the agent response
                 to stream in without cropping. Shrinks visually when the
                 conversation is long enough to fill the screen on its own. */}
             <div className="min-h-[calc(100dvh-260px)]" aria-hidden />
@@ -781,7 +781,7 @@ function AgentMessage({
               onDone={() => setBodyDone(true)}
             />
             {/* Children (archetype cards, action buttons) only appear after
-                the body has finished streaming — keeps the order natural. */}
+                the body has finished streaming, keeps the order natural. */}
             {bodyDone && <div className="fade-up">{children}</div>}
           </div>
         )}
@@ -1036,7 +1036,7 @@ function SortableArchetype({
     transition,
     isDragging,
   } = useSortable({ id: archetype.id });
-  // Stronger ease-out curve — the default dnd-kit "ease" feels weak.
+  // Stronger ease-out curve, the default dnd-kit "ease" feels weak.
   const easedTransition = transition?.replace(
     /ease$/,
     "cubic-bezier(0.23, 1, 0.32, 1)"
