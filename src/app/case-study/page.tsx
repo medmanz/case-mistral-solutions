@@ -276,7 +276,7 @@ function FlowInFourActs() {
       {/* Step 1 — Access */}
       <div className="mt-16">
         <BodyCol>
-          <H2>1, Access</H2>
+          <H2>1. Access</H2>
           <Body>
             Two months ago, Hélène opens a fresh chat. She types slash. The
             menu lists every agent her workspace has, Recruiting included.
@@ -295,7 +295,7 @@ function FlowInFourActs() {
       {/* Step 2 — Brief & Create as Task */}
       <div className="mt-24">
         <BodyCol>
-          <H2>2, Brief, then Create as Task</H2>
+          <H2>2. Brief, then Create as Task</H2>
           <Body>
             She drags her kick-off files into the chat. The agent reads,
             summarizes, asks one critical question, proposes four
@@ -315,7 +315,7 @@ function FlowInFourActs() {
       {/* Step 3 — Daily use */}
       <div className="mt-24">
         <BodyCol>
-          <H2>3, Daily use</H2>
+          <H2>3. Daily use</H2>
           <Body>
             A few minutes later, the Task is ready. Hélène switches to
             Work mode and opens it. The shortlist is there, the agent&rsquo;s
