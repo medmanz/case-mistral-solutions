@@ -93,8 +93,8 @@ function ReadingTheBrief() {
       <BodyCol>
         <H1>Reading the brief</H1>
         <Body>
-          Quick context. The brief points at the Mistral Chat Figma. That
-          same week, Mistral shipped Vibe with the new Chat / Work split.
+          Quick context. The brief points at the Mistral AI Chat Figma. That
+          same week, Mistral AI shipped Vibe with the new Chat / Work split.
           I went with Vibe. It&rsquo;s what people are using now, and the
           older Figma felt like a moving target.
         </Body>
@@ -104,7 +104,7 @@ function ReadingTheBrief() {
           quite a bit depending on which customer you pick.
         </Body>
         <Body>
-          So I looked at who actually pays Mistral. CMA CGM, ASML, Airbus, BMW,
+          So I looked at who actually pays Mistral AI. CMA CGM, ASML, Airbus, BMW,
           Stellantis, HSBC, BNP Paribas, France Travail. Industrial groups.
           Banks. Government. I picked CMA CGM. The user I had in mind is a
           head of TA running senior hires across APAC, inside a 155,000-person
@@ -377,7 +377,7 @@ function SameKit() {
       <BodyCol>
         <H1>How design helps Solutions ship faster</H1>
         <Body>
-          Mistral Solutions ships custom AI apps for enterprise, plus
+          Mistral AI Solutions ships custom AI apps for enterprise, plus
           clickable demos before the real build. The team is engineers,
           mostly. If design only lives with me, I become the bottleneck
           on every project. So the answer to that question is three

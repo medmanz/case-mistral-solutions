@@ -6,7 +6,7 @@ export function Note() {
           <p className="text-ink-muted">
             <span className="text-ink font-medium">A note on naming.</span>{" "}
             The brief says <span className="text-ink font-medium">Le Chat</span>.
-            Mistral shipped it as{" "}
+            Mistral AI shipped it as{" "}
             <span className="text-ink font-medium">Vibe</span> the same day
             this brief landed, with Chat Mode and Work Mode. I kept the Figma
             kit&rsquo;s visual primitives and adopted Vibe&rsquo;s
