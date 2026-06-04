@@ -22,7 +22,7 @@ export default function Page() {
     <div className="bg-surface text-ink min-h-screen">
       <div className="flex">
         <Sidebar />
-        <main className="page-enter flex-1 min-w-0 flex flex-col items-center px-8 pb-48">
+        <main className="page-enter flex-1 min-w-0 flex flex-col items-center px-8">
           <PeakMoment />
           <Hero />
           <ReadingTheBrief />
@@ -924,7 +924,7 @@ function Choices() {
 
 function Feasibility() {
   return (
-    <section id="feasibility" className="py-12">
+    <section id="feasibility" className="pt-12 pb-64">
       <BodyCol>
         <H1>Feasibility</H1>
         <Body>
