@@ -40,6 +40,7 @@ export function Signature({ onNavigate, height = 26 }: Props) {
     });
     if (!ctrl) return;
 
+    const DELAY_MS = 1000;
     const timer = window.setTimeout(() => {
       playSweep(ctrl, {
         palette: "prism",
@@ -51,7 +52,7 @@ export function Signature({ onNavigate, height = 26 }: Props) {
         brightness: 1.05,
         onComplete: () => ctrl.destroy(),
       });
-    }, 280);
+    }, DELAY_MS);
 
     return () => {
       window.clearTimeout(timer);
