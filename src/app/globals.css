@@ -180,6 +180,7 @@ body {
   overflow: hidden;
   aspect-ratio: 1 / 1;
   position: relative;
+  border-radius: 4px;
 }
 .gallery__link:hover .gallery__image {
   transform: scale(1.05);
