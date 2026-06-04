@@ -10,8 +10,8 @@ type Props = {
 };
 
 const SRC = "/signature.png";
-const NATURAL_W = 632;
-const NATURAL_H = 288;
+const NATURAL_W = 346;
+const NATURAL_H = 100;
 const ASPECT = NATURAL_W / NATURAL_H;
 
 export function Signature({ onNavigate, height = 56 }: Props) {
