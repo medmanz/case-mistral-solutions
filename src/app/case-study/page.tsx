@@ -448,6 +448,7 @@ function SameKit() {
             <Lightbox
               src="/lofi/component-kit.png?v=3"
               alt="Component kit. 40 React components extracted from the Recruiting Tool"
+              imgClassName="block w-full h-auto rounded-sm"
             />
           </div>
         </BodyCol>
@@ -675,7 +676,7 @@ function KitAppsTabs() {
 
 function AppMockup({ app }: { app: AppMock }) {
   return (
-    <div className="rounded-xl border border-[#27272A14] bg-white overflow-hidden shadow-[0_1px_2px_rgba(15,23,42,0.04)]">
+    <div className="rounded-md border border-[#27272A14] bg-white overflow-hidden shadow-[0_1px_2px_rgba(15,23,42,0.04)]">
       {/* Vibe top bar, same shell on every tab */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-[#27272A0F] bg-[#FAFAF9]">
         <div className="inline-flex items-center gap-2">
@@ -1388,7 +1389,7 @@ function FlowPlaceholder({
 }) {
   return (
     <div className="max-w-[634px] mx-auto">
-      <div className="relative w-full rounded-lg overflow-hidden">
+      <div className="relative w-full rounded-md overflow-hidden">
         {videoSrc ? (
           <VideoLightbox src={videoSrc} />
         ) : (
@@ -1442,7 +1443,7 @@ function VideoPlaceholder({
   note?: string;
 } = {}) {
   return (
-    <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-[#14110F] shadow-[0_1px_2px_rgba(15,23,42,0.06)]">
+    <div className="relative aspect-[16/9] rounded-md overflow-hidden bg-[#14110F] shadow-[0_1px_2px_rgba(15,23,42,0.06)]">
       <div className="absolute inset-0 grid place-items-center p-6">
         {route || filename ? (
           <div className="flex flex-col items-center gap-3 text-center">
@@ -1493,7 +1494,7 @@ function LofiGrid({
         {images.map((img) => (
           <div
             key={img.src}
-            className="rounded-md overflow-hidden bg-[#FAFAF9] border border-[#EDE9E3]"
+            className="rounded-sm overflow-hidden bg-[#FAFAF9] border border-[#EDE9E3]"
           >
             <img
               src={img.src}
@@ -1523,7 +1524,7 @@ function InlinePlaceholder({
 }) {
   return (
     <div className="mt-8 mb-4">
-      <div className="mx-auto w-[60%] aspect-[16/10] rounded-xl overflow-hidden bg-[#14110F] shadow-[0_1px_2px_rgba(15,23,42,0.06)] grid place-items-center p-5">
+      <div className="mx-auto w-[60%] aspect-[16/10] rounded-md overflow-hidden bg-[#14110F] shadow-[0_1px_2px_rgba(15,23,42,0.06)] grid place-items-center p-5">
         {route || filename ? (
           <div className="flex flex-col items-center gap-2 text-center">
             <span className="text-[10px] uppercase tracking-[0.12em] text-white/50 font-medium">
@@ -1597,7 +1598,7 @@ function LookingBack() {
           <Lightbox
             src="/case-study/explorations.png"
             alt="Wide canvas showing all exploration clusters from the case study, grouped by category."
-            imgClassName="block w-full h-auto rounded"
+            imgClassName="block w-full h-auto rounded-sm"
             width={2938}
             height={1536}
           />

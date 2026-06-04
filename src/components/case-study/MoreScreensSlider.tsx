@@ -44,7 +44,7 @@ export function MoreScreensSlider({ screens }: { screens: Screen[] }) {
   return (
     <div className="w-full">
       {/* Slider frame */}
-      <div className="group relative w-full overflow-hidden rounded-lg bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_0_0_1px_rgba(15,23,42,0.05)]">
+      <div className="group relative w-full overflow-hidden rounded-md bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_0_0_1px_rgba(15,23,42,0.05)]">
         <div
           className="flex"
           style={{
