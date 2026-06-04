@@ -59,7 +59,7 @@ export function MoreScreensSlider({ screens }: { screens: Screen[] }) {
             <div
               key={i}
               style={{ width: `${100 / total}%` }}
-              className="shrink-0"
+              className="shrink-0 p-8"
             >
               <button
                 type="button"
@@ -71,7 +71,7 @@ export function MoreScreensSlider({ screens }: { screens: Screen[] }) {
                 <img
                   src={s.src}
                   alt={s.alt}
-                  className="block h-auto w-full"
+                  className="block h-auto w-full rounded-sm"
                   loading={i === 0 ? "eager" : "lazy"}
                   decoding="async"
                 />
