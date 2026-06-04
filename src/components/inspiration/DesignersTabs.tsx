@@ -40,7 +40,7 @@ export function DesignersTabs({ companies }: { companies: DesignersCompany[] }) 
                 type="button"
                 role="tab"
                 aria-selected={active === c.id}
-                className={`inline-flex items-center whitespace-nowrap rounded-md px-3.5 py-1.5 text-[13px] leading-[20px] font-medium transition-colors duration-150 focus-visible:outline-none ${
+                className={`inline-flex items-center whitespace-nowrap rounded-md px-3.5 py-1.5 text-[14px] leading-[20px] font-medium transition-colors duration-150 focus-visible:outline-none ${
                   active === c.id
                     ? "text-[#14110F]"
                     : "text-[#79716B] hover:text-[#14110F]"
