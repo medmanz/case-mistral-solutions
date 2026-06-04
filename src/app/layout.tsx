@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Caveat_Brush } from "next/font/google";
-import { Agentation } from "agentation";
+import { AgentationGate } from "@/components/dev/AgentationGate";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
@@ -42,7 +42,7 @@ export default function RootLayout({
       <body>
         {children}
         <Toaster />
-        {process.env.NODE_ENV === "development" && <Agentation />}
+        {process.env.NODE_ENV === "development" && <AgentationGate />}
       </body>
     </html>
   );

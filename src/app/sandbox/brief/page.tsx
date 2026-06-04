@@ -611,13 +611,15 @@ function BriefPageInner() {
                     >
                       <Mic className="size-4 text-[#57534D]" />
                     </button>
-                    <button
-                      onClick={sendNext}
-                      className="size-8 grid place-items-center rounded-lg bg-[#14110F] hover:bg-[#2A2420] active:scale-[0.97] transition-[colors,transform] duration-150 shadow-[inset_0_-1.5px_0_rgba(0,0,0,0.08)]"
-                      aria-label="Send"
-                    >
-                      <SendPixelArrow />
-                    </button>
+                    {composerValue.trim().length > 0 && (
+                      <button
+                        onClick={sendNext}
+                        className="size-8 grid place-items-center rounded-lg bg-[#14110F] hover:bg-[#2A2420] active:scale-[0.97] transition-[colors,transform] duration-150 shadow-[inset_0_-1.5px_0_rgba(0,0,0,0.08)]"
+                        aria-label="Send"
+                      >
+                        <SendPixelArrow />
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
