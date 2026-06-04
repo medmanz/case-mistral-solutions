@@ -5,18 +5,21 @@ import { createShader, playSweep } from "glimm";
 
 type Props = {
   onNavigate?: () => void;
+  /** Display size in pixels. Aspect ratio is locked to the source PNG. */
+  height?: number;
 };
 
-const FONT_FAMILY = "Loranthus, cursive";
-const FONT_SIZE = 24;
-const WIDTH = 120;
-const HEIGHT = 32;
-const BASELINE_Y = 24;
-const CLIP_ID = "signature-text-clip";
+const SRC = "/signature.png";
+const NATURAL_W = 632;
+const NATURAL_H = 288;
+const ASPECT = NATURAL_W / NATURAL_H;
 
-export function Signature({ onNavigate }: Props) {
+export function Signature({ onNavigate, height = 56 }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const playedRef = useRef(false);
+
+  const WIDTH = Math.round(height * ASPECT);
+  const HEIGHT = height;
 
   useEffect(() => {
     if (playedRef.current) return;
@@ -64,63 +67,47 @@ export function Signature({ onNavigate }: Props) {
         onNavigate?.();
       }}
       className="relative inline-block hover:opacity-80 transition-opacity"
-      aria-label="Top"
-      style={{ width: `${WIDTH}px`, height: `${HEIGHT}px`, lineHeight: 1 }}
+      aria-label="Médéric"
+      style={{
+        width: `${WIDTH}px`,
+        height: `${HEIGHT}px`,
+        lineHeight: 1,
+      }}
     >
-      <svg
+      {/* Base dark signature */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={SRC}
+        alt=""
         width={WIDTH}
         height={HEIGHT}
-        viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-        style={{ display: "block", overflow: "visible" }}
-        aria-label="Mederic"
-        role="img"
-      >
-        <defs>
-          <clipPath id={CLIP_ID}>
-            <text
-              x="0"
-              y={BASELINE_Y}
-              fontFamily={FONT_FAMILY}
-              fontSize={FONT_SIZE}
-              fontWeight={400}
-            >
-              Mederic
-            </text>
-          </clipPath>
-        </defs>
+        draggable={false}
+        style={{
+          display: "block",
+          width: "100%",
+          height: "100%",
+          userSelect: "none",
+        }}
+      />
 
-        {/* Always-visible dark text */}
-        <text
-          x="0"
-          y={BASELINE_Y}
-          fontFamily={FONT_FAMILY}
-          fontSize={FONT_SIZE}
-          fontWeight={400}
-          fill="#242529"
-        >
-          Mederic
-        </text>
-
-        {/* Canvas clipped to text shape, sweep paints only inside letters */}
-        <foreignObject
-          x="0"
-          y="0"
-          width={WIDTH}
-          height={HEIGHT}
-          clipPath={`url(#${CLIP_ID})`}
-        >
-          <canvas
-            ref={canvasRef}
-            aria-hidden
-            style={{
-              display: "block",
-              width: "100%",
-              height: "100%",
-              pointerEvents: "none",
-            }}
-          />
-        </foreignObject>
-      </svg>
+      {/* Canvas masked by signature alpha — sweep paints only inside letter shapes */}
+      <canvas
+        ref={canvasRef}
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          pointerEvents: "none",
+          maskImage: `url(${SRC})`,
+          WebkitMaskImage: `url(${SRC})`,
+          maskSize: "100% 100%",
+          WebkitMaskSize: "100% 100%",
+          maskRepeat: "no-repeat",
+          WebkitMaskRepeat: "no-repeat",
+        }}
+      />
     </a>
   );
 }
