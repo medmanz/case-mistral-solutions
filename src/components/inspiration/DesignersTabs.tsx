@@ -21,7 +21,7 @@ export function DesignersTabs({ companies }: { companies: DesignersCompany[] }) 
 
   return (
     <div className="mt-12">
-      <div className="flex justify-center">
+      <div className="mx-auto max-w-[634px]">
         <div
           className="relative inline-flex items-center gap-1 rounded-md bg-[#F4F4F5] p-1"
           role="tablist"
@@ -46,7 +46,6 @@ export function DesignersTabs({ companies }: { companies: DesignersCompany[] }) 
                     : "text-[#79716B] hover:text-[#14110F]"
                 }`}
               >
-                {c.name}
                 {c.logo && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
@@ -54,9 +53,10 @@ export function DesignersTabs({ companies }: { companies: DesignersCompany[] }) 
                     alt=""
                     width={16}
                     height={16}
-                    className="ml-2 h-4 w-4 rounded-[3px] object-contain"
+                    className="mr-2 h-4 w-4 rounded-[3px] object-contain"
                   />
                 )}
+                {c.name}
               </button>
             ))}
           </AnimatedBackground>
