@@ -14,6 +14,14 @@ const NATURAL_W = 346;
 const NATURAL_H = 100;
 const ASPECT = NATURAL_W / NATURAL_H;
 
+// Custom 4-anchor palette. Pink → deep blue → grey → purple.
+const PALETTE = {
+  a: [0.92, 0.36, 0.56] as [number, number, number],
+  b: [0.10, 0.14, 0.37] as [number, number, number],
+  c: [0.50, 0.50, 0.50] as [number, number, number],
+  d: [0.66, 0.39, 1.00] as [number, number, number],
+};
+
 export function Signature({ onNavigate, height = 26 }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const playedRef = useRef(false);
@@ -52,7 +60,7 @@ export function Signature({ onNavigate, height = 26 }: Props) {
     const DELAY_MS = 1000;
     const timer = window.setTimeout(() => {
       playSweep(ctrl, {
-        palette: "prism",
+        palette: PALETTE,
         direction: "ltr",
         sweepMs: 1300,
         outroMs: 700,
