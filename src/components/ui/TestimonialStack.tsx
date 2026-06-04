@@ -34,11 +34,10 @@ export function TestimonialStack({
     offset: ["start start", "end end"],
   });
 
-  // Total scroll = N cards * cardHeightVh, MINUS one slot for the last
-  // card. The last card doesn't need a full scroll slot of its own: there
-  // is nothing landing on top of it, so it just scrolls away with the
-  // section instead of leaving a long stretch of empty space below.
-  const totalVh = Math.max(1, items.length - 1) * cardHeightVh + cardHeightVh * 0.5;
+  // Total scroll = N cards * cardHeightVh. Every card gets a full slot,
+  // including the last one — otherwise the sticky card overflows its slot
+  // and bleeds visually into the content below the section.
+  const totalVh = items.length * cardHeightVh;
   return (
     <section
       ref={containerRef}
@@ -51,9 +50,7 @@ export function TestimonialStack({
           index={i}
           total={items.length}
           progress={scrollYProgress}
-          cardHeightVh={
-            i === items.length - 1 ? cardHeightVh * 0.5 : cardHeightVh
-          }
+          cardHeightVh={cardHeightVh}
           topOffset={topOffset}
           staggerPx={staggerPx}
         >
