@@ -14,7 +14,7 @@ const NATURAL_W = 346;
 const NATURAL_H = 100;
 const ASPECT = NATURAL_W / NATURAL_H;
 
-export function Signature({ onNavigate, height = 56 }: Props) {
+export function Signature({ onNavigate, height = 32 }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const playedRef = useRef(false);
 
