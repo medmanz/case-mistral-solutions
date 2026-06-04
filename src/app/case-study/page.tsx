@@ -16,6 +16,14 @@ import {
   TabsTrigger,
   TabsContent,
 } from "@/components/ui/Tabs";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+} from "@/components/ui/Table";
 
 export default function Page() {
   return (
@@ -692,26 +700,26 @@ function AppMockup({ app }: { app: AppMock }) {
         </div>
         <span className="text-[12px] text-[#79716B]">{app.count}</span>
       </div>
-      {/* Column headers */}
-      <div className="grid grid-cols-[1.6fr_1fr_auto] gap-3 px-4 py-2 border-b border-[#27272A0F] text-[11px] font-mono uppercase tracking-wider text-[#A6A09B]">
-        {app.columns.map((c) => (
-          <span key={c}>{c}</span>
-        ))}
-      </div>
-      {/* Rows */}
-      {app.rows.map((r, i) => (
-        <div
-          key={i}
-          className={cn(
-            "grid grid-cols-[1.6fr_1fr_auto] gap-3 items-center px-4 py-3 text-[13px]",
-            i < app.rows.length - 1 && "border-b border-[#27272A0F]"
-          )}
-        >
-          <span className="text-[#14110F] truncate">{r.name}</span>
-          <span className="text-[#79716B] truncate">{r.source}</span>
-          <SignalPill tone={r.signalTone} label={r.signal} />
-        </div>
-      ))}
+      <Table>
+        <TableHeader>
+          <TableRow className="hover:bg-transparent">
+            <TableHead className="w-[55%]">{app.columns[0]}</TableHead>
+            <TableHead className="w-[30%]">{app.columns[1]}</TableHead>
+            <TableHead className="text-right">{app.columns[2]}</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {app.rows.map((r, i) => (
+            <TableRow key={i}>
+              <TableCell className="text-[#14110F] truncate">{r.name}</TableCell>
+              <TableCell className="text-[#79716B] truncate">{r.source}</TableCell>
+              <TableCell className="text-right">
+                <SignalPill tone={r.signalTone} label={r.signal} />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
       {/* Action bar, propose-to-commit */}
       <div className="flex items-center justify-end gap-2 px-4 py-3 border-t border-[#27272A0F] bg-[#FAFAF9]">
         <button className="inline-flex items-center h-8 px-3 rounded-md text-[13px] text-[#57534D] border border-[#27272A14] bg-white">
