@@ -525,7 +525,7 @@ const PRIMITIVES: Primitive[] = [
 
 function PrimitivesGrid() {
   return (
-    <div className="grid grid-cols-2 gap-3">
+    <div className="grid grid-cols-2 gap-4">
       {PRIMITIVES.map((p, i) => (
         <PrimitiveCard key={p.name} primitive={p} index={i + 1} />
       ))}
@@ -535,30 +535,56 @@ function PrimitivesGrid() {
 
 function PrimitiveCard({ primitive, index }: { primitive: Primitive; index: number }) {
   return (
-    <div className="rounded-xl border border-[#27272A14] bg-white p-5 flex flex-col gap-3">
-      <div className="flex items-baseline gap-2">
-        <span className="inline-flex items-center justify-center size-5 rounded-full bg-mistral-cream text-[#FA500F] text-[11px] font-medium tabular-nums">
-          {index}
-        </span>
-        <span className="text-[14px] font-medium text-[#14110F] leading-tight">
+    <div
+      className="
+        group relative flex flex-col gap-4
+        rounded-2xl border border-[#27272A14] bg-white p-6
+        transition-[border-color,transform,box-shadow]
+        duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]
+        hover:border-[#27272A33] hover:-translate-y-[1px]
+        hover:shadow-[0_2px_8px_-4px_rgba(20,17,15,0.08)]
+      "
+    >
+      {/* Index, sits as an editorial number on its own line */}
+      <span
+        className="font-mono text-[11px] tracking-[0.08em] text-[#FA500F]"
+        style={{ fontVariantNumeric: "tabular-nums" }}
+      >
+        {String(index).padStart(2, "0")}
+      </span>
+
+      {/* Title + definition, tighter rhythm */}
+      <div className="flex flex-col gap-2">
+        <h3 className="text-[16px] leading-[22px] font-medium text-[#14110F] tracking-[-0.01em]">
           {primitive.name}
-        </span>
+        </h3>
+        <p className="text-[14px] leading-[22px] text-[#525252] text-pretty">
+          {primitive.definition}
+        </p>
       </div>
-      <div className="text-[13px] text-[#79716B] leading-[1.5]">
-        {primitive.definition}
-      </div>
-      <div className="text-[12.5px] text-[#A6A09B] leading-tight italic">
-        Why: {primitive.motivation}
-      </div>
-      <div className="mt-auto pt-3 border-t border-[#27272A0F]">
-        <div className="text-[11px] font-mono text-[#A6A09B] uppercase tracking-wider mb-2">
+
+      {/* Motivation: small italic line, readable contrast */}
+      <p className="text-[13px] leading-[20px] text-[#79716B] italic">
+        {primitive.motivation}
+      </p>
+
+      {/* Components row */}
+      <div className="mt-auto pt-4 border-t border-[#27272A0F]">
+        <div className="mb-2.5 text-[10.5px] font-mono uppercase tracking-[0.12em] text-[#A6A09B]">
           Components
         </div>
         <div className="flex flex-wrap gap-1.5">
           {primitive.components.map((c) => (
             <span
               key={c}
-              className="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-mono text-[#14110F] bg-[#FAFAF9] border border-[#27272A14]"
+              className="
+                inline-flex items-center
+                px-2 py-[3px] rounded-md
+                text-[11.5px] font-mono text-[#525252]
+                bg-[#F4F4F5]
+                transition-colors duration-150
+                group-hover:bg-[#EDEDED]
+              "
             >
               {c}
             </span>
