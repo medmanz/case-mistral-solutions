@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { Tooltip } from "@base-ui-components/react/tooltip";
 import styles from "./DesignerStack.module.css";
 
@@ -27,12 +28,7 @@ export function DesignerStack({ designers }: { designers: Designer[] }) {
                     aria-label={d.name}
                   >
                     {d.avatarSrc ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={d.avatarSrc}
-                        alt=""
-                        className={styles.avatar}
-                      />
+                      <Avatar src={d.avatarSrc} />
                     ) : (
                       <span>{d.initials ?? d.name.slice(0, 2).toUpperCase()}</span>
                     )}
@@ -60,5 +56,33 @@ export function DesignerStack({ designers }: { designers: Designer[] }) {
         ))}
       </ul>
     </Tooltip.Provider>
+  );
+}
+
+// Avatars fade in once their bytes have decoded — matches the
+// .img-fade pattern used by gallery thumbs so the whole page settles
+// in one coherent moment instead of avatars popping in stagger.
+function Avatar({ src }: { src: string }) {
+  const [loaded, setLoaded] = useState(false);
+  const ref = useRef<HTMLImageElement | null>(null);
+
+  useEffect(() => {
+    if (ref.current?.complete) setLoaded(true);
+  }, []);
+
+  return (
+    /* eslint-disable-next-line @next/next/no-img-element */
+    <img
+      ref={ref}
+      src={src}
+      alt=""
+      width={28}
+      height={28}
+      loading="eager"
+      decoding="async"
+      onLoad={() => setLoaded(true)}
+      data-loaded={loaded ? "true" : "false"}
+      className={`${styles.avatar} img-fade`}
+    />
   );
 }
