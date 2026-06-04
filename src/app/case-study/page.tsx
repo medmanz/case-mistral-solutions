@@ -41,8 +41,8 @@ export default function Page() {
           <HowSolutionsShips />
           <Choices />
           <Feasibility />
-          <MoreScreens />
           <LookingBack />
+          <MoreScreens />
         </main>
       </div>
     </div>
@@ -1616,10 +1616,7 @@ function MoreScreens() {
     <section id="more-screens" className="pt-12 pb-12">
       <BodyCol>
         <H1>More screens</H1>
-        <Body>
-          A few of the static screens I designed alongside the interactive
-          flows. Click any one to open it full size.
-        </Body>
+        <Body>A few of the screens I designed.</Body>
       </BodyCol>
 
       <div className="mt-8 w-full max-w-[1080px] mx-auto px-4">
