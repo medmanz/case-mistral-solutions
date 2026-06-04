@@ -148,12 +148,12 @@ function UserResearch() {
       <BodyCol>
         <H1>User research</H1>
         <Body>
-          The brief asked for a Recruiting Tool. Before I drew anything,
-          I spent a real chunk of time just framing the problem.
-          Designing for AI recruiting is mostly a question of which
-          moments to take from the human and which moments to give back.
-          The UI comes after that call. You can&rsquo;t make it from your
-          desk.
+          The brief asked for a Recruiting Tool. Before drawing
+          anything, I spent a real chunk of time framing the problem.
+          Most of designing for AI recruiting is figuring out which
+          moments the agent should take and which ones stay with the
+          human. So before getting into the solution, I spent the time
+          talking to people doing the work.
         </Body>
         <Body>
           So I did three things. First, I went through every AI recruiting
