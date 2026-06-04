@@ -195,72 +195,55 @@ function UserResearch() {
           <Accordion className="flex w-full flex-col">
             <ChoicesItem value="trust" title="Trust is the differentiator">
               <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                Every tool sources well enough. Few of them earn
-                confidence. An agent that acts without context burns brand
-                trust in a single bad outreach. Candidates remember those.
-                And the candidate-side AI is starting to filter the
-                generic agent messages out anyway.
+                Pretty much every tool sources well now. What I kept
+                hearing is that trust is the actual differentiator. One
+                bad outreach burns the brand fast, and candidates seem
+                to be filtering out the generic agent stuff anyway.
               </p>
             </ChoicesItem>
 
             <ChoicesItem value="context" title="Context is the quality lever">
               <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                The kick-off conversation is where the real signal lives.
-                The scoring rubric is downstream of it. So are the
-                rejection patterns from past hires. Diane put it plainly.
-                The job ad is the essence of the kick-off, not the
-                substance. An AI that matches on the ad alone misses
-                everything the kick-off taught the human. Context already
-                lives inside the enterprise. The agent&rsquo;s job is to
-                compose it.
+                Most of the real signal comes out of the kick-off call.
+                The job ad ends up being a small piece of what got said.
+                An agent that matches on the ad alone is going to miss
+                a lot.
               </p>
             </ChoicesItem>
 
             <ChoicesItem value="triage" title="Inbound triage is the volumetric pain">
               <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                Diane&rsquo;s team gets 165 applications in a day on one
-                role. Three hours of sorting. Half a recruiter&rsquo;s
-                day, gone. No manual process scales to that.
+                Diane told me her team gets around 165 applications in
+                a day on one role. Three hours of sorting, half a
+                recruiter’s day gone. Hard to scale that by hand.
               </p>
             </ChoicesItem>
 
             <ChoicesItem value="structured" title="AI earns its keep on structured text">
               <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                Scoring, qualification, drafts of any kind. The agent is
-                reliable there. The final calls stay with the human.
-                Mathias uses AI deep in the screening loop. He pastes
-                interview transcripts into Claude and reads them against
-                the rubric. The first message to a senior candidate, he
-                still writes himself.
+                Scoring, qualification, drafts of any kind. The agent
+                holds up there. Mathias mentioned that the first
+                message to a senior candidate, he still writes himself.
               </p>
             </ChoicesItem>
 
             <ChoicesItem value="ats" title="The ATS is the real goldmine">
               <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                Prescillia put it plainly. Past applicants, declined
-                offers, interview notes, second-choice candidates from
-                previous searches. Hundreds of people your team has
-                already met and scored, with notes from human screens
-                you&rsquo;ve already done. Most ATS make these
-                unreachable. An AI that re-discovers your own pool before
-                reaching outside is more valuable than one that scans
-                more LinkedIn.
-              </p>
-              <p className="mt-3 text-[16px] leading-[24px] text-[#525252] text-pretty">
-                That&rsquo;s why the shortlist defaults to eight
-                internal, four external. Internal here means already in
-                our ATS. The agent searches the ATS first.
+                Past applicants, declined offers, second-choice
+                candidates from older searches. People the team has
+                already met and scored. Prescillia kept coming back to
+                this one. That’s why the default shortlist is
+                eight from the ATS, four sourced new.
               </p>
             </ChoicesItem>
 
             <ChoicesItem value="workspace" title="The product is a shared workspace">
               <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                Diane and Mathias described the same fragmentation. The
-                TA reads one version of the role in Notion. The hiring
-                manager reads a different one buried in email. The ATS
-                quietly holds a third. So I put the Recruiting Tool
-                inside a shared Vibe Project. Every stakeholder reads the
-                same state.
+                The same role tends to live in three different places.
+                Notion for the TA, email for the hiring manager, the
+                ATS holding yet another version. So I put the
+                Recruiting Tool inside a shared Vibe Project, so
+                everyone reads the same state.
               </p>
             </ChoicesItem>
           </Accordion>
