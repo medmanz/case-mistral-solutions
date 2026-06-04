@@ -740,6 +740,24 @@ function SignalPill({
   tone: "high" | "med" | "low" | "score";
   label: string;
 }) {
+  // For match scores ("X/Y"), tint by ratio: strong match green,
+  // medium amber, weak red. Falls back to neutral if the label
+  // doesn't parse as a fraction.
+  let scoreStyles = "bg-[#27272A0F] text-[#14110F] tabular-nums";
+  if (tone === "score") {
+    const m = /^(\d+)\s*\/\s*(\d+)$/.exec(label);
+    if (m) {
+      const ratio = parseInt(m[1], 10) / parseInt(m[2], 10);
+      if (ratio >= 0.83) {
+        scoreStyles = "bg-[#DCFCE7] text-[#166534] tabular-nums";
+      } else if (ratio >= 0.6) {
+        scoreStyles = "bg-[#FEF3C7] text-[#92400E] tabular-nums";
+      } else {
+        scoreStyles = "bg-[#FEE2E2] text-[#991B1B] tabular-nums";
+      }
+    }
+  }
+
   const styles =
     tone === "high"
       ? "bg-[#FEE2E2] text-[#991B1B]"
@@ -747,7 +765,7 @@ function SignalPill({
         ? "bg-[#FEF3C7] text-[#92400E]"
         : tone === "low"
           ? "bg-[#DCFCE7] text-[#166534]"
-          : "bg-[#27272A0F] text-[#14110F] tabular-nums";
+          : scoreStyles;
   return (
     <span
       className={cn(
