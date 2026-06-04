@@ -999,8 +999,6 @@ function Feasibility() {
                 </p>
               </AccordionContent>
             </AccordionItem>
-              </AccordionContent>
-            </AccordionItem>
           </Accordion>
         </BodyCol>
       </div>
