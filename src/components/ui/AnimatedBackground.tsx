@@ -94,7 +94,15 @@ export function AnimatedBackground({
                   }}
                 />
               )}
-              <span style={{ position: "relative", zIndex: 1 }}>
+              <span
+                style={{
+                  position: "relative",
+                  zIndex: 1,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  whiteSpace: "nowrap",
+                }}
+              >
                 {element.props.children}
               </span>
             </>
