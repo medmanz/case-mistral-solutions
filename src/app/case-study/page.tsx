@@ -1623,14 +1623,13 @@ function MoreScreens() {
       <div className="mt-8 w-full max-w-[1080px] mx-auto px-4">
         <MoreScreensSlider
           screens={[
-            { src: "/case-study/sandbox-brief.png", alt: "Brief and archetypes" },
-            { src: "/case-study/sandbox-shortlist-table.png", alt: "Shortlist, table view" },
-            { src: "/case-study/sandbox-shortlist-kanban.png", alt: "Shortlist, kanban view" },
-            { src: "/case-study/sandbox-outreach.png", alt: "Outreach composer" },
-            { src: "/case-study/sandbox-pipeline.png", alt: "Pipeline" },
-            { src: "/case-study/sandbox-agents.png", alt: "Agents page" },
-            { src: "/case-study/sandbox-access.png", alt: "Access" },
-            { src: "/case-study/sandbox-quick-score.png", alt: "Quick score" },
+            { src: "/case-study/more-screens/design-01.png", alt: "Screen 1" },
+            { src: "/case-study/more-screens/design-02.png", alt: "Screen 2" },
+            { src: "/case-study/more-screens/design-03.png", alt: "Screen 3" },
+            { src: "/case-study/more-screens/design-04.png", alt: "Screen 4" },
+            { src: "/case-study/more-screens/design-05.png", alt: "Screen 5" },
+            { src: "/case-study/more-screens/design-06.png", alt: "Screen 6" },
+            { src: "/case-study/more-screens/design-07.png", alt: "Screen 7" },
           ]}
         />
       </div>
