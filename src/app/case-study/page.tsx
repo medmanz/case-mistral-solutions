@@ -885,9 +885,10 @@ function Feasibility() {
       <BodyCol>
         <H1>Feasibility</H1>
         <Body>
-          Four weeks to ship. Here’s how I’d phase it. Three things
-          I’d want to nail down with the team first, because the
-          answers actually change the design.
+          Four weeks to ship. The thing I’d try hardest to do is be
+          in the room when the technical calls get made, because those
+          answers shape the design more than another week of polish
+          would.
         </Body>
       </BodyCol>
 
@@ -909,28 +910,28 @@ function Feasibility() {
               <AccordionContent className="origin-top">
                 <div className="pl-6 pr-2 mt-2 flex flex-col gap-3">
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                    <strong>Week 1.</strong> Lock the kit with eng. What
-                    each primitive looks like in code, what data it
-                    needs, what it returns. Nothing gets drawn final
-                    until the contract holds.
+                    <strong>Week 1.</strong> I’d lock the data shapes
+                    with eng before drawing anything final. Constraints
+                    are design intelligence, not limits, and what each
+                    primitive returns (in what shape, in how long) ends
+                    up shaping what the screen looks like.
                   </p>
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                    <strong>Week 2.</strong> Build the Recruiting Tool
-                    as the reference. The canonical version. Real API
-                    calls behind the sign-off.
+                    <strong>Week 2.</strong> I’d build the Recruiting
+                    Tool as the canonical version, with real API calls
+                    behind the sign-off rather than mocks.
                   </p>
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                    <strong>Week 3.</strong> Instrument and evaluate.
-                    Where does the agent get scoring wrong? Where does
-                    the sign-off feel too heavy or too light? I’d
-                    rather find the trust breaks before the design
-                    partner does.
+                    <strong>Week 3.</strong> I’d instrument and
+                    evaluate the agent’s outputs, so I can find the
+                    trust breaks myself before the design partner does.
                   </p>
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                    <strong>Week 4.</strong> One design partner. A real
-                    recruiter, on a real role, sending real outreach.
-                    First honest signal on whether the contract holds
-                    when the stakes are real.
+                    <strong>Week 4.</strong> I’d hand it to one design
+                    partner, a real recruiter on a real role sending
+                    real outreach. That’s the first honest signal on
+                    whether the contract holds when the stakes are
+                    real.
                   </p>
                 </div>
               </AccordionContent>
@@ -952,25 +953,24 @@ function Feasibility() {
                 <div className="pl-6 pr-2 mt-2 flex flex-col gap-3">
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
                     <strong>How fast does the agent score 300 candidates?</strong>{" "}
-                    I’d ask science. A 30-second batch means the UI
-                    shows a thinking chain. Fast enough to stream
-                    candidate by candidate means the shortlist fills in
-                    live. Two completely different designs hang on that
+                    If it’s a 30-second batch, the UI shows a thinking
+                    chain while you wait. If it streams candidate by
+                    candidate, the shortlist fills in live. Two
+                    completely different designs hang on that one
                     number.
                   </p>
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
                     <strong>How do we know the shortlist is actually good?</strong>{" "}
                     I’d want a small labeled baseline before the first
-                    ship. Fifty profiles scored by three senior
-                    recruiters, with reasons. Otherwise the agent’s
-                    11/12 score means nothing.
+                    ship: fifty profiles scored by three senior
+                    recruiters, with their reasons. Without it, the
+                    agent’s 11/12 score means nothing.
                   </p>
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
                     <strong>Where does the brief live between sessions?</strong>{" "}
-                    I’d ask engineering. If a closed tab loses it, the
-                    recovery UX is one design. If it persists and
-                    resumes, that’s a different one. I’d rather know
-                    before I draw the empty state.
+                    If a closed tab loses it, the recovery UX looks one
+                    way. If it persists and resumes, that’s another.
+                    I’d rather know before I draw the empty state.
                   </p>
                 </div>
               </AccordionContent>
@@ -991,11 +991,14 @@ function Feasibility() {
               <AccordionContent className="origin-top">
                 <p className="pl-6 pr-2 mt-2 text-[16px] leading-[24px] text-[#525252] text-pretty">
                   Beyond the screens, the thing that decides whether
-                  this scales is governance. Who can add a primitive to
-                  the kit? Who can change a Le Chat surface? I’d draft
-                  that one-pager in week one, before the team grows and
-                  the answer drifts to “everyone, sometimes”.
+                  this scales is governance of the kit. Who can add a
+                  primitive, who can change a Le Chat surface. I’d
+                  draft that one-pager in week one. And I’d want to own
+                  the eval loop too, so I can stress-test the agent’s
+                  outputs for correctness, not just for how they look.
                 </p>
+              </AccordionContent>
+            </AccordionItem>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
