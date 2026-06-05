@@ -114,8 +114,8 @@ const rampGallery: GalleryItem[] = [
     src: "/designing-in-ai/ramp/02-ramp.mp4",
     alt: "Ramp interaction recording",
     caption: "",
-    width: 1280,
-    height: 1026,
+    width: 956,
+    height: 952,
   },
   {
     kind: "video",
@@ -247,6 +247,9 @@ const companies: Company[] = [
         </p>
         <p className="mt-4">
           No chatbot here. The contract lands, the AI extracts the key terms, you see them in context. That&rsquo;s the whole thing. The work is already done by the time you&rsquo;d have thought to ask.
+        </p>
+        <p className="mt-4">
+          Same philosophy here. When Ramp&rsquo;s model puts a purchase in the wrong category, there&rsquo;s no long explanation of why. You override it, the model learns from that. I think this is right. Feedback loops earn more trust than transparency reports.
         </p>
       </>
     ),
