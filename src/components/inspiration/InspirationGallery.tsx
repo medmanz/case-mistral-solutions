@@ -3,14 +3,19 @@
 import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 
-export type GalleryItem = {
-  kind: "image" | "video";
-  src: string;
-  alt: string;
-  caption: string;
-  width?: number;
-  height?: number;
-};
+export type GalleryItem =
+  | {
+      kind: "image" | "video";
+      src: string;
+      alt: string;
+      caption: string;
+      width?: number;
+      height?: number;
+    }
+  | {
+      kind: "text";
+      body: string;
+    };
 
 export function InspirationGallery({
   items,
@@ -34,33 +39,46 @@ export function InspirationGallery({
     };
   }, [openIndex]);
 
-  const active = openIndex !== null ? items[openIndex] : null;
+  const activeItem = openIndex !== null ? items[openIndex] : null;
+  const active = activeItem && activeItem.kind !== "text" ? activeItem : null;
 
   return (
     <>
       <div className={layout === "stack" ? "gallery gallery--stack" : "gallery"}>
-        {items.map((item, i) => (
-          <button
-            key={i}
-            type="button"
-            onClick={() => setOpenIndex(i)}
-            aria-label={`Open ${item.alt}`}
-            className="gallery__link cursor-zoom-in"
-          >
-            <figure className="gallery__thumb">
-              {item.kind === "video" ? (
-                <GalleryVideo item={item} />
-              ) : (
-                <GalleryImage item={item} />
-              )}
-              {item.caption && (
-                <figcaption className="gallery__caption">
-                  {item.caption}
-                </figcaption>
-              )}
-            </figure>
-          </button>
-        ))}
+        {items.map((item, i) => {
+          if (item.kind === "text") {
+            return (
+              <p
+                key={i}
+                className="text-pretty text-[16px] leading-[24px] text-[#525252]"
+              >
+                {item.body}
+              </p>
+            );
+          }
+          return (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setOpenIndex(i)}
+              aria-label={`Open ${item.alt}`}
+              className="gallery__link cursor-zoom-in"
+            >
+              <figure className="gallery__thumb">
+                {item.kind === "video" ? (
+                  <GalleryVideo item={item} />
+                ) : (
+                  <GalleryImage item={item} />
+                )}
+                {item.caption && (
+                  <figcaption className="gallery__caption">
+                    {item.caption}
+                  </figcaption>
+                )}
+              </figure>
+            </button>
+          );
+        })}
       </div>
 
       {active && (
@@ -120,7 +138,9 @@ export function InspirationGallery({
 // box → pop" effect on arrival. Layout space is already reserved by
 // .gallery__link's aspect-ratio, so the fade carries no layout shift.
 
-function GalleryImage({ item }: { item: GalleryItem }) {
+type MediaItem = Extract<GalleryItem, { kind: "image" | "video" }>;
+
+function GalleryImage({ item }: { item: MediaItem }) {
   const [loaded, setLoaded] = useState(false);
   const ref = useRef<HTMLImageElement | null>(null);
 
@@ -145,7 +165,7 @@ function GalleryImage({ item }: { item: GalleryItem }) {
   );
 }
 
-function GalleryVideo({ item }: { item: GalleryItem }) {
+function GalleryVideo({ item }: { item: MediaItem }) {
   const [loaded, setLoaded] = useState(false);
   const ref = useRef<HTMLVideoElement | null>(null);
 
