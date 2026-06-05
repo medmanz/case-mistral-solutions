@@ -414,7 +414,7 @@ export default function InspirationPage() {
                 Designing in AI
               </h2>
               <p className="text-pretty text-[16px] leading-[24px] text-[#525252]">
-                A short, opinionated list of teams I think are shaping what AI products should feel like. Not the loudest, the ones whose details I keep stealing.
+                A short, opinionated list of teams I think are shaping what AI products should feel like.
               </p>
             </div>
 
