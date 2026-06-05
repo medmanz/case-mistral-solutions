@@ -222,8 +222,8 @@ const variantGallery: GalleryItem[] = [
     src: "/designing-in-ai/variant/01-variant.mp4",
     alt: "Variant interaction recording",
     caption: "",
-    width: 2988,
-    height: 1768,
+    width: 3024,
+    height: 1800,
   },
   {
     kind: "video",
