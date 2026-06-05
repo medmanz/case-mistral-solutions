@@ -105,7 +105,8 @@ const rampGallery: GalleryItem[] = [
     kind: "video",
     src: "/designing-in-ai/ramp/04-ramp.mp4",
     alt: "Ramp interaction recording",
-    caption: "",
+    caption:
+      "No chatbot here. The contract lands, the AI extracts the key terms, you see them in context. That’s the whole thing. The work is already done by the time you’d have thought to ask.",
     width: 956,
     height: 950,
   },
