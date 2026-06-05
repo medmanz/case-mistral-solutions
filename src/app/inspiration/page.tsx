@@ -125,14 +125,6 @@ const rampGallery: GalleryItem[] = [
     width: 952,
     height: 952,
   },
-  {
-    kind: "video",
-    src: "/designing-in-ai/ramp/03-ramp.mp4",
-    alt: "Ramp interaction recording",
-    caption: "",
-    width: 1280,
-    height: 1092,
-  },
 ];
 
 const cofounderGallery: GalleryItem[] = [
