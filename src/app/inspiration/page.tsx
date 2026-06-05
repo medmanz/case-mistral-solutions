@@ -110,7 +110,7 @@ const rampGallery: GalleryItem[] = [
     src: "/designing-in-ai/ramp/04-ramp.mp4",
     alt: "Ramp interaction recording",
     caption: "",
-    width: 956,
+    width: 952,
     height: 950,
   },
   {
@@ -122,7 +122,7 @@ const rampGallery: GalleryItem[] = [
     src: "/designing-in-ai/ramp/02-ramp.mp4",
     alt: "Ramp interaction recording",
     caption: "",
-    width: 956,
+    width: 952,
     height: 952,
   },
   {
