@@ -486,28 +486,28 @@ const PRIMITIVES: Primitive[] = [
   {
     name: "Explainable scoring",
     definition:
-      "Every agent output carries a score and the criteria behind it, inspectable on demand.",
+      "Every score opens a panel showing the criteria the agent used. You agree or you override.",
     motivation: "Trust is the differentiator",
     components: ["ScoreGauge", "ScoreBreakdown", "RankReason", "ConfidenceMeter"],
   },
   {
     name: "Composed transparent context",
     definition:
-      "The agent reads from multiple sources at once and shows which one supported each claim.",
+      "The agent reads from many sources at once. Every claim shows which source backed it.",
     motivation: "Context is the quality lever",
     components: ["AppConnectors", "SourceCitation", "DataPreview", "ConnectorHealth"],
   },
   {
     name: "Risk-graded autonomy",
     definition:
-      "Action friction scales with the blast radius. Low for reversible, high for irreversible.",
+      "Action friction scales with the risk. Reorder freely. Send twelve emails, confirm one by one.",
     motivation: "Action is the moment of truth",
     components: ["ApprovalLevels", "TypeToConfirm", "UndoBar", "BlockingApproval"],
   },
   {
     name: "Chat-to-Task escalation",
     definition:
-      "Quick questions live in chat. Sustained work escalates to a Task in Work, with full context.",
+      "Quick questions stay in chat. Sustained work escalates to a Task, with full context carried over.",
     motivation: "A senior search runs for weeks. A quick check takes minutes.",
     components: [
       "CreateAsTaskButton",
