@@ -240,7 +240,7 @@ const companies: Company[] = [
     logo: "/designing-in-ai/ramp/logo.ico",
     body: (
       <p>
-        The one I keep going back to. What I love is how much they sweat the whole thing. The typography, the density, the tiny interactions, the way the AI sits inside the product instead of on top of it. Most products right now are bolting AI features onto whatever they had before. Ramp rebuilt the floor. It feels calm and dense at the same time, which is hard. I think we&apos;re heading toward a place where AI is a commodity, and at that point the only difference is taste. Ramp is already living that.
+        The one I keep going back to. What I really respect is how AI sits inside their workflows instead of as a chat layer bolted on top. It&apos;s designed for outcomes, not novelty. Users give feedback, the system learns. Most products today are still doing the bolt-on. Ramp rebuilt the floor. I think we&apos;re heading toward a place where AI itself becomes a commodity, and at that point the only difference is taste and how seriously you took the rebuild. Ramp already gets that.
       </p>
     ),
     gallery: rampGallery,
