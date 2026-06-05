@@ -105,8 +105,7 @@ const rampGallery: GalleryItem[] = [
     kind: "video",
     src: "/designing-in-ai/ramp/04-ramp.mp4",
     alt: "Ramp interaction recording",
-    caption:
-      "No chatbot here. The contract lands, the AI extracts the key terms, you see them in context. That’s the whole thing. The work is already done by the time you’d have thought to ask.",
+    caption: "",
     width: 956,
     height: 950,
   },
@@ -242,9 +241,14 @@ const companies: Company[] = [
     name: "Ramp",
     logo: "/designing-in-ai/ramp/logo.ico",
     body: (
-      <p>
-        The one I keep going back to. What I really respect is how AI sits inside their workflows instead of as a chat layer bolted on top. It&apos;s designed for outcomes, not novelty. Users give feedback, the system learns. Most products today are still doing the bolt-on. Ramp rebuilt the floor. I think we&apos;re heading toward a place where AI itself becomes a commodity, and at that point the only difference is taste and how seriously you took the rebuild. Ramp already gets that.
-      </p>
+      <>
+        <p>
+          The one I keep going back to. What I really respect is how AI sits inside their workflows instead of as a chat layer bolted on top. It&apos;s designed for outcomes, not novelty. Users give feedback, the system learns. Most products today are still doing the bolt-on. Ramp rebuilt the floor. I think we&apos;re heading toward a place where AI itself becomes a commodity, and at that point the only difference is taste and how seriously you took the rebuild. Ramp already gets that.
+        </p>
+        <p className="mt-4">
+          No chatbot here. The contract lands, the AI extracts the key terms, you see them in context. That&rsquo;s the whole thing. The work is already done by the time you&rsquo;d have thought to ask.
+        </p>
+      </>
     ),
     gallery: rampGallery,
   },
