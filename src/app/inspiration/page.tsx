@@ -102,10 +102,12 @@ const designers: Designer[] = [
 
 const rampGallery: GalleryItem[] = [
   {
-    kind: "image",
-    src: "/designing-in-ai/ramp/01-ramp.webp",
-    alt: "Ramp product screenshot",
+    kind: "video",
+    src: "/designing-in-ai/ramp/04-ramp.mp4",
+    alt: "Ramp interaction recording",
     caption: "",
+    width: 956,
+    height: 950,
   },
   {
     kind: "video",
