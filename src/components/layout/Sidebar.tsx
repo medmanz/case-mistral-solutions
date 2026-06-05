@@ -64,8 +64,8 @@ export function Sidebar({ items, topId }: { items?: Item[]; topId?: string } = {
         href="/"
         className="group inline-flex items-center gap-1.5 mb-8 -ml-0.5 transition-colors"
         style={{
-          fontSize: "13px",
-          lineHeight: "18px",
+          fontSize: "14px",
+          lineHeight: "20px",
           letterSpacing: "-0.18px",
           color: "#9CA3AF",
           fontWeight: 500,
@@ -93,8 +93,8 @@ export function Sidebar({ items, topId }: { items?: Item[]; topId?: string } = {
                     href={`#${item.id}`}
                     onClick={(e) => handleClick(e, item.id)}
                     style={{
-                      fontSize: "13px",
-                      lineHeight: "18px",
+                      fontSize: "14px",
+                      lineHeight: "20px",
                       letterSpacing: "-0.18px",
                       color: isActive ? "#242529" : "#9CA3AF",
                       fontWeight: 550,
