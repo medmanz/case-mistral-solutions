@@ -889,10 +889,12 @@ function Feasibility() {
       <BodyCol>
         <H1>Feasibility</H1>
         <Body>
-          Four weeks to ship. The thing I’d try hardest to do is be
-          in the room when the technical calls get made, because those
-          answers shape the design more than another week of polish
-          would.
+          Four weeks to ship. Here’s how I’d actually run it. The
+          thing I’d try hardest to do is be in the room when the
+          technical calls get made. What I can’t see in advance is
+          what I’ll learn from engineering in the first conversation,
+          so I want that conversation early. Before I’ve drawn three
+          weeks of screens.
         </Body>
       </BodyCol>
 
@@ -914,28 +916,33 @@ function Feasibility() {
               <AccordionContent className="origin-top">
                 <div className="pl-6 pr-2 mt-2 flex flex-col gap-3">
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                    <strong>Week 1.</strong> I’d lock the data shapes
-                    with eng before drawing anything final. Constraints
-                    are design intelligence, not limits, and what each
-                    primitive returns (in what shape, in how long) ends
-                    up shaping what the screen looks like.
+                    <strong>Week 1. Talk to engineers before drawing.</strong>{" "}
+                    How long does it take to search the ATS with 50,000
+                    candidates inside? If it’s 8 seconds, my UI has to
+                    hold the wait. If it’s 200ms, I can design
+                    something different. The shape of what the data
+                    returns ends up shaping the screen.
                   </p>
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                    <strong>Week 2.</strong> I’d build the Recruiting
-                    Tool as the canonical version, with real API calls
-                    behind the sign-off rather than mocks.
+                    <strong>Week 2. Build the real one.</strong> One
+                    customer, one real role, end to end. Real API calls
+                    behind every sign-off. Actual emails to actual
+                    profiles. The things you discover when it’s real
+                    are different from what you discover in a prototype.
                   </p>
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                    <strong>Week 3.</strong> I’d instrument and
-                    evaluate the agent’s outputs, so I can find the
-                    trust breaks myself before the design partner does.
+                    <strong>Week 3. Break it on purpose.</strong> Feed
+                    the agent ambiguous briefs. Briefs that contradict
+                    themselves. Briefs with almost no context. Where
+                    the agent falls apart is where the design has to
+                    hold. The design has to survive the bad days.
                   </p>
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                    <strong>Week 4.</strong> I’d hand it to one design
-                    partner, a real recruiter on a real role sending
-                    real outreach. That’s the first honest signal on
-                    whether the contract holds when the stakes are
-                    real.
+                    <strong>Week 4. One real recruiter, one real role.</strong>{" "}
+                    Hélène, or her counterpart at the customer. We give
+                    her the tool and we say “fill this position”. The
+                    signal I’d watch for is whether she keeps using it
+                    when nobody’s looking.
                   </p>
                 </div>
               </AccordionContent>
@@ -949,32 +956,29 @@ function Feasibility() {
                 <div className="flex items-center gap-2">
                   <ChevronRight className="size-4 text-[#14110F] transition-transform duration-200 group-data-[state=expanded]:rotate-90 shrink-0" />
                   <span className="text-[16px] leading-[24px] font-medium text-[#242529]">
-                    Three questions I’d ask the team first
+                    Three things I’d want clear
                   </span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="origin-top">
                 <div className="pl-6 pr-2 mt-2 flex flex-col gap-3">
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                    <strong>How fast does the agent score 300 candidates?</strong>{" "}
-                    If it’s a 30-second batch, the UI shows a thinking
-                    chain while you wait. If it streams candidate by
-                    candidate, the shortlist fills in live. Two
-                    completely different designs hang on that one
-                    number.
+                    <strong>Where do the scoring criteria come from.</strong>{" "}
+                    Hard-coded into Recruiting, or configurable per
+                    role by the customer. Big architectural call. I’d
+                    want it made on day one.
                   </p>
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                    <strong>How do we know the shortlist is actually good?</strong>{" "}
-                    I’d want a small labeled baseline before the first
-                    ship: fifty profiles scored by three senior
-                    recruiters, with their reasons. Without it, the
-                    agent’s 11/12 score means nothing.
+                    <strong>What does the trust threshold look like in production.</strong>{" "}
+                    At 70% confidence, what does the UI do. Show a
+                    warning, hide the candidate, wait for human input.
+                    At 95%, can the agent commit on its own.
                   </p>
                   <p className="text-[16px] leading-[24px] text-[#525252] text-pretty">
-                    <strong>Where does the brief live between sessions?</strong>{" "}
-                    If a closed tab loses it, the recovery UX looks one
-                    way. If it persists and resumes, that’s another.
-                    I’d rather know before I draw the empty state.
+                    <strong>How do we know the agent is getting better.</strong>{" "}
+                    If Hélène overrides the ranking 30% of the time, we
+                    have a problem. If it’s 3%, we’re good. I’d want
+                    to see that from week one.
                   </p>
                 </div>
               </AccordionContent>
@@ -994,12 +998,10 @@ function Feasibility() {
               </AccordionTrigger>
               <AccordionContent className="origin-top">
                 <p className="pl-6 pr-2 mt-2 text-[16px] leading-[24px] text-[#525252] text-pretty">
-                  Beyond the screens, the thing that decides whether
-                  this scales is governance of the kit. Who can add a
-                  primitive, who can change a Le Chat surface. I’d
-                  draft that one-pager in week one. And I’d want to own
-                  the eval loop too, so I can stress-test the agent’s
-                  outputs for correctness, not just for how they look.
+                  The four primitives. The kit. The trust contract at
+                  the system level. The Studio canvas for the engineers
+                  who configure new apps. That’s where the design
+                  leverage compounds.
                 </p>
               </AccordionContent>
             </AccordionItem>
