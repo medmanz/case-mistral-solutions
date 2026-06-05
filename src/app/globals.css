@@ -168,6 +168,12 @@ body {
     grid-template-columns: 1fr;
   }
 }
+/* Text items sit between media items — give them extra breathing
+ * room above (separates them from the previous video/image) so each
+ * text + media pair reads as its own section. */
+.gallery--stack > p {
+  margin-top: 28px;
+}
 .gallery--stack .gallery__link {
   aspect-ratio: auto;
 }
