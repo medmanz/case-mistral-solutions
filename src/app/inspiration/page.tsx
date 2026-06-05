@@ -24,11 +24,6 @@ const NAV = [
 
 const designers: Designer[] = [
   {
-    name: "Emil Kowalski",
-    href: "https://x.com/emilkowalski",
-    avatarSrc: "/designers/emilkowalski.jpg",
-  },
-  {
     name: "Rauno Freiberg",
     href: "https://x.com/raunofreiberg",
     avatarSrc: "/designers/raunofreiberg.jpg",
@@ -62,6 +57,11 @@ const designers: Designer[] = [
     name: "Dann Petty",
     href: "https://x.com/DannPetty",
     avatarSrc: "/designers/DannPetty.jpg",
+  },
+  {
+    name: "Emil Kowalski",
+    href: "https://x.com/emilkowalski",
+    avatarSrc: "/designers/emilkowalski.jpg",
   },
   {
     name: "Florian Kiem",
