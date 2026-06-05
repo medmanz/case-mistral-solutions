@@ -840,7 +840,7 @@ function Choices() {
                     { src: "/lofi/sidebar-b-tabs.png?v=3", alt: "App turned into a Project" },
                     { src: "/lofi/sidebar-d-app-card.png?v=3", alt: "App nested inside a Project" },
                   ]}
-                  caption="Three sidebar architectures I sketched and dropped. Each one promoted the app to a sidebar primitive. None survived because the app doesn't need to be one."
+                  caption=""
                 />
               </div>
             </ChoicesItem>
