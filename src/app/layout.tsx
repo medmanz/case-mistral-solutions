@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Caveat_Brush } from "next/font/google";
 import { AgentationGate } from "@/components/dev/AgentationGate";
 import { Toaster } from "@/components/ui/sonner";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const geist = Geist({
@@ -42,6 +44,8 @@ export default function RootLayout({
       <body>
         {children}
         <Toaster />
+        <Analytics />
+        <SpeedInsights />
         {process.env.NODE_ENV === "development" && <AgentationGate />}
       </body>
     </html>
