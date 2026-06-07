@@ -369,7 +369,7 @@ export default function InspirationPage() {
     <div className="bg-surface text-ink min-h-screen">
       <div className="flex">
         <Sidebar items={NAV} topId="inspiration" />
-        <main className="flex flex-1 min-w-0 flex-col items-center px-8">
+        <main className="page-enter flex flex-1 min-w-0 flex-col items-center px-8">
           <section
             id="inspiration"
             className="w-full max-w-[1080px] px-4 pt-16"

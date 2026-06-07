@@ -282,10 +282,23 @@ body {
   }
 }
 
-/* Page-level fade is deliberately disabled: it caused a multi-stage
- * arrival (blank → text → image pop) because the fade ran before
- * images were decoded. Each image now fades itself in via .img-fade
- * synced to its own load event. */
+/* Page-level entry: short, ease-out, off main thread. Each image
+ * still self-fades via .img-fade (so late-loading media doesn't break
+ * the wrapper fade). Kept at 220ms so it lines up with .img-fade's
+ * 220ms — the whole arrival reads as a single coordinated reveal
+ * rather than a snap, even when navigating from another route. */
+.page-enter {
+  animation: pageEnter 220ms cubic-bezier(0.23, 1, 0.32, 1) both;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
 
 /* Per-image fade, used by Lightbox + InspirationGallery. Image
  * renders at opacity:0 until its onLoad fires (or it's already
